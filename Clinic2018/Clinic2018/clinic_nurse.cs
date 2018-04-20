@@ -16,5 +16,10 @@ namespace Clinic2018
         {
             InitializeComponent();
         }
+
+        private void clinic_nurse_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -63,5 +63,10 @@ namespace Clinic2018
             clinic_search search = new clinic_search();
             search.Show();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
