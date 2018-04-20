@@ -155,11 +155,17 @@
     <Compile Include="clinic_login.Designer.cs">
       <DependentUpon>clinic_login.cs</DependentUpon>
     </Compile>
-    <Compile Include="clinic_main.cs">
+    <Compile Include="clinic_nurse.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="clinic_main.Designer.cs">
-      <DependentUpon>clinic_main.cs</DependentUpon>
+    <Compile Include="clinic_nurse.Designer.cs">
+      <DependentUpon>clinic_nurse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="clinic_opd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clinic_opd.Designer.cs">
+      <DependentUpon>clinic_opd.cs</DependentUpon>
     </Compile>
     <Compile Include="clinic_main_sub.cs">
       <SubType>Form</SubType>
@@ -271,8 +277,11 @@
     <EmbeddedResource Include="clinic_login.resx">
       <DependentUpon>clinic_login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="clinic_main.resx">
-      <DependentUpon>clinic_main.cs</DependentUpon>
+    <EmbeddedResource Include="clinic_nurse.resx">
+      <DependentUpon>clinic_nurse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="clinic_opd.resx">
+      <DependentUpon>clinic_opd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="clinic_main_sub.resx">
       <DependentUpon>clinic_main_sub.cs</DependentUpon>
@@ -407,6 +416,7 @@
     <None Include="Resources\ic_text_document.png" />
     <None Include="Resources\folder-documents-icon.png" />
     <None Include="Resources\folder-documents-icon1.png" />
+    <Content Include="Resources\image1.jpg" />
     <Content Include="ความคืบหน้าของโปรแกรม.txt" />
     <Content Include="โค๊ดที่ต้องใช้.txt" />
   </ItemGroup>

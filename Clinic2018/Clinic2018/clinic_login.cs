@@ -95,7 +95,12 @@ namespace Clinic2018
         {
             this.Close();
         }
-        
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         /*private void textBox1_Enter(object sender, EventArgs e)
         {
             if (textBox1.Text == "บัตรประชาชน")
