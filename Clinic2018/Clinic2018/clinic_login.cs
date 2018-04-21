@@ -22,23 +22,86 @@ namespace Clinic2018
         {
             try
             {
-                SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-26BM5UJ\SQLEXPRESS; Initial Catalog = Clinic2018; User ID = sa; Password = 1234");
-                SqlCommand cmd = new SqlCommand("select * from user_control where uct_user=@uct_user and uct_password=@uct_password", conn);
+                SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-26BM5UJ\SQLEXPRESS; Initial Catalog = Clinic2018; MultipleActiveResultSets=true; User ID = sa; Password = 1234");
+                SqlCommand cmd = new SqlCommand("select employee_ru.emp_ru_name,position.pos_name from employee_ru inner join user_control on user_control.emp_ru_id = employee_ru.emp_ru_id inner join position on position.pos_id = employee_ru.pos_id where uct_user=@uct_user and uct_password=@uct_password", conn);
+                SqlCommand cmd1 = new SqlCommand("select employee_doctor.emp_doc_name from employee_doctor inner join user_control on user_control.emp_doc_id = employee_doctor.emp_doc_id where uct_user=@uct_user and uct_password=@uct_password", conn);
                 conn.Open();
+         
+                  
                 cmd.Parameters.AddWithValue("@uct_user", T_Username.Text);
                 cmd.Parameters.AddWithValue("@uct_password", T_Password.Text);
+                cmd1.Parameters.AddWithValue("@uct_user", T_Username.Text);
+                cmd1.Parameters.AddWithValue("@uct_password", T_Password.Text);
+
                 SqlDataReader dr = cmd.ExecuteReader();
+                SqlDataReader dr1 = cmd1.ExecuteReader();
+
                 if (dr.HasRows == true)
                 {
-                    MessageBox.Show("ยินดีต้อนรับ" + " " + T_Username.Text);
+                    if (dr.Read())
+                    {
+                        string position = dr["pos_name"].ToString();
+                        if(position == "เวชระเบียน")
+                        {
+                            MessageBox.Show("ยินดีต้อนรับ" + dr["emp_ru_name"].ToString());
 
-                    clinic_main_v2 m2 = new clinic_main_v2();
-                    m2.Show();
-                    clinic_login clnlog = new clinic_login();
-                    clnlog.Close();
-                    Visible = false;
+                            clinic_main_v2 m1 = new clinic_main_v2();
+                            m1.Show();
+                            clinic_login clnlog = new clinic_login();
+                            clnlog.Close();
+                            Visible = false;
+
+                        }else if(position == "พยาบาล")
+                        {
+                            MessageBox.Show("ยินดีต้อนรับ" + dr["emp_ru_name"].ToString());
+
+                            clinic_nurse m2 = new clinic_nurse();
+                            m2.Show();
+                            clinic_login clnlog = new clinic_login();
+                            clnlog.Close();
+                            Visible = false;
+                        }else if(position == "หัวหน้า")
+                        {
+                            MessageBox.Show("ยินดีต้อนรับ" + dr["emp_ru_name"].ToString());
+
+                            Clinic_boss m3 = new Clinic_boss();
+                            m3.Show();
+                            clinic_login clnlog = new clinic_login();
+                            clnlog.Close();
+                            Visible = false;
+                        }else if(position == "เภสัชกรณ์")
+                        {
+                            MessageBox.Show("ยินดีต้อนรับ" + dr["emp_ru_name"].ToString());
+
+                            clinic_pharmacist m4 = new clinic_pharmacist();
+                            m4.Show();
+                            clinic_login clnlog = new clinic_login();
+                            clnlog.Close();
+                            Visible = false;
+                        }
+                   
+
+
+
+                    }
+                 
                 }
+                else if(dr1.HasRows == true)
+                {
+                    if (dr1.Read())
+                    {
+                        MessageBox.Show("ยินดีต้อนรับ" + dr1["emp_doc_name"].ToString());
 
+                        Clinic_doctor doc1 = new Clinic_doctor();
+                        doc1.Show();
+                        clinic_login clnlog = new clinic_login();
+                        clnlog.Close();
+                        Visible = false;
+                      
+                    }
+                       
+
+                }
                 else
                 {
                     MessageBox.Show("Check Username and Password agin!!");
