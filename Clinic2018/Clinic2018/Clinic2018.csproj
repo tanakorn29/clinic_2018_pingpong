@@ -113,6 +113,12 @@
     <Compile Include="clinic_barcode.Designer.cs">
       <DependentUpon>clinic_barcode.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clinic_boss.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clinic_boss.Designer.cs">
+      <DependentUpon>Clinic_boss.cs</DependentUpon>
+    </Compile>
     <Compile Include="clinic_calendar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,12 @@
     </Compile>
     <Compile Include="clinic_confirm_send.Designer.cs">
       <DependentUpon>clinic_confirm_send.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic_doctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clinic_doctor.Designer.cs">
+      <DependentUpon>Clinic_doctor.cs</DependentUpon>
     </Compile>
     <Compile Include="clinic_doctor_service.cs">
       <SubType>Form</SubType>
@@ -178,6 +190,12 @@
     </Compile>
     <Compile Include="clinic_notification.Designer.cs">
       <DependentUpon>clinic_notification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="clinic_pharmacist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clinic_pharmacist.Designer.cs">
+      <DependentUpon>clinic_pharmacist.cs</DependentUpon>
     </Compile>
     <Compile Include="clinic_test_1.cs">
       <SubType>Form</SubType>
@@ -256,11 +274,17 @@
     <EmbeddedResource Include="clinic_barcode.resx">
       <DependentUpon>clinic_barcode.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Clinic_boss.resx">
+      <DependentUpon>Clinic_boss.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="clinic_calendar.resx">
       <DependentUpon>clinic_calendar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="clinic_confirm_send.resx">
       <DependentUpon>clinic_confirm_send.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clinic_doctor.resx">
+      <DependentUpon>Clinic_doctor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="clinic_doctor_service.resx">
       <DependentUpon>clinic_doctor_service.cs</DependentUpon>
@@ -288,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="clinic_notification.resx">
       <DependentUpon>clinic_notification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="clinic_pharmacist.resx">
+      <DependentUpon>clinic_pharmacist.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="clinic_test_1.resx">
       <DependentUpon>clinic_test_1.cs</DependentUpon>
