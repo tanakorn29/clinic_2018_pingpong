@@ -38,7 +38,7 @@ namespace Clinic2018
             }
         }
 
-        SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-26BM5UJ\SQLEXPRESS; Initial Catalog = Clinic2018; User ID = sa; Password = 1234");
+        SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-26BM5UJ\SQLEXPRESS; Initial Catalog = Clinic2018; MultipleActiveResultSets = true; User ID = sa; Password = 1234");
         SqlCommand cmd;
         SqlDataAdapter sda;
         DataTable dt;
@@ -48,31 +48,54 @@ namespace Clinic2018
             textBox1.MaxLength = 13;
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
-
-            string query = ("select * from employee_ru eru, opd, privilege where eru.emp_ru_idcard = opd.emp_ru_id and opd.emp_ru_id = privilege.emp_ru_idcard and eru.emp_ru_idcard = '" + textBox1.Text + "'");
+      
+            //     string query = ("select * from employee_ru eru, opd, privilege where eru.emp_ru_idcard = opd.emp_ru_id and opd.emp_ru_id = privilege.emp_ru_idcard and eru.emp_ru_idcard = '" + textBox1.Text + "'");
+            string query = ("select * from employee_ru inner join privilege on privilege.emp_ru_id = employee_ru.emp_ru_id inner join opd on opd.emp_ru_id = employee_ru.emp_ru_id where employee_ru.emp_ru_idcard = '" + textBox1.Text + "'");
             cmd = new SqlCommand(query, conn);
+     
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
+         //   SqlDataReader sba = cmd.ExecuteReader();
+            
             sda.Fill(dt);
-
+            
             //------------------------------ปิงปอง--------------------------------------
             if (textBox1.Text == cmd.Connection.Database || textBox1.MaxLength == 13)
             {
-            foreach (DataRow item in dt.Rows)
-                 {
-                     int n = dataGridView1.Rows.Add();
-                     dataGridView1.Rows[n].Cells[0].Value = item["emp_ru_idcard"].ToString();
-                     dataGridView1.Rows[n].Cells[1].Value = item["emp_ru_name"].ToString();
-                     dataGridView1.Rows[n].Cells[2].Value = item["emp_ru_birthday"].ToString();
-                     dataGridView1.Rows[n].Cells[3].Value = item["emp_ru_telmobile"].ToString();
-                     dataGridView1.Rows[n].Cells[4].Value = item["privil_status"].ToString();
-                 }
-             }
-            if (textBox1.Text != cmd.Connection.Database && textBox1.MaxLength == 13)
-            {
-                 clinic_approve cliapp = new clinic_approve();
-                 cliapp.Show();
+              // if (sba.Read())
+                //{
+                  //  string position = sba["privil_status"].ToString();
+                   // if(position == "อนุญาต")
+                    //{
+                        foreach (DataRow item in dt.Rows)
+                        {
+                            int n = dataGridView1.Rows.Add();
+                    string privil_status = item["privil_status"].ToString();
+                    if (privil_status == "อนุญาต")
+                    {
+                        dataGridView1.Rows[n].Cells[0].Value = item["emp_ru_idcard"].ToString();
+                        dataGridView1.Rows[n].Cells[1].Value = item["emp_ru_name"].ToString();
+                        dataGridView1.Rows[n].Cells[2].Value = item["emp_ru_birthday"].ToString();
+                        dataGridView1.Rows[n].Cells[3].Value = item["emp_ru_telmobile"].ToString();
+                        dataGridView1.Rows[n].Cells[4].Value = item["privil_status"].ToString();
+
+                    }
+               
+                 
+                        }
+                //     }
+
+
+
+                //  }
+
             }
+     //    if (textBox1.Text != cmd.Connection.Database || textBox1.MaxLength == 13)
+      
+     //       {
+     //            clinic_approve cliapp = new clinic_approve();
+     //            cliapp.Show();
+     //       }
             //------------------------------ปิงปอง--------------------------------------
 
 
@@ -210,6 +233,14 @@ namespace Clinic2018
             sda.Fill(dt);*/
 
 
+        }
+
+    
+
+        private void conferm_Click(object sender, EventArgs e)
+        {
+            clinic_approve cliapp = new clinic_approve();
+             cliapp.Show();
         }
     }
 }

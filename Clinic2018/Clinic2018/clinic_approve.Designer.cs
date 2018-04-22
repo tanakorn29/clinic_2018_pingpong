@@ -32,8 +32,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.S6 = new System.Windows.Forms.Label();
             this.S5 = new System.Windows.Forms.Label();
             this.S4 = new System.Windows.Forms.Label();
             this.S3 = new System.Windows.Forms.Label();
@@ -47,7 +47,6 @@
             this.L1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tb1 = new System.Windows.Forms.TextBox();
-            this.S6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -86,7 +85,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.S6);
             this.groupBox1.Controls.Add(this.S5);
@@ -108,18 +106,9 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ข้อมูล";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(408, 123);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(222, 172);
+            this.button1.Location = new System.Drawing.Point(342, 220);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 31);
             this.button1.TabIndex = 2;
@@ -127,6 +116,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // S6
+            // 
+            this.S6.AutoSize = true;
+            this.S6.Location = new System.Drawing.Point(179, 177);
+            this.S6.Name = "S6";
+            this.S6.Size = new System.Drawing.Size(14, 20);
+            this.S6.TabIndex = 1;
+            this.S6.Text = "-";
             // 
             // S5
             // 
@@ -250,15 +248,6 @@
             this.tb1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tb1_MouseClick);
             this.tb1.TextChanged += new System.EventHandler(this.tb1_TextChanged);
             // 
-            // S6
-            // 
-            this.S6.AutoSize = true;
-            this.S6.Location = new System.Drawing.Point(179, 177);
-            this.S6.Name = "S6";
-            this.S6.Size = new System.Drawing.Size(14, 20);
-            this.S6.TabIndex = 1;
-            this.S6.Text = "-";
-            // 
             // clinic_approve
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -297,7 +286,6 @@
         private System.Windows.Forms.Label L5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label S6;
     }
 }

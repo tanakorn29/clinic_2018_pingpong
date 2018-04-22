@@ -35,7 +35,7 @@ namespace Clinic2018
 
                 SqlDataReader dr = cmd.ExecuteReader();
                 SqlDataReader dr1 = cmd1.ExecuteReader();
-
+             
                 if (dr.HasRows == true)
                 {
                     if (dr.Read())
