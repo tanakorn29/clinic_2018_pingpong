@@ -68,5 +68,14 @@ namespace Clinic2018
         {
 
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clinic_login log = new clinic_login();
+            log.Show();
+            clinic_main_v2 main = new clinic_main_v2();
+            main.Close();
+            Visible = false;
+        }
     }
 }

@@ -55,15 +55,19 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableAdapterManager1 = new Clinic2018.conn_patientTableAdapters.TableAdapterManager();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.conferm = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gb1.SuspendLayout();
             this.gb2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.dataGridView1);
@@ -72,14 +76,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(818, 566);
+            this.panel1.Size = new System.Drawing.Size(851, 610);
             this.panel1.TabIndex = 0;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("TH SarabunPSK", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label3.Location = new System.Drawing.Point(165, 29);
+            this.label3.Location = new System.Drawing.Point(79, 29);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(147, 42);
             this.label3.TabIndex = 8;
@@ -88,7 +92,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(115, 71);
+            this.label2.Location = new System.Drawing.Point(45, 71);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(246, 13);
             this.label2.TabIndex = 7;
@@ -156,7 +160,7 @@
             this.gb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.gb1.Location = new System.Drawing.Point(17, 124);
             this.gb1.Name = "gb1";
-            this.gb1.Size = new System.Drawing.Size(789, 425);
+            this.gb1.Size = new System.Drawing.Size(822, 453);
             this.gb1.TabIndex = 1;
             this.gb1.TabStop = false;
             this.gb1.Text = "แสดงข้อมูล";
@@ -312,9 +316,9 @@
             // 
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.groupBox2.Location = new System.Drawing.Point(484, 12);
+            this.groupBox2.Location = new System.Drawing.Point(491, 30);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(294, 88);
+            this.groupBox2.Size = new System.Drawing.Size(316, 88);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ค้นหา";
@@ -341,11 +345,28 @@
             this.tableAdapterManager1.patientTableAdapter = null;
             this.tableAdapterManager1.UpdateOrder = Clinic2018.conn_patientTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.conferm});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(851, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // conferm
+            // 
+            this.conferm.Name = "conferm";
+            this.conferm.Size = new System.Drawing.Size(105, 20);
+            this.conferm.Text = "ยืนยันสิทธิการรักษา";
+            this.conferm.Click += new System.EventHandler(this.conferm_Click);
+            // 
             // clinic_search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(818, 566);
+            this.ClientSize = new System.Drawing.Size(851, 610);
             this.Controls.Add(this.panel1);
             this.Name = "clinic_search";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -358,6 +379,8 @@
             this.gb2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -391,5 +414,7 @@
         private System.Windows.Forms.Label lb11;
         private System.Windows.Forms.Label lb1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem conferm;
     }
 }

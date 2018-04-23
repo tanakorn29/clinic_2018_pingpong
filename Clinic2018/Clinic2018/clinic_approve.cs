@@ -38,7 +38,7 @@ namespace Clinic2018
 
             conn.Open();
 
-            string query = ("select eru.emp_ru_idcard, emp_ru_name, emp_ru_birthday, emp_ru_telmobile, pos_name, privil_status from employee_ru eru left join position pos on pos.pos_id = eru.pos_id left join privilege pivi on pivi.emp_ru_idcard = eru.emp_ru_idcard where eru.emp_ru_idcard = '" + tb1.Text + "'");
+            string query = ("select eru.emp_ru_idcard, emp_ru_name, emp_ru_birthday, emp_ru_telmobile, pos_name, privil_status ,workplace.workplace  from employee_ru eru left join position pos on pos.pos_id = eru.pos_id  left join privilege pivi on pivi.emp_ru_idcard = eru.emp_ru_idcard left join workplace  on workplace.workplace_id = eru.workplace_id where eru.emp_ru_idcard =  '" + tb1.Text + "'");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -51,8 +51,9 @@ namespace Clinic2018
                 S2.Text = (sdr["emp_ru_name"].ToString());
                 S3.Text = (sdr["emp_ru_birthday"].ToString());
                 S4.Text = (sdr["emp_ru_telmobile"].ToString());
-                S5.Text = (sdr["pos_name"].ToString());
+                S5.Text = (sdr["workplace"].ToString());
                 S6.Text = (sdr["privil_status"].ToString());
+                button1.Show();
             }
             /*else if (this.sdr.GetSqlString3)
             {
