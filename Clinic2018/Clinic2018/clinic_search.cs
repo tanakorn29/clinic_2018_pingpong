@@ -229,7 +229,7 @@ namespace Clinic2018
                                 dt = new DataTable();
                                 sda.Fill(dt);
 
-                                MessageBox.Show("คุณได้คิวที่    " + value);
+                                MessageBox.Show("คิวที่    " + value);
                             }
                        
 
