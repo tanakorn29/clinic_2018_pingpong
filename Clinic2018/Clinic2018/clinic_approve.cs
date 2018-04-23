@@ -18,7 +18,7 @@ namespace Clinic2018
             InitializeComponent();
         }
 
-        SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-26BM5UJ\SQLEXPRESS; Initial Catalog = Clinic2018; User ID = sa; Password = 1234");
+        SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-26BM5UJ\SQLEXPRESS; Initial Catalog = Clinic2018; MultipleActiveResultSets = true; User ID = sa; Password = 1234");
         SqlCommand cmd;
         SqlDataAdapter sda;
         DataTable dt;
@@ -93,8 +93,57 @@ namespace Clinic2018
 
         private void button1_Click(object sender, EventArgs e)
         {
-            clinic_approve_step2 appr2 = new clinic_approve_step2();
-            appr2.Show();
+            conn.Open();
+
+            string query = ("select eru.emp_ru_name,eru.emp_ru_idcard,eru.emp_ru_birthday,eru.emp_ru_age,eru.emp_ru_telwork,eru.emp_ru_telmobile,eru.emp_ru_telhome,eru.emp_ru_telparent,eru.emp_ru_nameparent,eru.em_ru_addressparent,eru.emp_ru_namedad,eru.emp_ru_namemom,eru.emp_ru_namehusband_and_wife,eru.emp_ru_address,workplace.workplace,position.pos_id,eru.emp_ru_id from employee_ru eru left join workplace  on workplace.workplace_id = eru.workplace_id left join position on position.pos_id = eru.pos_id where eru.emp_ru_idcard ='" + tb1.Text + "'");
+            cmd = new SqlCommand(query, conn);
+            sdr = cmd.ExecuteReader();
+            if (sdr.Read())
+            {
+                string emp_ru_name = sdr["emp_ru_name"].ToString();
+                string emp_ru_idcard = sdr["emp_ru_idcard"].ToString();
+                string emp_ru_birthday = sdr["emp_ru_birthday"].ToString();
+                string emp_ru_age = sdr["emp_ru_age"].ToString();
+                string emp_ru_telwork = sdr["emp_ru_telwork"].ToString();
+                string emp_ru_telmobile = sdr["emp_ru_telmobile"].ToString();
+                string emp_ru_telhome = sdr["emp_ru_telhome"].ToString();
+                string emp_ru_telparent = sdr["emp_ru_telparent"].ToString();
+                string emp_ru_nameparent = sdr["emp_ru_nameparent"].ToString();
+                string em_ru_addressparent = sdr["em_ru_addressparent"].ToString();
+                string emp_ru_namedad = sdr["emp_ru_namedad"].ToString();
+                string emp_ru_namemom = sdr["emp_ru_namemom"].ToString();
+                string emp_ru_namehusband_and_wife = sdr["emp_ru_namehusband_and_wife"].ToString();
+                string emp_ru_address = sdr["emp_ru_address"].ToString();
+                string workplace = sdr["workplace"].ToString();
+
+                int emp_ru_id = Convert.ToInt32(sdr["emp_ru_id"].ToString());
+                int pos_id = Convert.ToInt32(sdr["pos_id"].ToString());
+                query = ("insert into opd (opd_name,opd_idcard,opd_birthday,opd_age,opd_telwork,opd_telmobile ,opd_telhome,opd_workplace,opd_telparent,opd_nameparent,opd_addressparent,opd_namedad,opd_namemom,opd_namehusband_and_wife,opd_address,emp_ru_id,pos_id)" +
+             "values('" + emp_ru_name + " ','" + emp_ru_idcard + " ','" + emp_ru_birthday + " ','" + emp_ru_age + " '," +
+                    "'" + emp_ru_telwork + " ','" + emp_ru_telmobile + " ','" + emp_ru_telhome + " ','"+workplace+"','" + emp_ru_telparent + " '," +
+                    "'" + emp_ru_nameparent + "','" + em_ru_addressparent + " ','" + emp_ru_namedad + " '" +
+                    ",'" + emp_ru_namemom + "','" + emp_ru_namehusband_and_wife + " ','" + emp_ru_address + " ',"+emp_ru_id+","+pos_id+")");
+                cmd = new SqlCommand(query, conn);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+                /*
+                query = ("insert into opd (opd_name,opd_idcard,opd_birthday,opd_age,opd_telwork,opd_telmobile ,opd_telhome,emp_ru_telparent,emp_ru_nameparent,em_ru_addressparent,emp_ru_namedad,eru.emp_ru_namemom,emp_ru_namehusband_and_wife,emp_ru_address)"+
+                    "values('"+emp_ru_name+" ','"+emp_ru_idcard+" ','"+emp_ru_birthday+" ','"+emp_ru_age+" ',"+
+                    "'"+emp_ru_age+" ','"+emp_ru_telwork+" ','"+emp_ru_telmobile+" ','"+emp_ru_telhome+" ',"+
+                    "'"+emp_ru_telparent+"','"+emp_ru_nameparent+" ','"+ em_ru_addressparent + " '"+
+                    ",'"+ emp_ru_namedad + "','"+emp_ru_namemom+" ','"+ emp_ru_namehusband_and_wife + " ',"+
+                    "'"+ emp_ru_address + "')");
+                cmd = new SqlCommand(query, conn);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+
+    */
+                clinic_approve_step2 appr2 = new clinic_approve_step2();
+                appr2.Show();
+            }
+         
         }
 
         private void tb1_MouseClick(object sender, MouseEventArgs e)
