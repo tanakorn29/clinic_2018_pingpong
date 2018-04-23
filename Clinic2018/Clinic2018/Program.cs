@@ -20,10 +20,12 @@ namespace Clinic2018
 
             //Application.Run(new clinic_login());
             //     Application.Run(new clinc_nurse_service());
-               Application.Run(new clinic_search());
+              Application.Run(new clinic_search());
             //Application.Run(new clinic_calendar());
             //Application.Run(new clinic_test_1()); 
-         Application.Run(new clinic_login()); 
+           //Application.Run(new clinic_login());
+
+       //    Application.Run(new Show_text());
 
         }
     }

@@ -42,7 +42,8 @@ namespace Clinic2018
         SqlCommand cmd;
         SqlDataAdapter sda;
         DataTable dt;
-
+        SqlDataReader sdr;
+        
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             textBox1.MaxLength = 13;
@@ -171,43 +172,121 @@ namespace Clinic2018
 
         private void bt2_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            if (lb11.Text != cmd.Connection.Database &&
-                lb22.Text != cmd.Connection.Database &&
-                lb33.Text != cmd.Connection.Database &&
-                lb44.Text != cmd.Connection.Database && 
-                lb55.Text != cmd.Connection.Database )
+            try
             {
-               
-                string query = ("insert into queue_visit_record(qvr_record,qvr_time,qvr_date,emp_ru_id,vr_id,opd_idcard) values(' ', SYSDATETIME(), SYSDATETIME(),' ',' ',' ')");
-                cmd = new SqlCommand(query, conn);
-                sda = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                sda.Fill(dt);
+                conn.Open();
+                if (lb11.Text != cmd.Connection.Database &&
+                    lb22.Text != cmd.Connection.Database &&
+                    lb33.Text != cmd.Connection.Database &&
+                    lb44.Text != cmd.Connection.Database &&
+                    lb55.Text != cmd.Connection.Database)
+                {
+                    Queue<int> collection = new Queue<int>();
+                    /*       collection.Enqueue(1);
+                           collection.Enqueue(2);
+                           collection.Enqueue(3);
+                           collection.Enqueue(4);
+                           collection.Enqueue(5);
+                           collection.Enqueue(6);
+                           collection.Enqueue(7);
+                           collection.Enqueue(8);
+                           collection.Enqueue(9);
+                           collection.Enqueue(10);*/
 
-                //dataGridView1.Rows[n].Cells[0].Value = item["emp_ru_idcard"].ToString();
+                    string query = ("select * from employee_ru inner join privilege on privilege.emp_ru_id = employee_ru.emp_ru_id inner join opd on opd.emp_ru_id = employee_ru.emp_ru_id where employee_ru.emp_ru_idcard = '" + textBox1.Text + "'");
+                    cmd = new SqlCommand(query, conn);
+                    sda = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    sda.Fill(dt);
+                    sdr = cmd.ExecuteReader();
+                    if (sdr.Read())
+                    {
+                        int emp_ru_id = Convert.ToInt32(sdr["emp_ru_id"].ToString());
+                        int opd_id = Convert.ToInt32(sdr["opd_id"].ToString());
+                        query = ("insert into queue_visit_record(qvr_record,qvr_time,qvr_date,qvr_status,emp_ru_id,vr_id,opd_id) values(' ', SYSDATETIME(), SYSDATETIME(),1,'" + emp_ru_id + " ',' ','" + opd_id + " ')");
+                        cmd = new SqlCommand(query, conn);
+                        sda = new SqlDataAdapter(cmd);
+                        dt = new DataTable();
+                        sda.Fill(dt);
+                        DialogResult dialogResult = MessageBox.Show("ส่งคิวการซักประวัติ", "คุณต้องการส่งคิวการซักประวัติหรือไม่", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            query = ("select Count(*) from queue_visit_record inner join opd on opd.opd_id = queue_visit_record.opd_id inner join employee_ru on employee_ru.emp_ru_id = queue_visit_record.emp_ru_id where queue_visit_record.qvr_status = 1");
+                            cmd = new SqlCommand(query, conn);
+                            sda = new SqlDataAdapter(cmd);
+                            dt = new DataTable();
+                            sda.Fill(dt);
+                          //  sdr = cmd.ExecuteReader();
+                            int queue = (int)cmd.ExecuteScalar();
+                            collection.Enqueue(queue);
 
-                MessageBox.Show("สำเร็จ");
+                            foreach (int value in collection)
+                            {
+                                query = ("Update queue_visit_record set qvr_record = '" + value + "' where emp_ru_id = '" + emp_ru_id + "'");
+                                //  
+                                cmd = new SqlCommand(query, conn);
+                                sda = new SqlDataAdapter(cmd);
+                                dt = new DataTable();
+                                sda.Fill(dt);
 
-                textBox1.MaxLength = 13;
-                textBox1.Clear();
-                dataGridView1.Rows.Clear();
-                dataGridView1.Refresh();
+                                MessageBox.Show("คุณได้คิวที่    " + value);
+                            }
+                       
 
-                lb11.Text = "";
-                lb22.Text = "";
-                lb33.Text = "";
-                lb44.Text = "";
-                lb55.Text = "";
 
-                
+
+
+
+                        }
+                        else if (dialogResult == DialogResult.No)
+                        {
+                            //do something else
+                        }
+                    }
+
+
+
+
+                    /*
+
+                                    string query = ("insert into queue_visit_record(qvr_record,qvr_time,qvr_date,qvr_status,emp_ru_id,vr_id,opd_idcard) values(' ', SYSDATETIME(), SYSDATETIME(),1,' ',' ',' ')");
+                                    cmd = new SqlCommand(query, conn);
+                                    sda = new SqlDataAdapter(cmd);
+                                    dt = new DataTable();
+                                    sda.Fill(dt);
+                                    */
+                    //dataGridView1.Rows[n].Cells[0].Value = item["emp_ru_idcard"].ToString();
+
+
+
+                    textBox1.MaxLength = 13;
+                    textBox1.Clear();
+                    dataGridView1.Rows.Clear();
+                    dataGridView1.Refresh();
+
+                    lb11.Text = "";
+                    lb22.Text = "";
+                    lb33.Text = "";
+                    lb44.Text = "";
+                    lb55.Text = "";
+
+
+                }
+                else
+                {
+                    MessageBox.Show("ตรวจสอบข้อมูลอีกครั้ง");
+                }
+                conn.Close();
+
+
+
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("ตรวจสอบข้อมูลอีกครั้ง");
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OKCancel);
             }
-            conn.Close();
-
+         
+  
             //----------------------------------------------------------------------
             /*try
             {
