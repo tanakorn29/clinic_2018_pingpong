@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.conferm = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -55,14 +57,12 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableAdapterManager1 = new Clinic2018.conn_patientTableAdapters.TableAdapterManager();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.conferm = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gb1.SuspendLayout();
             this.gb2.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -78,6 +78,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(851, 610);
             this.panel1.TabIndex = 0;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.conferm});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(851, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // conferm
+            // 
+            this.conferm.Name = "conferm";
+            this.conferm.Size = new System.Drawing.Size(105, 20);
+            this.conferm.Text = "ยืนยันสิทธิการรักษา";
+            this.conferm.Click += new System.EventHandler(this.conferm_Click);
             // 
             // label3
             // 
@@ -115,6 +132,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(754, 125);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Column1
             // 
@@ -345,23 +363,6 @@
             this.tableAdapterManager1.patientTableAdapter = null;
             this.tableAdapterManager1.UpdateOrder = Clinic2018.conn_patientTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.conferm});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(851, 24);
-            this.menuStrip1.TabIndex = 9;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // conferm
-            // 
-            this.conferm.Name = "conferm";
-            this.conferm.Size = new System.Drawing.Size(105, 20);
-            this.conferm.Text = "ยืนยันสิทธิการรักษา";
-            this.conferm.Click += new System.EventHandler(this.conferm_Click);
-            // 
             // clinic_search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -373,14 +374,14 @@
             this.Text = "ค้นหาประวัติ - ระบบบริหารจัดการงานบริการงานแพทย์และอนามัย ";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.gb1.ResumeLayout(false);
             this.gb2.ResumeLayout(false);
             this.gb2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }

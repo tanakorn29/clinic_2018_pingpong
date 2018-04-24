@@ -754,7 +754,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "clinc_nurse_service";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "คิวบริการ - ระบบบริหารจัดการงานบริการงานแพทย์และอนามัย ";
+            this.Text = "คิวซักประวัติ - ระบบบริหารจัดการงานบริการงานแพทย์และอนามัย ";
             this.Load += new System.EventHandler(this.clinc_nurse_service_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

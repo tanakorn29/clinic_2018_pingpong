@@ -21,5 +21,11 @@ namespace Clinic2018
         {
 
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            clinc_nurse_service ser = new clinc_nurse_service();
+            ser.Show();
+        }
     }
 }

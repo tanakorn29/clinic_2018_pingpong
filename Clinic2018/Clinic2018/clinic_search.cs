@@ -47,9 +47,16 @@ namespace Clinic2018
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             textBox1.MaxLength = 13;
+
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
-      
+
+            lb11.Text = "";
+            lb22.Text = "";
+            lb33.Text = "";
+            lb44.Text = "";
+            lb55.Text = "";
+
             //     string query = ("select * from employee_ru eru, opd, privilege where eru.emp_ru_idcard = opd.emp_ru_id and opd.emp_ru_id = privilege.emp_ru_idcard and eru.emp_ru_idcard = '" + textBox1.Text + "'");
             string query = ("select * from employee_ru inner join privilege on privilege.emp_ru_id = employee_ru.emp_ru_id inner join opd on opd.emp_ru_id = employee_ru.emp_ru_id where employee_ru.emp_ru_idcard = '" + textBox1.Text + "'");
             cmd = new SqlCommand(query, conn);
@@ -320,6 +327,11 @@ namespace Clinic2018
         {
             clinic_approve cliapp = new clinic_approve();
              cliapp.Show();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
