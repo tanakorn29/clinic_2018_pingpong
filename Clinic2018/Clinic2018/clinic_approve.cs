@@ -169,6 +169,17 @@ namespace Clinic2018
                             sda = new SqlDataAdapter(cmd);
                             dt = new DataTable();
                             sda.Fill(dt);
+
+
+                          
+                            query = ("insert into user_control (uct_user,uct_password,emp_ru_id,opd_id)values ('"+ emp_ru_idcard + "','"+ emp_ru_birthday + "','"+ emp_ru_id + "','"+ id + "');");
+
+
+                            cmd = new SqlCommand(query, conn);
+                            sda = new SqlDataAdapter(cmd);
+                            dt = new DataTable();
+                            sda.Fill(dt);
+                          
                             clinic_approve_step2 appr2 = new clinic_approve_step2();
                             appr2.Show();
                             clinic_approve approve = new clinic_approve();

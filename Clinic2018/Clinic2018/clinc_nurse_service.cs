@@ -55,5 +55,10 @@ namespace Clinic2018
         //    this.queue_visit_recordTableAdapter.Fill(this.dataSet2.queue_visit_record);
 
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
