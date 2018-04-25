@@ -139,7 +139,7 @@ namespace Clinic2018
                          sda.Fill(dt);*/
 
                     query = ("insert into opd (opd_name,opd_idcard,opd_birthday,opd_age,opd_telwork,opd_telmobile ,opd_telhome,opd_workplace,opd_telparent,opd_nameparent,opd_addressparent,opd_namedad,opd_namemom,opd_namehusband_and_wife,opd_address,emp_ru_id,pos_id)" +
-                 "values('" + emp_ru_name + " ','" + emp_ru_idcard + " ','" + emp_ru_birthday + " ','" + emp_ru_age + " '," +
+                 "values('" + emp_ru_name + " ','" + emp_ru_idcard + " ','" + emp_ru_birthday + "','" + emp_ru_age + " '," +
                         "'" + emp_ru_telwork + " ','" + emp_ru_telmobile + " ','" + emp_ru_telhome + " ','" + workplace + "','" + emp_ru_telparent + " '," +
                         "'" + emp_ru_nameparent + "','" + em_ru_addressparent + " ','" + emp_ru_namedad + " '" +
                         ",'" + emp_ru_namemom + "','" + emp_ru_namehusband_and_wife + " ','" + emp_ru_address + " ','" + emp_ru_id + "','" + pos_id + "')");

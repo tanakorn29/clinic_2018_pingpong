@@ -64,12 +64,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -86,10 +82,6 @@
             this.ชื่อสกุล = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.รหัสคนไข้ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lb1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataSet2 = new Clinic2018.DataSet2();
             this.queuevisitrecordBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -101,7 +93,6 @@
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.queuevisitrecordBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -122,12 +113,8 @@
             // 
             this.groupBox3.Controls.Add(this.groupBox2);
             this.groupBox3.Controls.Add(this.groupBox4);
-            this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.label20);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label19);
-            this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label17);
@@ -477,64 +464,28 @@
             this.button3.Text = "up";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(326, 45);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(10, 13);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "-";
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(347, 70);
+            this.label20.Location = new System.Drawing.Point(268, 70);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(10, 13);
             this.label20.TabIndex = 1;
             this.label20.Text = "-";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(202, 45);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(10, 13);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "-";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(286, 45);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(34, 13);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "เพศ :";
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(286, 70);
+            this.label19.Location = new System.Drawing.Point(193, 70);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(55, 13);
             this.label19.TabIndex = 1;
             this.label19.Text = "เบอร์โทร :";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(165, 45);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(31, 13);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "อายุ :";
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(71, 70);
+            this.label18.Location = new System.Drawing.Point(242, 45);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(10, 13);
             this.label18.TabIndex = 1;
@@ -552,7 +503,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(19, 70);
+            this.label17.Location = new System.Drawing.Point(193, 45);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(33, 13);
             this.label17.TabIndex = 1;
@@ -669,55 +620,11 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.lb1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1141, 26);
             this.panel2.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1069, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "ออกจากระบบ";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(825, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "ใส่วัน เวลา";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1011, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label1";
-            // 
-            // lb1
-            // 
-            this.lb1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb1.AutoSize = true;
-            this.lb1.Location = new System.Drawing.Point(914, 9);
-            this.lb1.Name = "lb1";
-            this.lb1.Size = new System.Drawing.Size(72, 13);
-            this.lb1.TabIndex = 1;
-            this.lb1.Text = "ยินดีต้อนรับ : ";
             // 
             // panel3
             // 
@@ -766,8 +673,6 @@
             this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.queuevisitrecordBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -778,10 +683,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lb1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -798,8 +699,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -808,9 +707,7 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
