@@ -19,7 +19,17 @@ namespace Clinic2018
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            clinic_user_control user = new clinic_user_control();
+            user.Show();
+        }
 
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clinic_login log = new clinic_login();
+            log.Show();
+            Clinic_boss main = new Clinic_boss();
+            main.Close();
+            Visible = false;
         }
     }
 }

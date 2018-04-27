@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace Clinic2018
 {
-    public partial class Clinic_doctor : Form
+    public partial class clinic_pharmacist_service : Form
     {
-        public Clinic_doctor()
+        public clinic_pharmacist_service()
         {
             InitializeComponent();
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            clinic_doctor_service ser = new clinic_doctor_service();
-            ser.Show();
         }
     }
 }

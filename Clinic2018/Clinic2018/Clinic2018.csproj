@@ -203,6 +203,12 @@
     <Compile Include="clinic_pharmacist.Designer.cs">
       <DependentUpon>clinic_pharmacist.cs</DependentUpon>
     </Compile>
+    <Compile Include="clinic_pharmacist_service.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clinic_pharmacist_service.designer.cs">
+      <DependentUpon>clinic_pharmacist_service.cs</DependentUpon>
+    </Compile>
     <Compile Include="clinic_test_1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +226,12 @@
     </Compile>
     <Compile Include="clinic_approve.Designer.cs">
       <DependentUpon>clinic_approve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="clinic_user_control.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clinic_user_control.Designer.cs">
+      <DependentUpon>clinic_user_control.cs</DependentUpon>
     </Compile>
     <Compile Include="cmd\SqlDataAdapter.cs" />
     <Compile Include="conn_patient.Designer.cs">
@@ -247,6 +259,12 @@
     </Compile>
     <Compile Include="q_visit_record.Designer.cs">
       <DependentUpon>q_visit_record.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sent_room.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sent_room.Designer.cs">
+      <DependentUpon>sent_room.cs</DependentUpon>
     </Compile>
     <Compile Include="Show_text.cs">
       <SubType>Form</SubType>
@@ -325,6 +343,9 @@
     <EmbeddedResource Include="clinic_pharmacist.resx">
       <DependentUpon>clinic_pharmacist.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="clinic_pharmacist_service.resx">
+      <DependentUpon>clinic_pharmacist_service.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="clinic_test_1.resx">
       <DependentUpon>clinic_test_1.cs</DependentUpon>
     </EmbeddedResource>
@@ -333,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="clinic_approve.resx">
       <DependentUpon>clinic_approve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="clinic_user_control.resx">
+      <DependentUpon>clinic_user_control.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -346,6 +370,9 @@
     </Compile>
     <EmbeddedResource Include="q_visit_record.resx">
       <DependentUpon>q_visit_record.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sent_room.resx">
+      <DependentUpon>sent_room.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Show_text.resx">
       <DependentUpon>Show_text.cs</DependentUpon>

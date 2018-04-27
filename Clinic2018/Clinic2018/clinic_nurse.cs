@@ -27,5 +27,14 @@ namespace Clinic2018
             clinc_nurse_service ser = new clinc_nurse_service();
             ser.Show();
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clinic_login log = new clinic_login();
+            log.Show();
+            clinic_nurse main = new clinic_nurse();
+            main.Close();
+            Visible = false;
+        }
     }
 }
