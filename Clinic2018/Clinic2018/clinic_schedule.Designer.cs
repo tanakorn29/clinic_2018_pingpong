@@ -1,6 +1,6 @@
 ﻿namespace Clinic2018
 {
-    partial class clinic_calendar
+    partial class clinic_schedule
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.connpatientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.conn_patient = new Clinic2018.conn_patient();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,70 +55,22 @@
             this.t3 = new System.Windows.Forms.Label();
             this.t2 = new System.Windows.Forms.Label();
             this.t1 = new System.Windows.Forms.Label();
-            this.medical_historyTableAdapter1 = new Clinic2018.DataSet1TableAdapters.medical_historyTableAdapter();
-            this.dataSet1 = new Clinic2018.DataSet1();
-            this.districtsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.districtsTableAdapter = new Clinic2018.DataSet1TableAdapters.districtsTableAdapter();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.connpatientBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.conn_patient)).BeginInit();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Picbox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.districtsBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1320, 684);
-            this.panel1.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("TH SarabunPSK", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label3.Location = new System.Drawing.Point(84, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(251, 42);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "จัดการปฎิบัติงานแพทย์";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(86, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(246, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "ระบบบริหารจัดการงานบริการงานแพทย์และอนามัย ";
-            // 
-            // connpatientBindingSource
-            // 
-            this.connpatientBindingSource.DataSource = this.conn_patient;
-            this.connpatientBindingSource.Position = 0;
-            // 
-            // conn_patient
-            // 
-            this.conn_patient.DataSetName = "conn_patient";
-            this.conn_patient.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.groupBox2.Location = new System.Drawing.Point(441, 135);
+            this.groupBox2.Location = new System.Drawing.Point(560, 187);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(571, 301);
-            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ตารางปฏิบัติงาน";
             // 
@@ -201,10 +147,10 @@
             this.groupBox1.Controls.Add(this.t2);
             this.groupBox1.Controls.Add(this.t1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.groupBox1.Location = new System.Drawing.Point(21, 82);
+            this.groupBox1.Location = new System.Drawing.Point(140, 134);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(394, 502);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "เพื่มข้อมูล";
             // 
@@ -281,7 +227,6 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
             this.dateTimePicker1.TabIndex = 7;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // txtidcard
             // 
@@ -374,85 +319,76 @@
             this.t1.TabIndex = 0;
             this.t1.Text = "ชื่อแพทย์ :";
             // 
-            // medical_historyTableAdapter1
+            // label3
             // 
-            this.medical_historyTableAdapter1.ClearBeforeFill = true;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("TH SarabunPSK", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label3.Location = new System.Drawing.Point(203, 61);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(251, 42);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "จัดการปฎิบัติงานแพทย์";
             // 
-            // dataSet1
+            // label2
             // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(205, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(246, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "ระบบบริหารจัดการงานบริการงานแพทย์และอนามัย ";
             // 
-            // districtsBindingSource
-            // 
-            this.districtsBindingSource.DataMember = "districts";
-            this.districtsBindingSource.DataSource = this.dataSet1;
-            // 
-            // districtsTableAdapter
-            // 
-            this.districtsTableAdapter.ClearBeforeFill = true;
-            // 
-            // clinic_calendar
+            // clinic_schedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1320, 684);
-            this.Controls.Add(this.panel1);
-            this.Name = "clinic_calendar";
-            this.Text = "จัดการปฎิบัติงานแพทย์  - ระบบบริหารจัดการงานบริการงานแพทย์และอนามัย  ";
-            this.Load += new System.EventHandler(this.clinic_calendar_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.connpatientBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.conn_patient)).EndInit();
+            this.ClientSize = new System.Drawing.Size(1268, 742);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Name = "clinic_schedule";
+            this.Text = "clinic_schedule";
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Picbox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.districtsBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private DataSet1TableAdapters.medical_historyTableAdapter medical_historyTableAdapter1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn สถานะสิทธิ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox Picbox;
+        private System.Windows.Forms.TextBox txtss;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtooid;
+        private System.Windows.Forms.TextBox txtemail;
+        private System.Windows.Forms.TextBox txttel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox txtidcard;
+        private System.Windows.Forms.TextBox txtname;
+        private System.Windows.Forms.TextBox txtaddress;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label t3;
         private System.Windows.Forms.Label t2;
         private System.Windows.Forms.Label t1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn สถานะสิทธิ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.TextBox txtaddress;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox txtidcard;
-        private System.Windows.Forms.TextBox txtname;
-        private System.Windows.Forms.TextBox txtooid;
-        private System.Windows.Forms.TextBox txtemail;
-        private System.Windows.Forms.TextBox txttel;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtss;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.PictureBox Picbox;
-        private System.Windows.Forms.BindingSource connpatientBindingSource;
-        private conn_patient conn_patient;
-        private DataSet1 dataSet1;
-        private System.Windows.Forms.BindingSource districtsBindingSource;
-        private DataSet1TableAdapters.districtsTableAdapter districtsTableAdapter;
     }
 }

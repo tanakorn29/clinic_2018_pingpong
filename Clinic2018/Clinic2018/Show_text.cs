@@ -8,6 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+
 
 namespace Clinic2018
 {
@@ -60,9 +64,7 @@ namespace Clinic2018
         //    sdr = cmd.ExecuteReader();
             int queue = (int)cmd.ExecuteScalar();
             textBox1.Text = "" + queue;
-
-
-
+       //     Font h1 = new Font(bf_bold, 18);
 
         }
     }

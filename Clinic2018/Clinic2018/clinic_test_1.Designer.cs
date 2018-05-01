@@ -142,6 +142,7 @@
             this.label1.Size = new System.Drawing.Size(194, 42);
             this.label1.TabIndex = 0;
             this.label1.Text = "ข้อมูลเวชระเบียน";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // dataGridView1
             // 
@@ -180,14 +181,14 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "ผลการค้นหารายชื่อ";
             // 
-            // clinic_search
+            // clinic_test_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1094, 607);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "clinic_search";
+            this.Name = "clinic_test_1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ประวัติ";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
