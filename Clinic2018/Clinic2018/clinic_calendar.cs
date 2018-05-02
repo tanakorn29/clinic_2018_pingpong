@@ -144,5 +144,26 @@ namespace Clinic2018
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+     
+
+      
+
+        private void docinputToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clinic_schedule sc = new clinic_schedule();
+            sc.Show();
+        }
+
+        private void timeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clinic_timeschedule sc = new clinic_timeschedule();
+            sc.Show();
+        }
     }
 }

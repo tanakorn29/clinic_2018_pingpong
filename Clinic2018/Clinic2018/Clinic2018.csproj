@@ -179,6 +179,12 @@
     <Compile Include="clinic_login.Designer.cs">
       <DependentUpon>clinic_login.cs</DependentUpon>
     </Compile>
+    <Compile Include="clinic_managetime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clinic_managetime.Designer.cs">
+      <DependentUpon>clinic_managetime.cs</DependentUpon>
+    </Compile>
     <Compile Include="clinic_nurse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +245,12 @@
     <Compile Include="clinic_approve.Designer.cs">
       <DependentUpon>clinic_approve.cs</DependentUpon>
     </Compile>
+    <Compile Include="clinic_timeschedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clinic_timeschedule.Designer.cs">
+      <DependentUpon>clinic_timeschedule.cs</DependentUpon>
+    </Compile>
     <Compile Include="clinic_user_control.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +284,18 @@
     </Compile>
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form4.Designer.cs">
+      <DependentUpon>Form4.cs</DependentUpon>
     </Compile>
     <Compile Include="MyTabPage.cs">
       <SubType>Component</SubType>
@@ -353,6 +377,9 @@
     <EmbeddedResource Include="clinic_login.resx">
       <DependentUpon>clinic_login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="clinic_managetime.resx">
+      <DependentUpon>clinic_managetime.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="clinic_nurse.resx">
       <DependentUpon>clinic_nurse.cs</DependentUpon>
     </EmbeddedResource>
@@ -383,6 +410,9 @@
     <EmbeddedResource Include="clinic_approve.resx">
       <DependentUpon>clinic_approve.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="clinic_timeschedule.resx">
+      <DependentUpon>clinic_timeschedule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="clinic_user_control.resx">
       <DependentUpon>clinic_user_control.cs</DependentUpon>
     </EmbeddedResource>
@@ -391,6 +421,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form4.resx">
+      <DependentUpon>Form4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

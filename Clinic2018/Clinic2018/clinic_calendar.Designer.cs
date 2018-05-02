@@ -30,10 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.datadoctorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.connpatientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.conn_patient = new Clinic2018.conn_patient();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,23 +62,27 @@
             this.t3 = new System.Windows.Forms.Label();
             this.t2 = new System.Windows.Forms.Label();
             this.t1 = new System.Windows.Forms.Label();
+            this.connpatientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.conn_patient = new Clinic2018.conn_patient();
             this.medical_historyTableAdapter1 = new Clinic2018.DataSet1TableAdapters.medical_historyTableAdapter();
             this.dataSet1 = new Clinic2018.DataSet1();
             this.districtsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.districtsTableAdapter = new Clinic2018.DataSet1TableAdapters.districtsTableAdapter();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.connpatientBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.conn_patient)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Picbox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.connpatientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.conn_patient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.districtsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.groupBox2);
@@ -85,14 +90,39 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1320, 684);
+            this.panel1.Size = new System.Drawing.Size(1320, 588);
             this.panel1.TabIndex = 0;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem,
+            this.datadoctorToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1320, 24);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(130, 20);
+            this.exitToolStripMenuItem.Text = "จัดการเวลาการปฏิบัติงาน";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.timeToolStripMenuItem_Click);
+            // 
+            // datadoctorToolStripMenuItem
+            // 
+            this.datadoctorToolStripMenuItem.Name = "datadoctorToolStripMenuItem";
+            this.datadoctorToolStripMenuItem.Size = new System.Drawing.Size(141, 20);
+            this.datadoctorToolStripMenuItem.Text = "จัดการข้อมูลการทำงานแทน";
+            this.datadoctorToolStripMenuItem.Click += new System.EventHandler(this.docinputToolStripMenuItem_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("TH SarabunPSK", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label3.Location = new System.Drawing.Point(84, 9);
+            this.label3.Location = new System.Drawing.Point(84, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(251, 42);
             this.label3.TabIndex = 10;
@@ -101,29 +131,19 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(86, 51);
+            this.label2.Location = new System.Drawing.Point(88, 79);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(246, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "ระบบบริหารจัดการงานบริการงานแพทย์และอนามัย ";
             // 
-            // connpatientBindingSource
-            // 
-            this.connpatientBindingSource.DataSource = this.conn_patient;
-            this.connpatientBindingSource.Position = 0;
-            // 
-            // conn_patient
-            // 
-            this.conn_patient.DataSetName = "conn_patient";
-            this.conn_patient.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.groupBox2.Location = new System.Drawing.Point(441, 135);
+            this.groupBox2.Location = new System.Drawing.Point(442, 51);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(571, 301);
+            this.groupBox2.Size = new System.Drawing.Size(571, 385);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ตารางปฏิบัติงาน";
@@ -201,9 +221,9 @@
             this.groupBox1.Controls.Add(this.t2);
             this.groupBox1.Controls.Add(this.t1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.groupBox1.Location = new System.Drawing.Point(21, 82);
+            this.groupBox1.Location = new System.Drawing.Point(21, 128);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(394, 502);
+            this.groupBox1.Size = new System.Drawing.Size(394, 456);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "เพื่มข้อมูล";
@@ -374,6 +394,16 @@
             this.t1.TabIndex = 0;
             this.t1.Text = "ชื่อแพทย์ :";
             // 
+            // connpatientBindingSource
+            // 
+            this.connpatientBindingSource.DataSource = this.conn_patient;
+            this.connpatientBindingSource.Position = 0;
+            // 
+            // conn_patient
+            // 
+            this.conn_patient.DataSetName = "conn_patient";
+            this.conn_patient.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // medical_historyTableAdapter1
             // 
             this.medical_historyTableAdapter1.ClearBeforeFill = true;
@@ -396,20 +426,22 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1320, 684);
+            this.ClientSize = new System.Drawing.Size(1320, 588);
             this.Controls.Add(this.panel1);
             this.Name = "clinic_calendar";
             this.Text = "จัดการปฎิบัติงานแพทย์  - ระบบบริหารจัดการงานบริการงานแพทย์และอนามัย  ";
             this.Load += new System.EventHandler(this.clinic_calendar_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.connpatientBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.conn_patient)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Picbox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.connpatientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.conn_patient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.districtsBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -454,5 +486,8 @@
         private DataSet1 dataSet1;
         private System.Windows.Forms.BindingSource districtsBindingSource;
         private DataSet1TableAdapters.districtsTableAdapter districtsTableAdapter;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem datadoctorToolStripMenuItem;
     }
 }

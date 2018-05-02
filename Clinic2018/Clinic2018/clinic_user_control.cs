@@ -59,7 +59,7 @@ namespace Clinic2018
             dt = new DataTable();
 
             sda.Fill(dt);
-
+            conn.Close();
             MessageBox.Show("เพิ่มข้อมูลเข้าใช้งานเรียบร้อย");
         }
         int selectedRow;
