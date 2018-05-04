@@ -21,7 +21,8 @@ namespace Clinic2018
         public sent_room()
         {
             InitializeComponent();
-            string query = ("select schedule_work_doctor.swd_id,employee_doctor.emp_doc_name,employee_doctor.emp_doc_specialist,schedule_work_doctor.swd_date_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,room.room_id from employee_doctor inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id  = employee_doctor.emp_doc_id inner join room on room.room_id = schedule_work_doctor.room_id where room.room_status = 1");
+            /*
+            string query = ("select schedule_work_doctor.swd_id,empdoc.emp_doc_name,empdoc.emp_doc_specialist,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id from employee_doctor empdoc inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id  = empdoc.emp_doc_id inner join room on room.room_id = schedule_work_doctor.room_id where swd_status_room = 1 AND room.room_status = 1");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -29,22 +30,23 @@ namespace Clinic2018
 
             foreach (DataRow item in dt.Rows)
             {
-                int n = dataGridView2.Rows.Add();
+                int n = dataGridView1.Rows.Add();
 
 
 
                 dataGridView1.Rows[n].Cells[0].Value = item["swd_id"].ToString();
-                dataGridView1.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
+               dataGridView1.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
                 dataGridView1.Rows[n].Cells[2].Value = item["emp_doc_specialist"].ToString();
-                dataGridView1.Rows[n].Cells[3].Value = item["swd_date_work"].ToString();
+                dataGridView1.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
                 dataGridView1.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
                 dataGridView1.Rows[n].Cells[5].Value = item["swd_end_time"].ToString();
                 dataGridView1.Rows[n].Cells[6].Value = item["swd_note"].ToString();
                 dataGridView1.Rows[n].Cells[7].Value = item["room_id"].ToString();
 
             }
+            */
 
-            query = ("select queue_visit_record.qvr_record,queue_visit_record.qvr_time,opd.opd_name,opd.opd_idcard,opd.opd_address,opd.opd_telmobile,opd.opd_id from queue_visit_record inner join opd on opd.opd_id = queue_visit_record.opd_id where queue_visit_record.qvr_status = 1");
+            string query = (" select visit_record.vr_id,visit_record.vr_weight,visit_record.vr_height,visit_record.vr_systolic,visit_record.vr_diastolic,visit_record.vr_hearth_rate,visit_record.vr_date,visit_record.vr_remark,visit_record.opd_id from visit_record");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -56,16 +58,20 @@ namespace Clinic2018
 
 
 
-                dataGridView2.Rows[n].Cells[0].Value = item["qvr_record"].ToString();
-                dataGridView2.Rows[n].Cells[1].Value = item["qvr_time"].ToString();
-                dataGridView2.Rows[n].Cells[2].Value = item["opd_name"].ToString();
-                dataGridView2.Rows[n].Cells[3].Value = item["opd_idcard"].ToString();
-                dataGridView2.Rows[n].Cells[4].Value = item["opd_id"].ToString();
-      
+                dataGridView2.Rows[n].Cells[0].Value = item["vr_id"].ToString();
+                dataGridView2.Rows[n].Cells[1].Value = item["vr_weight"].ToString();
+                dataGridView2.Rows[n].Cells[2].Value = item["vr_height"].ToString();
+                dataGridView2.Rows[n].Cells[3].Value = item["vr_systolic"].ToString();
+                dataGridView2.Rows[n].Cells[4].Value = item["vr_diastolic"].ToString();
+                dataGridView2.Rows[n].Cells[5].Value = item["vr_hearth_rate"].ToString();
+                dataGridView2.Rows[n].Cells[6].Value = item["vr_date"].ToString();
+                dataGridView2.Rows[n].Cells[7].Value = item["vr_remark"].ToString();
+                dataGridView2.Rows[n].Cells[8].Value = item["opd_id"].ToString();
 
 
 
             }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -76,12 +82,7 @@ namespace Clinic2018
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
             sda.Fill(dt);
-                query = ("Update queue_visit_record set qvr_status = 0 where opd_id = '"+lblopdid.Text+"'");
-            
-            cmd = new SqlCommand(query, conn);
-            sda = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            sda.Fill(dt);
+             
             Queue<int> collection = new Queue<int>();
 
             query = ("select count(*) from queue_diag_room inner join opd on opd.opd_id = queue_diag_room.opd_id inner join schedule_work_doctor on schedule_work_doctor.swd_id = queue_diag_room.swd_id inner join employee_doctor on employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id where  queue_diag_room.status_queue = 1");
@@ -129,7 +130,35 @@ namespace Clinic2018
         {
             selectedRow1 = e.RowIndex;
             DataGridViewRow row = dataGridView2.Rows[selectedRow1];
-            lblopdid.Text = row.Cells[4].Value.ToString();
+            lblopdid.Text = row.Cells[8].Value.ToString();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+         //  MessageBox.Show( comboBox1.SelectedItem.ToString());
+
+            string query = ("select schedule_work_doctor.swd_id,empdoc.emp_doc_name,empdoc.emp_doc_specialist,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id from employee_doctor empdoc inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id  = empdoc.emp_doc_id inner join room on room.room_id = schedule_work_doctor.room_id where swd_status_room = 1 AND room.room_status = 1 AND swd_timezone = '"+ comboBox1.SelectedItem.ToString() + "'");
+            cmd = new SqlCommand(query, conn);
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                int n = dataGridView1.Rows.Add();
+
+
+
+                dataGridView1.Rows[n].Cells[0].Value = item["swd_id"].ToString();
+                dataGridView1.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
+                dataGridView1.Rows[n].Cells[2].Value = item["emp_doc_specialist"].ToString();
+                dataGridView1.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
+                dataGridView1.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
+                dataGridView1.Rows[n].Cells[5].Value = item["swd_end_time"].ToString();
+                dataGridView1.Rows[n].Cells[6].Value = item["swd_note"].ToString();
+                dataGridView1.Rows[n].Cells[7].Value = item["room_id"].ToString();
+
+            }
         }
     }
 }

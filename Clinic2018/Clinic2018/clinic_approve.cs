@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.IO;
 
 namespace Clinic2018
 {
@@ -153,7 +156,7 @@ namespace Clinic2018
                     if (sdr.Read())
                     {
                         int id = Convert.ToInt32(sdr["opd_id"].ToString());
-                        query = ("insert into privilege (privil_status,emp_ru_idcard,date,time,opd_id,emp_ru_id) values('อนุญาต','"+ emp_ru_idcard + "',SYSDATETIME(), SYSDATETIME(),'"+ id + "','"+ emp_ru_id + "');");
+                        query = ("insert into privilege (privil_status,emp_ru_idcard,date,time,opd_id,emp_ru_id) values('ได้รับสิทธิการรักษา','" + emp_ru_idcard + "',SYSDATETIME(), SYSDATETIME(),'"+ id + "','"+ emp_ru_id + "');");
                         cmd = new SqlCommand(query, conn);
                         sda = new SqlDataAdapter(cmd);
                         dt = new DataTable();
@@ -179,7 +182,48 @@ namespace Clinic2018
                             sda = new SqlDataAdapter(cmd);
                             dt = new DataTable();
                             sda.Fill(dt);
-                          
+
+
+
+
+                            string fontpath = Environment.GetEnvironmentVariable("SystemRoot") + "../fonts/THSarabun.ttf";
+                            BaseFont basefont = BaseFont.CreateFont(fontpath, BaseFont.IDENTITY_H, true);
+                            iTextSharp.text.Font arabicFont = new iTextSharp.text.Font(basefont, 24, iTextSharp.text.Font.NORMAL);
+                            var el = new Chunk();
+                            iTextSharp.text.Font f2 = new iTextSharp.text.Font(basefont, el.Font.Size,
+                                                            el.Font.Style, el.Font.Color);
+                            el.Font = f2;
+
+                            Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
+
+                            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("" + S2.Text + ".pdf", FileMode.Create));
+                            doc.Open();
+                            iTextSharp.text.pdf.PdfContentByte cb = wri.DirectContent;
+                            iTextSharp.text.pdf.Barcode128 bc = new Barcode128();
+                            bc.TextAlignment = Element.ALIGN_LEFT;
+                            bc.Code = S1.Text;
+                            bc.StartStopText = false;
+                            bc.CodeType = iTextSharp.text.pdf.Barcode128.EAN13;
+                            bc.Extended = true;
+
+                            iTextSharp.text.Image img = bc.CreateImageWithBarcode(cb,
+                              iTextSharp.text.BaseColor.BLACK, iTextSharp.text.BaseColor.BLACK);
+
+                            cb.SetTextMatrix(5.5f, 3.0f);
+                            img.ScaleToFit(150, 200);
+                            img.SetAbsolutePosition(1.5f, 1);
+
+                            PdfPTable table = new PdfPTable(3);
+                            table.AddCell(new Phrase(70, "บัตรประจำตัวคนไข้", el.Font));
+                            table.AddCell(new Phrase(10, "" + S2.Text + "", el.Font));
+                            table.AddCell(img);
+                            table.AddCell(new Phrase(70, "รหัสเข้าสู่ระบบ", el.Font));
+                            table.AddCell(new Phrase(70, "รหัสชื่อผู้ใช้ " + S1.Text + "", el.Font));
+                            table.AddCell(new Phrase(10, "รหัสผ่าน" + S3.Text + "", el.Font));
+                            doc.Add(table);
+                            doc.Close();
+                            System.Diagnostics.Process.Start("" + S2.Text + ".pdf");
+
                             clinic_approve_step2 appr2 = new clinic_approve_step2();
                             appr2.Show();
                             clinic_approve approve = new clinic_approve();

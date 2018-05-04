@@ -87,6 +87,18 @@ namespace Clinic2018
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
             sda.Fill(dt);
+
+            query = ("Update queue_visit_record set qvr_status = 0 where opd_id = '" + lblopd.Text + "'");
+
+            cmd = new SqlCommand(query, conn);
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+            clinc_nurse_service m4 = new clinc_nurse_service();
+            m4.Show();
+            clinc_nurse_service clnlog = new clinc_nurse_service();
+            clnlog.Close();
+            Visible = false;
             MessageBox.Show("บันทึกข้อมูลซักประวัติเรียบร้อย");
 
 

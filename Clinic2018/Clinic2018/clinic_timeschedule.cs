@@ -25,7 +25,7 @@ namespace Clinic2018
             txtstarttime.Text = "0:00";
             txtendtime.Text = "0:00";
       
-            string query = ("select schedule_work_doctor.swd_month_work,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id,room.room_status,schedule_work_doctor.swd_timezone,schedule_work_doctor.swd_status from schedule_work_doctor inner join room on room.room_id = schedule_work_doctor.room_id");
+            string query = ("select schedule_work_doctor.swd_month_work,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id,schedule_work_doctor.swd_status_room,schedule_work_doctor.swd_timezone,schedule_work_doctor.swd_status from schedule_work_doctor inner join room on room.room_id = schedule_work_doctor.room_id");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -43,7 +43,7 @@ namespace Clinic2018
                 dataGridView1.Rows[n].Cells[3].Value = item["swd_end_time"].ToString();
                 dataGridView1.Rows[n].Cells[4].Value = item["swd_note"].ToString();
                 dataGridView1.Rows[n].Cells[5].Value = item["room_id"].ToString();
-                dataGridView1.Rows[n].Cells[6].Value = item["room_status"].ToString();
+                dataGridView1.Rows[n].Cells[6].Value = item["swd_status_room"].ToString();
                 dataGridView1.Rows[n].Cells[7].Value = item["swd_timezone"].ToString();
                 dataGridView1.Rows[n].Cells[8].Value = item["swd_status"].ToString();
 
@@ -132,7 +132,7 @@ namespace Clinic2018
   
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string query = ("Update schedule_work_doctor set swd_status = '" + comboBox2.SelectedItem.ToString() + "'");
+            string query = ("Update schedule_work_doctor set swd_status_room = 0 ,emp_doc_id = 0 ,swd_status = '" + comboBox2.SelectedItem.ToString() + "'");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();

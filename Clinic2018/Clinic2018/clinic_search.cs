@@ -68,8 +68,8 @@ namespace Clinic2018
             sda.Fill(dt);
             
             //------------------------------ปิงปอง--------------------------------------
-            if (textBox1.Text == cmd.Connection.Database || textBox1.MaxLength == 13)
-            {
+           if (textBox1.Text == cmd.Connection.Database || textBox1.MaxLength == 13 )
+          {
               // if (sba.Read())
                 //{
                   //  string position = sba["privil_status"].ToString();
@@ -79,7 +79,7 @@ namespace Clinic2018
                         {
                             int n = dataGridView1.Rows.Add();
                     string privil_status = item["privil_status"].ToString();
-                    if (privil_status == "อนุญาต")
+                    if (privil_status == "ได้รับสิทธิการรักษา")
                     {
                         dataGridView1.Rows[n].Cells[0].Value = item["emp_ru_idcard"].ToString();
                         dataGridView1.Rows[n].Cells[1].Value = item["emp_ru_name"].ToString();
@@ -87,23 +87,32 @@ namespace Clinic2018
                         dataGridView1.Rows[n].Cells[3].Value = item["emp_ru_telmobile"].ToString();
                         dataGridView1.Rows[n].Cells[4].Value = item["privil_status"].ToString();
 
+                    }else
+                    {
+                        MessageBox.Show("ยังไม่ได้รับสิทธิการรักษา");
                     }
                
                  
                         }
-                //     }
+                 }
 
 
 
                 //  }
 
-            }
-     //    if (textBox1.Text != cmd.Connection.Database || textBox1.MaxLength == 13)
-      
-     //       {
-     //            clinic_approve cliapp = new clinic_approve();
-     //            cliapp.Show();
-     //       }
+        //    }else
+        //    {
+        //        MessageBox.Show("ยังไม่ได้รับสิทธิการรักษา");
+        //    }
+
+
+         
+            //    if (textBox1.Text != cmd.Connection.Database || textBox1.MaxLength == 13)
+
+            //       {
+            //            clinic_approve cliapp = new clinic_approve();
+            //            cliapp.Show();
+            //       }
             //------------------------------ปิงปอง--------------------------------------
 
 

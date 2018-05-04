@@ -22,5 +22,15 @@ namespace Clinic2018
             clinic_doctor_service ser = new clinic_doctor_service();
             ser.Show();
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            clinic_login log = new clinic_login();
+            log.Show();
+            Clinic_doctor main = new Clinic_doctor();
+            main.Close();
+            Visible = false;
+        }
     }
 }
