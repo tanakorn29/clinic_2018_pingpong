@@ -330,6 +330,7 @@
             this.txtw.Name = "txtw";
             this.txtw.Size = new System.Drawing.Size(100, 20);
             this.txtw.TabIndex = 2;
+            this.txtw.TextChanged += new System.EventHandler(this.txtw_TextChanged);
             // 
             // label27
             // 
@@ -403,6 +404,8 @@
             this.lblopdid.Size = new System.Drawing.Size(10, 13);
             this.lblopdid.TabIndex = 1;
             this.lblopdid.Text = "-";
+            this.lblopdid.TextChanged += new System.EventHandler(this.lblopdid_TextChanged);
+            this.lblopdid.Click += new System.EventHandler(this.lblopdid_Click);
             // 
             // label13
             // 

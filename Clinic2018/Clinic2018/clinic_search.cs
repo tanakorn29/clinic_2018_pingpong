@@ -58,13 +58,16 @@ namespace Clinic2018
             lb55.Text = "";
 
             //     string query = ("select * from employee_ru eru, opd, privilege where eru.emp_ru_idcard = opd.emp_ru_id and opd.emp_ru_id = privilege.emp_ru_idcard and eru.emp_ru_idcard = '" + textBox1.Text + "'");
-            string query = ("select * from employee_ru inner join privilege on privilege.emp_ru_id = employee_ru.emp_ru_id inner join opd on opd.emp_ru_id = employee_ru.emp_ru_id where employee_ru.emp_ru_idcard = '" + textBox1.Text + "'");
+        string query = ("select * from employee_ru inner join privilege on privilege.emp_ru_id = employee_ru.emp_ru_id inner join opd on opd.emp_ru_id = employee_ru.emp_ru_id where employee_ru.emp_ru_idcard = '" + textBox1.Text + "'");
+
+         //     string query = ("select * from employee_ru inner join privilege on privilege.emp_ru_id = employee_ru.emp_ru_id where employee_ru.emp_ru_idcard = '" + textBox1.Text + "'");
+         //   string query = ("select * from employee_ru inner join opd on opd.emp_ru_id = employee_ru.emp_ru_id where employee_ru.emp_ru_idcard = '"+textBox1.Text+"'");
             cmd = new SqlCommand(query, conn);
-     
+      
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
-         //   SqlDataReader sba = cmd.ExecuteReader();
-            
+            //   SqlDataReader sba = cmd.ExecuteReader();
+           // sdr = cmd.ExecuteReader();
             sda.Fill(dt);
             
             //------------------------------ปิงปอง--------------------------------------
@@ -78,24 +81,25 @@ namespace Clinic2018
                         foreach (DataRow item in dt.Rows)
                         {
                             int n = dataGridView1.Rows.Add();
-                    string privil_status = item["privil_status"].ToString();
-                    if (privil_status == "ได้รับสิทธิการรักษา")
-                    {
+                   string privil_status = item["privil_status"].ToString();
+                  if (privil_status == "ได้รับสิทธิการรักษา")
+                   {
                         dataGridView1.Rows[n].Cells[0].Value = item["emp_ru_idcard"].ToString();
                         dataGridView1.Rows[n].Cells[1].Value = item["emp_ru_name"].ToString();
                         dataGridView1.Rows[n].Cells[2].Value = item["emp_ru_birthday"].ToString();
                         dataGridView1.Rows[n].Cells[3].Value = item["emp_ru_telmobile"].ToString();
-                        dataGridView1.Rows[n].Cells[4].Value = item["privil_status"].ToString();
+                       dataGridView1.Rows[n].Cells[4].Value = item["privil_status"].ToString();
 
-                    }else
-                    {
-                        MessageBox.Show("ยังไม่ได้รับสิทธิการรักษา");
-                    }
+                   }else
+                   {
+                      MessageBox.Show("ยังไม่ได้รับสิทธิการรักษา");
+                   }
                
                  
                         }
-                 }
+            }
 
+         
 
 
                 //  }
@@ -188,8 +192,8 @@ namespace Clinic2018
 
         private void bt2_Click(object sender, EventArgs e)
         {
-            try
-            {
+         try
+         {
                 conn.Open();
                 if (lb11.Text != cmd.Connection.Database &&
                     lb22.Text != cmd.Connection.Database &&
@@ -211,6 +215,7 @@ namespace Clinic2018
 
                     string query = ("select * from employee_ru inner join privilege on privilege.emp_ru_id = employee_ru.emp_ru_id inner join opd on opd.emp_ru_id = employee_ru.emp_ru_id where employee_ru.emp_ru_idcard = '" + textBox1.Text + "'");
                     cmd = new SqlCommand(query, conn);
+                  
                     sda = new SqlDataAdapter(cmd);
                     dt = new DataTable();
                     sda.Fill(dt);
@@ -296,10 +301,10 @@ namespace Clinic2018
 
 
 
-            }
+           }
             catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OKCancel);
+          {
+               MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OKCancel);
             }
          
   

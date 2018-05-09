@@ -46,7 +46,7 @@ namespace Clinic2018
             }
             */
 
-            string query = (" select visit_record.vr_id,visit_record.vr_weight,visit_record.vr_height,visit_record.vr_systolic,visit_record.vr_diastolic,visit_record.vr_hearth_rate,visit_record.vr_date,visit_record.vr_remark,visit_record.opd_id from visit_record");
+            string query = (" select visit_record.vr_id,visit_record.vr_weight,visit_record.vr_height,visit_record.vr_systolic,visit_record.vr_diastolic,visit_record.vr_hearth_rate,visit_record.vr_date,visit_record.vr_remark,visit_record.opd_id from visit_record where vr_status = 0");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -85,7 +85,7 @@ namespace Clinic2018
              
             Queue<int> collection = new Queue<int>();
 
-            query = ("select count(*) from queue_diag_room inner join opd on opd.opd_id = queue_diag_room.opd_id inner join schedule_work_doctor on schedule_work_doctor.swd_id = queue_diag_room.swd_id inner join employee_doctor on employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id where  queue_diag_room.status_queue = 1");
+            query = ("select count(*) from queue_diag_room inner join opd on opd.opd_id = queue_diag_room.opd_id inner join schedule_work_doctor on schedule_work_doctor.swd_id = queue_diag_room.swd_id inner join employee_doctor on employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id where  queue_diag_room.status_queue = 1 AND schedule_work_doctor.swd_id = '"+lblswd.Text+"'");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -102,6 +102,15 @@ namespace Clinic2018
                 sda = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 sda.Fill(dt);
+
+                query = ("Update visit_record set vr_status = 1 where opd_id = '"+lblopdid.Text+"'");
+                //  
+                cmd = new SqlCommand(query, conn);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+
+
                 clinc_nurse_service s2 = new clinc_nurse_service();
                 s2.Show();
                 sent_room clnlog = new sent_room();

@@ -23,7 +23,7 @@ namespace Clinic2018
         {
             InitializeComponent();
             conn.Open();
-            string query = ("select queue_diag_room.qdr_record,queue_diag_room.qdr_date,queue_diag_room.qdr_time_sent,schedule_work_doctor.room_id,employee_doctor.emp_doc_name,employee_doctor.emp_doc_id,opd.opd_id,opd.opd_name from queue_diag_room inner join opd on opd.opd_id = queue_diag_room.opd_id inner join schedule_work_doctor on schedule_work_doctor.swd_id = queue_diag_room.swd_id inner join employee_doctor on employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id where  queue_diag_room.status_queue = 1 ");
+            string query = ("select queue_diag_room.qdr_record,queue_diag_room.qdr_date,queue_diag_room.qdr_time_sent,schedule_work_doctor.room_id,employee_doctor.emp_doc_name,employee_doctor.emp_doc_id,opd.opd_id,opd.opd_name from queue_diag_room inner join opd on opd.opd_id = queue_diag_room.opd_id inner join schedule_work_doctor on schedule_work_doctor.swd_id = queue_diag_room.swd_id inner join employee_doctor on employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id where  queue_diag_room.status_queue = 1 AND room_id = 1  ");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -44,28 +44,7 @@ namespace Clinic2018
                 dataGridView1.Rows[n].Cells[6].Value = item["opd_id"].ToString();
                 dataGridView1.Rows[n].Cells[7].Value = item["opd_name"].ToString();
             }
-          query = (" select visit_record.vr_id,visit_record.vr_weight,visit_record.vr_height,visit_record.vr_systolic,visit_record.vr_diastolic,visit_record.vr_hearth_rate,visit_record.vr_date,visit_record.vr_remark,visit_record.opd_id from visit_record where opd_id = '"+lblopdid.Text+"'");
-            cmd = new SqlCommand(query, conn);
-            sda = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            sda.Fill(dt);
-            sdr = cmd.ExecuteReader();
-
-            if (sdr.Read())
-            {
-
-                txtw.Text = (sdr["vr_weight"].ToString());
-                txth.Text = (sdr["vr_height"].ToString());
-                txts.Text = (sdr["vr_systolic"].ToString());
-                txtd.Text = (sdr["vr_diastolic"].ToString());
-                txthert.Text = (sdr["vr_hearth_rate"].ToString());
-                txtremark.Text = (sdr["vr_remark"].ToString());
-
-
-
-
-
-            }
+         
 
             conn.Close();
 
@@ -108,6 +87,45 @@ namespace Clinic2018
         private void label21_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lblopdid_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtw_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblopdid_TextChanged(object sender, EventArgs e)
+        {
+            conn.Open();
+            string query = ("select visit_record.vr_id,visit_record.vr_weight,visit_record.vr_height,visit_record.vr_systolic,visit_record.vr_diastolic,visit_record.vr_hearth_rate,visit_record.vr_date,visit_record.vr_remark,visit_record.opd_id from visit_record where opd_id = '" + lblopdid.Text + "'");
+            cmd = new SqlCommand(query, conn);
+
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+            sdr = cmd.ExecuteReader();
+
+            if (sdr.Read())
+            {
+
+                txtw.Text = (sdr["vr_weight"].ToString());
+                txth.Text = (sdr["vr_height"].ToString());
+                txts.Text = (sdr["vr_systolic"].ToString());
+                txtd.Text = (sdr["vr_diastolic"].ToString());
+                txthert.Text = (sdr["vr_hearth_rate"].ToString());
+                txtremark.Text = (sdr["vr_remark"].ToString());
+
+
+
+
+
+            }
+            conn.Close();
         }
     }
 }

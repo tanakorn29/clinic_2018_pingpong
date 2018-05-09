@@ -112,7 +112,7 @@ namespace Clinic2018
             if (sdr.Read())
             {
                 string privil_status = sdr["privil_status"].ToString();
-                if(privil_status != "อนุญาต")
+                if(privil_status != "ได้รับสิทธิการรักษา")
                 {
 
                     string emp_ru_name = sdr["emp_ru_name"].ToString();
