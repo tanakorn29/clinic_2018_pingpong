@@ -82,7 +82,7 @@ namespace Clinic2018
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string query = ("insert into visit_record (vr_weight,vr_height,vr_systolic,vr_diastolic,vr_hearth_rate,vr_date,vr_remark,opd_id) values ('"+txtw.Text+"','"+txth.Text+"','"+txts1.Text+"','"+txts2.Text+"','"+txthearth.Text+"',SYSDATETIME(),'"+txtremark.Text+"',"+lblopd.Text+");");
+            string query = ("insert into visit_record (vr_weight,vr_height,vr_systolic,vr_diastolic,vr_hearth_rate,vr_date,vr_status,vr_remark,opd_id) values ('"+txtw.Text+"','"+txth.Text+"','"+txts1.Text+"','"+txts2.Text+"','"+txthearth.Text+"',SYSDATETIME(),0,'"+txtremark.Text+"',"+lblopd.Text+");");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();

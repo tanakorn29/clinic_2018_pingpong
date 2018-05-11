@@ -31,19 +31,18 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtdocid = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtiddis = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtdis = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtsystoms = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label41 = new System.Windows.Forms.Label();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtremark = new System.Windows.Forms.TextBox();
@@ -62,6 +61,24 @@
             this.lblopdid = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label41 = new System.Windows.Forms.Label();
+            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.button24 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,14 +88,28 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtre2 = new System.Windows.Forms.TextBox();
+            this.lblidt = new System.Windows.Forms.Label();
+            this.lblopd = new System.Windows.Forms.Label();
+            this.lblmed = new System.Windows.Forms.Label();
+            this.lbldoctor = new System.Windows.Forms.Label();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -88,7 +119,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1079, 749);
+            this.panel1.Size = new System.Drawing.Size(1370, 749);
             this.panel1.TabIndex = 0;
             // 
             // groupBox3
@@ -99,50 +130,130 @@
             this.groupBox3.Controls.Add(this.lblopdid);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Location = new System.Drawing.Point(12, 124);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(950, 613);
+            this.groupBox3.Size = new System.Drawing.Size(1319, 613);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "ข้อมูลคนไข้";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtdocid);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.txtiddis);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.txtdis);
+            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.txtsystoms);
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Location = new System.Drawing.Point(6, 253);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(938, 348);
+            this.groupBox2.Size = new System.Drawing.Size(440, 354);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ข้อมูลการรักษาแพทย์";
             // 
+            // txtdocid
+            // 
+            this.txtdocid.Enabled = false;
+            this.txtdocid.Location = new System.Drawing.Point(136, 41);
+            this.txtdocid.Name = "txtdocid";
+            this.txtdocid.Size = new System.Drawing.Size(198, 20);
+            this.txtdocid.TabIndex = 27;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 41);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(125, 13);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "รหัสแพทย์ผู้ทำการรักษา :";
+            // 
+            // txtiddis
+            // 
+            this.txtiddis.Enabled = false;
+            this.txtiddis.Location = new System.Drawing.Point(136, 201);
+            this.txtiddis.Name = "txtiddis";
+            this.txtiddis.Size = new System.Drawing.Size(198, 20);
+            this.txtiddis.TabIndex = 25;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(80, 201);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 13);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "รหัสโรค:";
+            // 
+            // txtdis
+            // 
+            this.txtdis.Enabled = false;
+            this.txtdis.Location = new System.Drawing.Point(136, 244);
+            this.txtdis.Name = "txtdis";
+            this.txtdis.Size = new System.Drawing.Size(198, 20);
+            this.txtdis.TabIndex = 23;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(33, 291);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(107, 36);
+            this.button3.TabIndex = 22;
+            this.button3.Text = "บันทึกการรักษา";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(136, 157);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(198, 21);
+            this.comboBox1.TabIndex = 21;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(61, 140);
+            this.label4.Location = new System.Drawing.Point(96, 160);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 20;
             this.label4.Text = "โรค :";
             // 
-            // textBox6
+            // txtsystoms
             // 
-            this.textBox6.Location = new System.Drawing.Point(128, 40);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox6.Size = new System.Drawing.Size(198, 79);
-            this.textBox6.TabIndex = 19;
+            this.txtsystoms.Location = new System.Drawing.Point(136, 88);
+            this.txtsystoms.Multiline = true;
+            this.txtsystoms.Name = "txtsystoms";
+            this.txtsystoms.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtsystoms.Size = new System.Drawing.Size(198, 53);
+            this.txtsystoms.TabIndex = 19;
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.button1.Location = new System.Drawing.Point(227, 291);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 36);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "นัดหมาย";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 190);
+            this.label2.Location = new System.Drawing.Point(30, 247);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 13);
             this.label2.TabIndex = 18;
@@ -151,104 +262,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 40);
+            this.label1.Location = new System.Drawing.Point(65, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "อาการป่วย :";
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button1.Location = new System.Drawing.Point(111, 299);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 31);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "นัดหมาย";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.dataGridView3);
-            this.groupBox5.Controls.Add(this.dataGridView2);
-            this.groupBox5.Controls.Add(this.label41);
-            this.groupBox5.Controls.Add(this.textBox20);
-            this.groupBox5.Controls.Add(this.button23);
-            this.groupBox5.Controls.Add(this.button22);
-            this.groupBox5.Controls.Add(this.button24);
-            this.groupBox5.Location = new System.Drawing.Point(366, 40);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(566, 275);
-            this.groupBox5.TabIndex = 7;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "จ่ายยา";
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(344, 44);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(205, 177);
-            this.dataGridView3.TabIndex = 0;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(24, 44);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(282, 177);
-            this.dataGridView2.TabIndex = 0;
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(80, 16);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(43, 13);
-            this.label41.TabIndex = 1;
-            this.label41.Text = "ค้นหา : ";
-            // 
-            // textBox20
-            // 
-            this.textBox20.Location = new System.Drawing.Point(132, 14);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(246, 20);
-            this.textBox20.TabIndex = 2;
-            // 
-            // button23
-            // 
-            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button23.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button23.Location = new System.Drawing.Point(312, 100);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(26, 20);
-            this.button23.TabIndex = 0;
-            this.button23.Text = ">";
-            this.button23.UseVisualStyleBackColor = true;
-            // 
-            // button22
-            // 
-            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button22.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button22.Location = new System.Drawing.Point(312, 124);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(26, 20);
-            this.button22.TabIndex = 0;
-            this.button22.Text = "<";
-            this.button22.UseVisualStyleBackColor = true;
-            // 
-            // button24
-            // 
-            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button24.Location = new System.Drawing.Point(288, 238);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(99, 31);
-            this.button24.TabIndex = 0;
-            this.button24.Text = "จ่ายยา";
-            this.button24.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -265,7 +283,7 @@
             this.groupBox4.Controls.Add(this.label25);
             this.groupBox4.Controls.Add(this.label21);
             this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Location = new System.Drawing.Point(233, 67);
+            this.groupBox4.Location = new System.Drawing.Point(6, 56);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(462, 180);
             this.groupBox4.TabIndex = 5;
@@ -425,6 +443,174 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "รหัสเวชระเบียน : ";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.dataGridView4);
+            this.groupBox5.Controls.Add(this.lbldoctor);
+            this.groupBox5.Controls.Add(this.lblmed);
+            this.groupBox5.Controls.Add(this.lblopd);
+            this.groupBox5.Controls.Add(this.lblidt);
+            this.groupBox5.Controls.Add(this.txtre2);
+            this.groupBox5.Controls.Add(this.label12);
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.Controls.Add(this.button5);
+            this.groupBox5.Controls.Add(this.label10);
+            this.groupBox5.Controls.Add(this.label9);
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.button4);
+            this.groupBox5.Controls.Add(this.dataGridView3);
+            this.groupBox5.Controls.Add(this.dataGridView2);
+            this.groupBox5.Controls.Add(this.label41);
+            this.groupBox5.Controls.Add(this.textBox20);
+            this.groupBox5.Controls.Add(this.button24);
+            this.groupBox5.Location = new System.Drawing.Point(498, 56);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(800, 524);
+            this.groupBox5.TabIndex = 7;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "จ่ายยา";
+            // 
+            // button5
+            // 
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.button5.Location = new System.Drawing.Point(362, 470);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(99, 31);
+            this.button5.TabIndex = 12;
+            this.button5.Text = "ลบ";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(100, 330);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(69, 13);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "รหัสยาที่จ่าย :";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(116, 304);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 13);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "ชื่อคนไข้ :";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(42, 272);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(127, 13);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "หมายเลขอ้างอิงการรักษา :";
+            // 
+            // button4
+            // 
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.button4.Location = new System.Drawing.Point(24, 470);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(156, 31);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "บันทึกใบสั่งยา";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column11,
+            this.Column12,
+            this.Column13,
+            this.Column14});
+            this.dataGridView3.Location = new System.Drawing.Point(455, 73);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(324, 177);
+            this.dataGridView3.TabIndex = 0;
+            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "ลำดับใบสั่งยา";
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "ชื่อยา";
+            this.Column12.Name = "Column12";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "หมายเลขอ้างอิงการรักษา";
+            this.Column13.Name = "Column13";
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "ชื่อคนไข้";
+            this.Column14.Name = "Column14";
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column9,
+            this.Column10,
+            this.Column15});
+            this.dataGridView2.Location = new System.Drawing.Point(455, 280);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(324, 177);
+            this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "ลำดับ";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "ชื่อยา";
+            this.Column10.Name = "Column10";
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "จำนวนยา";
+            this.Column15.Name = "Column15";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(218, 18);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(43, 13);
+            this.label41.TabIndex = 1;
+            this.label41.Text = "ค้นหา : ";
+            // 
+            // textBox20
+            // 
+            this.textBox20.Location = new System.Drawing.Point(267, 15);
+            this.textBox20.Name = "textBox20";
+            this.textBox20.Size = new System.Drawing.Size(246, 20);
+            this.textBox20.TabIndex = 2;
+            this.textBox20.TextChanged += new System.EventHandler(this.textBox20_TextChanged);
+            // 
+            // button24
+            // 
+            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.button24.Location = new System.Drawing.Point(207, 470);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(99, 31);
+            this.button24.TabIndex = 0;
+            this.button24.Text = "จ่ายยา";
+            this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -483,11 +669,114 @@
             this.Column7.HeaderText = "ชื่อคนไข้";
             this.Column7.Name = "Column7";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(41, 359);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(128, 13);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "รหัสแพทย์ผู้ทำการรักษา  :";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(130, 393);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(39, 13);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "อื่น ๆ  :";
+            // 
+            // txtre2
+            // 
+            this.txtre2.Location = new System.Drawing.Point(200, 390);
+            this.txtre2.Multiline = true;
+            this.txtre2.Name = "txtre2";
+            this.txtre2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtre2.Size = new System.Drawing.Size(198, 53);
+            this.txtre2.TabIndex = 28;
+            // 
+            // lblidt
+            // 
+            this.lblidt.AutoSize = true;
+            this.lblidt.Location = new System.Drawing.Point(200, 272);
+            this.lblidt.Name = "lblidt";
+            this.lblidt.Size = new System.Drawing.Size(10, 13);
+            this.lblidt.TabIndex = 29;
+            this.lblidt.Text = "-";
+            // 
+            // lblopd
+            // 
+            this.lblopd.AutoSize = true;
+            this.lblopd.Location = new System.Drawing.Point(200, 304);
+            this.lblopd.Name = "lblopd";
+            this.lblopd.Size = new System.Drawing.Size(10, 13);
+            this.lblopd.TabIndex = 30;
+            this.lblopd.Text = "-";
+            // 
+            // lblmed
+            // 
+            this.lblmed.AutoSize = true;
+            this.lblmed.Location = new System.Drawing.Point(200, 330);
+            this.lblmed.Name = "lblmed";
+            this.lblmed.Size = new System.Drawing.Size(10, 13);
+            this.lblmed.TabIndex = 31;
+            this.lblmed.Text = "-";
+            // 
+            // lbldoctor
+            // 
+            this.lbldoctor.AutoSize = true;
+            this.lbldoctor.Location = new System.Drawing.Point(200, 359);
+            this.lbldoctor.Name = "lbldoctor";
+            this.lbldoctor.Size = new System.Drawing.Size(10, 13);
+            this.lbldoctor.TabIndex = 32;
+            this.lbldoctor.Text = "-";
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.Column16,
+            this.Column17});
+            this.dataGridView4.Location = new System.Drawing.Point(24, 74);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.Size = new System.Drawing.Size(374, 177);
+            this.dataGridView4.TabIndex = 33;
+            this.dataGridView4.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellContentClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "ลำดับการรักษา";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "อาการป่วย";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "วินิจฉัยโรค";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "ชื่อคนไข้";
+            this.Column16.Name = "Column16";
+            // 
+            // Column17
+            // 
+            this.Column17.HeaderText = "รหัสแพทย์ผู้ทำการรักษา";
+            this.Column17.Name = "Column17";
+            // 
             // clinic_doctor_service
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1079, 749);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.panel1);
             this.Name = "clinic_doctor_service";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -498,13 +787,14 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -537,8 +827,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
@@ -551,8 +839,40 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtsystoms;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtdis;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtiddis;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtdocid;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label lbldoctor;
+        private System.Windows.Forms.Label lblmed;
+        private System.Windows.Forms.Label lblopd;
+        private System.Windows.Forms.Label lblidt;
+        private System.Windows.Forms.TextBox txtre2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
     }
 }
