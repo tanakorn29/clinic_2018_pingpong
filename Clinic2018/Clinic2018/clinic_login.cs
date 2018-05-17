@@ -23,8 +23,8 @@ namespace Clinic2018
             try
             {
                 SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-26BM5UJ\SQLEXPRESS; Initial Catalog = Clinic2018; MultipleActiveResultSets=true; User ID = sa; Password = 1234");
-                SqlCommand cmd = new SqlCommand("select employee_ru.emp_ru_name,position.pos_name from employee_ru inner join user_control on user_control.emp_ru_id = employee_ru.emp_ru_id inner join position on position.pos_id = employee_ru.pos_id where uct_user=@uct_user and uct_password=@uct_password", conn);
-                SqlCommand cmd1 = new SqlCommand("select employee_doctor.emp_doc_name ,schedule_work_doctor.room_id from employee_doctor inner join user_control on user_control.emp_doc_id = employee_doctor.emp_doc_id inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id = employee_doctor.emp_doc_id where uct_user=@uct_user and uct_password=@uct_password", conn);
+                SqlCommand cmd = new SqlCommand("select employee_ru.emp_ru_name,position.pos_name,time_attendance.remark from employee_ru inner join user_control on user_control.emp_ru_id = employee_ru.emp_ru_id inner join position on position.pos_id = employee_ru.pos_id inner join time_attendance on time_attendance.emp_ru_id = employee_ru.emp_ru_id  where uct_user=@uct_user and uct_password=@uct_password", conn);
+                SqlCommand cmd1 = new SqlCommand("select employee_doctor.emp_doc_name ,schedule_work_doctor.room_id,time_attendance.remark from employee_doctor inner join user_control on user_control.emp_doc_id = employee_doctor.emp_doc_id inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id = employee_doctor.emp_doc_id  inner join time_attendance on time_attendance.emp_doc_id = employee_doctor.emp_doc_id where uct_user=@uct_user and uct_password=@uct_password", conn);
                 conn.Open();
          
                   
@@ -41,45 +41,66 @@ namespace Clinic2018
                     if (dr.Read())
                     {
                         string position = dr["pos_name"].ToString();
-                        if(position == "เวชระเบียน")
+                        string time_remark = dr["remark"].ToString();
+                    if(time_remark == "เข้างาน")
                         {
-                            MessageBox.Show("ยินดีต้อนรับ" + dr["emp_ru_name"].ToString());
+                            if (position == "เวชระเบียน")
+                            {
+                                MessageBox.Show("ยินดีต้อนรับ" + dr["emp_ru_name"].ToString());
 
-                            clinic_main_v2 m1 = new clinic_main_v2();
-                            m1.Show();
-                            clinic_login clnlog = new clinic_login();
-                            clnlog.Close();
-                            Visible = false;
+                                clinic_main_v2 m1 = new clinic_main_v2();
+                                m1.Show();
+                                clinic_login clnlog = new clinic_login();
+                                clnlog.Close();
+                                Visible = false;
 
-                        }else if(position == "พยาบาล")
+                            }
+                            else if (position == "พยาบาล")
+                            {
+                                MessageBox.Show("ยินดีต้อนรับ" + dr["emp_ru_name"].ToString());
+
+                                clinic_nurse m2 = new clinic_nurse();
+                                m2.Show();
+                                clinic_login clnlog = new clinic_login();
+                                clnlog.Close();
+                                Visible = false;
+                            }
+                            else if (position == "หัวหน้า")
+                            {
+                                MessageBox.Show("ยินดีต้อนรับ" + dr["emp_ru_name"].ToString());
+
+                                Clinic_boss m3 = new Clinic_boss();
+                                m3.Show();
+                                clinic_login clnlog = new clinic_login();
+                                clnlog.Close();
+                                Visible = false;
+                            }
+                            else if (position == "เภสัชกรณ์")
+                            {
+                                MessageBox.Show("ยินดีต้อนรับ" + dr["emp_ru_name"].ToString());
+
+                                clinic_pharmacist m4 = new clinic_pharmacist();
+                                m4.Show();
+                                clinic_login clnlog = new clinic_login();
+                                clnlog.Close();
+                                Visible = false;
+                            }
+
+
+
+
+                        }else
                         {
-                            MessageBox.Show("ยินดีต้อนรับ" + dr["emp_ru_name"].ToString());
-
-                            clinic_nurse m2 = new clinic_nurse();
-                            m2.Show();
-                            clinic_login clnlog = new clinic_login();
-                            clnlog.Close();
-                            Visible = false;
-                        }else if(position == "หัวหน้า")
-                        {
-                            MessageBox.Show("ยินดีต้อนรับ" + dr["emp_ru_name"].ToString());
-
-                            Clinic_boss m3 = new Clinic_boss();
-                            m3.Show();
-                            clinic_login clnlog = new clinic_login();
-                            clnlog.Close();
-                            Visible = false;
-                        }else if(position == "เภสัชกรณ์")
-                        {
-                            MessageBox.Show("ยินดีต้อนรับ" + dr["emp_ru_name"].ToString());
-
-                            clinic_pharmacist m4 = new clinic_pharmacist();
-                            m4.Show();
-                            clinic_login clnlog = new clinic_login();
-                            clnlog.Close();
-                            Visible = false;
+                            MessageBox.Show("คุณยังไม่ได้เข้างาน");
                         }
-                   
+                          
+
+                        
+
+
+
+
+
 
 
 
@@ -90,27 +111,49 @@ namespace Clinic2018
                 {
                     if (dr1.Read())
                     {
-                        if(dr1["room_id"].ToString() == "1")
+                        string time_remark = dr1["remark"].ToString();
+                        if(time_remark == "เข้างาน")
                         {
-                            MessageBox.Show("ยินดีต้อนรับ" + dr1["emp_doc_name"].ToString());
+                            if (dr1["room_id"].ToString() == "1")
+                            {
+                                MessageBox.Show("ยินดีต้อนรับ" + dr1["emp_doc_name"].ToString());
 
-                            Clinic_doctor doc1 = new Clinic_doctor();
-                            doc1.Show();
-                            clinic_login clnlog = new clinic_login();
-                            clnlog.Close();
-                            Visible = false;
+                                Clinic_doctor doc1 = new Clinic_doctor();
+                                doc1.Show();
+                                clinic_login clnlog = new clinic_login();
+                                clnlog.Close();
+                                Visible = false;
 
 
-                        }else if (dr1["room_id"].ToString() == "2")
-                        {
+                            }
+                            else if (dr1["room_id"].ToString() == "2")
+                            {
+                                MessageBox.Show("ยินดีต้อนรับ" + dr1["emp_doc_name"].ToString());
 
-                        }else if (dr1["room_id"].ToString() == "3")
-                        {
+                                Clinic_doctor2 doc1 = new Clinic_doctor2();
+                                doc1.Show();
+                                clinic_login clnlog = new clinic_login();
+                                clnlog.Close();
+                                Visible = false;
+                            }
+                            else if (dr1["room_id"].ToString() == "3")
+                            {
+                                clinic_doctor3 doc1 = new clinic_doctor3();
+                                doc1.Show();
+                                clinic_login clnlog = new clinic_login();
+                                clnlog.Close();
+                                Visible = false;
+                            }
+                            else
+                            {
+                                MessageBox.Show("ยังไม่ได้ลงตารางปฏิบัติงาน");
+                            }
 
                         }else
                         {
-                            MessageBox.Show("ยังไม่ได้ลงตารางปฏิบัติงาน");
+                            MessageBox.Show("ยังไม่ได้เข้างาน");
                         }
+                      
 
                     }
                        

@@ -129,7 +129,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Name = "Clinic_doctor";
-            this.Text = "Clinic_doctor";
+            this.Text = "ห้องตรวจที่ 1";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

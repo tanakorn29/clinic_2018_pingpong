@@ -11,19 +11,18 @@ using System.Windows.Forms;
 
 namespace Clinic2018
 {
-    public partial class clinic_doctor_service : Form
+    public partial class clinic_doctor_service3 : Form
     {
-
         SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-26BM5UJ\SQLEXPRESS; Initial Catalog = Clinic2018; MultipleActiveResultSets=true; User ID = sa; Password = 1234");
         SqlCommand cmd;
         SqlDataAdapter sda;
         DataTable dt;
         SqlDataReader sdr;
-        public clinic_doctor_service()
+        public clinic_doctor_service3()
         {
             InitializeComponent();
             conn.Open();
-            string query = ("select queue_diag_room.qdr_record,queue_diag_room.qdr_date,queue_diag_room.qdr_time_sent,schedule_work_doctor.room_id,employee_doctor.emp_doc_name,employee_doctor.emp_doc_id,opd.opd_id,opd.opd_name,position.pos_name from queue_diag_room inner join opd on opd.opd_id = queue_diag_room.opd_id inner join schedule_work_doctor on schedule_work_doctor.swd_id = queue_diag_room.swd_id inner join employee_doctor on employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id inner join position on position.pos_id = opd.pos_id where  queue_diag_room.status_queue = 1 AND room_id = 1  ");
+            string query = ("select queue_diag_room.qdr_record,queue_diag_room.qdr_date,queue_diag_room.qdr_time_sent,schedule_work_doctor.room_id,employee_doctor.emp_doc_name,employee_doctor.emp_doc_id,opd.opd_id,opd.opd_name,position.pos_name from queue_diag_room inner join opd on opd.opd_id = queue_diag_room.opd_id inner join schedule_work_doctor on schedule_work_doctor.swd_id = queue_diag_room.swd_id inner join employee_doctor on employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id inner join position on position.pos_id = opd.pos_id where  queue_diag_room.status_queue = 1 AND room_id = 3  ");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -53,7 +52,7 @@ namespace Clinic2018
 
             foreach (DataRow item in dt.Rows)
             {
-               // int n = dataGridView1.Rows.Add();
+                // int n = dataGridView1.Rows.Add();
 
                 comboBox1.Items.Add(item["disease"].ToString());
 
@@ -75,10 +74,10 @@ namespace Clinic2018
                 dataGridView2.Rows[n].Cells[0].Value = item["medi_id"].ToString();
                 dataGridView2.Rows[n].Cells[1].Value = item["medi_name"].ToString();
                 dataGridView2.Rows[n].Cells[2].Value = item["medi_qty"].ToString();
-         
+
             }
 
-    
+
             query = ("select medicine_use.medi_use_id , medical.medi_name,medicine_use.medi_num, treatment_record.treatr_id, opd.opd_name from opd inner join treatment_record on treatment_record.opd_id = opd.opd_id inner join medicine_use on medicine_use.treatr_id = treatment_record.treatr_id inner join medical on medical.medi_id = medicine_use.medi_id where medicine_use.medi_use_status = 1");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
@@ -119,32 +118,64 @@ namespace Clinic2018
 
 
             conn.Close();
-
         }
-        int selectedRow;
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void lblopdid_TextChanged(object sender, EventArgs e)
         {
-            selectedRow = e.RowIndex;
-            DataGridViewRow row = dataGridView1.Rows[selectedRow];
-            lblopdid.Text = row.Cells[6].Value.ToString();
-          lblsername.Text = row.Cells[7].Value.ToString();
-           // lblopd.Text = row.Cells[7].Value.ToString();
-            txtdocid.Text = row.Cells[5].Value.ToString();
-            string position = row.Cells[8].Value.ToString();
-            lblposition.Text = position;
-           
-        
+            conn.Open();
+            string query = ("select visit_record.vr_id,visit_record.vr_weight,visit_record.vr_height,visit_record.vr_systolic,visit_record.vr_diastolic,visit_record.vr_hearth_rate,visit_record.vr_date,visit_record.vr_remark,visit_record.opd_id from visit_record where opd_id = '" + lblopdid.Text + "'");
+            cmd = new SqlCommand(query, conn);
 
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+            sdr = cmd.ExecuteReader();
+
+            if (sdr.Read())
+            {
+
+                txtw.Text = (sdr["vr_weight"].ToString());
+                txth.Text = (sdr["vr_height"].ToString());
+                txts.Text = (sdr["vr_systolic"].ToString());
+                txtd.Text = (sdr["vr_diastolic"].ToString());
+                txthert.Text = (sdr["vr_hearth_rate"].ToString());
+                txtremark.Text = (sdr["vr_remark"].ToString());
+
+
+
+
+
+            }
+            conn.Close();
         }
 
-        private void label43_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
+            string query = ("insert into treatment_record (treatr_symptom,treatr_diagnose,treatr_status,disease_id,emp_doc_id,opd_id) values ('" + txtsystoms.Text + "','" + txtdis.Text + "',1,'" + txtiddis.Text + "','" + txtdocid.Text + "','" + lblopdid.Text + "')");
+            cmd = new SqlCommand(query, conn);
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            //  MessageBox.Show("บันทึกการรักษาเรียบร้อย");
+            sda.Fill(dt);
+            query = ("Update queue_diag_room SET status_queue = 0 where opd_id = '" + lblopdid.Text + "'");
+            cmd = new SqlCommand(query, conn);
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
 
+            clinic_doctor_service m3 = new clinic_doctor_service();
+            m3.Show();
+            clinic_doctor_service clnlog = new clinic_doctor_service();
+            clnlog.Close();
+            Visible = false;
+
+
+            MessageBox.Show("บันทึกการรักษาเรียบร้อย");
         }
-        
+
         private void button1_Click(object sender, EventArgs e)
         {
-          
+
             string position = lblposition.Text;
             conn.Open();
             if (position == "เจ้าหน้าที่")
@@ -152,11 +183,11 @@ namespace Clinic2018
                 DialogResult dialogResult = MessageBox.Show("ส่งข้อมูลการนัดหมายหรือไม่", "นัดหมายหรือไม่ ? ", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    string query = ("Insert into appointment (status_approve,emp_doc_id,opd_id) values (1,'"+txtdocid.Text+"','"+lblopdid.Text+"');");
+                    string query = ("Insert into appointment (status_approve,emp_doc_id,opd_id) values (1,'" + txtdocid.Text + "','" + lblopdid.Text + "');");
                     cmd = new SqlCommand(query, conn);
                     sda = new SqlDataAdapter(cmd);
                     dt = new DataTable();
-                  
+
                     sda.Fill(dt);
 
                     MessageBox.Show("ส่งข้อมูลการนัดหมายเรียบร้อย");
@@ -255,127 +286,16 @@ namespace Clinic2018
             else
             {
                 conn.Close();
-        //        button1.Visible = false;
+                //        button1.Visible = false;
             }
-            /*
-            conn.Open();
-            string query = ("insert into appointment (app_date , app_time ,app_remark , status_approve,status_app,emp_doc_id,opd_id) values ('"+ txtapp.Text + "','"+txttime.Text+"','"+txtremark.Text+"',1,1,'"+txtdoctor.Text+"','"+txtopdid.Text+"');");
-            cmd = new SqlCommand(query, conn);
-            sda = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-
-            sda.Fill(dt);
-
-            MessageBox.Show("นัดหมายเรียบร้อยแล้ว");
-
-    */
-        }
-        
-        private void label21_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblopdid_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtw_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblopdid_TextChanged(object sender, EventArgs e)
-        {
-            conn.Open();
-            string query = ("select visit_record.vr_id,visit_record.vr_weight,visit_record.vr_height,visit_record.vr_systolic,visit_record.vr_diastolic,visit_record.vr_hearth_rate,visit_record.vr_date,visit_record.vr_remark,visit_record.opd_id from visit_record where opd_id = '" + lblopdid.Text + "'");
-            cmd = new SqlCommand(query, conn);
-
-            sda = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            sda.Fill(dt);
-            sdr = cmd.ExecuteReader();
-
-            if (sdr.Read())
-            {
-
-                txtw.Text = (sdr["vr_weight"].ToString());
-                txth.Text = (sdr["vr_height"].ToString());
-                txts.Text = (sdr["vr_systolic"].ToString());
-                txtd.Text = (sdr["vr_diastolic"].ToString());
-                txthert.Text = (sdr["vr_hearth_rate"].ToString());
-                txtremark.Text = (sdr["vr_remark"].ToString());
-
-
-
-
-
-            }
-            conn.Close();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-            string query = ("insert into treatment_record (treatr_symptom,treatr_diagnose,treatr_status,disease_id,emp_doc_id,opd_id) values ('" + txtsystoms.Text + "','" + txtdis.Text + "',1,'" + txtiddis.Text + "','" + txtdocid.Text + "','"+lblopdid.Text+ "')");
-            cmd = new SqlCommand(query, conn);
-            sda = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-          //  MessageBox.Show("บันทึกการรักษาเรียบร้อย");
-            sda.Fill(dt);
-            query = ("Update queue_diag_room SET status_queue = 0 where opd_id = '"+lblopdid.Text+ "'");
-            cmd = new SqlCommand(query, conn);
-            sda = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            sda.Fill(dt);
-
-            clinic_doctor_service m3 = new clinic_doctor_service();
-            m3.Show();
-            clinic_doctor_service clnlog = new clinic_doctor_service();
-            clnlog.Close();
-            Visible = false;
-
-
-            MessageBox.Show("บันทึกการรักษาเรียบร้อย");
-       
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            conn.Open();
-            string query = ("select * from disease where disease = '"+comboBox1.SelectedItem.ToString()+"'");
-            cmd = new SqlCommand(query, conn);
-
-            sda = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            sda.Fill(dt);
-            sdr = cmd.ExecuteReader();
-
-            if (sdr.Read())
-            {
-
-                txtiddis.Text = (sdr["disease_id"].ToString());
-                txtdis.Text = (sdr["disease"].ToString());
-        
-              
-
-
-
-
-
-            }
-            conn.Close();
-
         }
 
         private void textBox20_TextChanged(object sender, EventArgs e)
         {
             conn.Open();
             dataGridView2.Rows.Clear();
-         dataGridView2.Refresh();
-            string query = ("select medi_id,medi_name,medi_qty from medical where medi_name LIKE '%"+textBox20.Text+"%'");
+            dataGridView2.Refresh();
+            string query = ("select medi_id,medi_name,medi_qty from medical where medi_name LIKE '%" + textBox20.Text + "%'");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -385,24 +305,39 @@ namespace Clinic2018
             {
                 int n = dataGridView2.Rows.Add();
 
-             
+
 
                 dataGridView2.Rows[n].Cells[0].Value = item["medi_id"].ToString();
                 dataGridView2.Rows[n].Cells[1].Value = item["medi_name"].ToString();
                 dataGridView2.Rows[n].Cells[2].Value = item["medi_qty"].ToString();
-        
+
 
             }
-/*
-            clinic_doctor_service m3 = new clinic_doctor_service();
-            m3.Show();
-            clinic_doctor_service clnlog = new clinic_doctor_service();
-            clnlog.Close();
-            Visible = false;*/
+            /*
+                        clinic_doctor_service m3 = new clinic_doctor_service();
+                        m3.Show();
+                        clinic_doctor_service clnlog = new clinic_doctor_service();
+                        clnlog.Close();
+                        Visible = false;*/
 
 
             conn.Close();
+        }
+        int selectedRow;
+        private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            selectedRow = e.RowIndex;
+            DataGridViewRow row = dataGridView4.Rows[selectedRow];
+            lblidt.Text = row.Cells[0].Value.ToString();
+            lblopd.Text = row.Cells[3].Value.ToString();
+            lbldoctor.Text = row.Cells[4].Value.ToString();
+        }
 
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            selectedRow = e.RowIndex;
+            DataGridViewRow row = dataGridView3.Rows[selectedRow];
+            lblidt.Text = row.Cells[3].Value.ToString();
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -412,19 +347,9 @@ namespace Clinic2018
             lblmed.Text = row.Cells[0].Value.ToString();
         }
 
-        private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            selectedRow = e.RowIndex;
-            DataGridViewRow row = dataGridView4.Rows[selectedRow];
-            lblidt.Text = row.Cells[0].Value.ToString();
-          lblopd.Text = row.Cells[3].Value.ToString();
-            lbldoctor.Text = row.Cells[4].Value.ToString();
-            //txtdocid.Text = row.Cells[5].Value.ToString();
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
-            string query = ("insert into  medicine_use (medi_use_remark,medi_use_date,medi_use_status,medi_num,treatr_id,medi_id)values ('" + txtre2.Text+"',SYSDATETIME(),1,'"+txtnum.Text+"','"+lblidt.Text+"','"+lblmed.Text+"')");
+            string query = ("insert into  medicine_use (medi_use_remark,medi_use_date,medi_use_status,medi_num,treatr_id,medi_id)values ('" + txtre2.Text + "',SYSDATETIME(),1,'" + txtnum.Text + "','" + lblidt.Text + "','" + lblmed.Text + "')");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -451,7 +376,7 @@ namespace Clinic2018
 
         private void button24_Click(object sender, EventArgs e)
         {
-            string query = ("UPDATE medicine_use SET medi_use_status = 2 where treatr_id = '"+lblidt.Text+"'");
+            string query = ("UPDATE medicine_use SET medi_use_status = 2 where treatr_id = '" + lblidt.Text + "'");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -473,23 +398,6 @@ namespace Clinic2018
 
 
             MessageBox.Show("จ่ายยาเรียบร้อย");
-        }
-
-        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            selectedRow = e.RowIndex;
-            DataGridViewRow row = dataGridView3.Rows[selectedRow];
-            lblidt.Text = row.Cells[3].Value.ToString();
-        }
-
-        private void lblposition_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblsername_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

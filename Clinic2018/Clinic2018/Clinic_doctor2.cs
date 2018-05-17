@@ -10,36 +10,25 @@ using System.Windows.Forms;
 
 namespace Clinic2018
 {
-    public partial class clinic_nurse : Form
+    public partial class Clinic_doctor2 : Form
     {
-        public clinic_nurse()
+        public Clinic_doctor2()
         {
             InitializeComponent();
-        }
-
-        private void clinic_nurse_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            clinc_nurse_service ser = new clinc_nurse_service();
-            ser.Show();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             clinic_login log = new clinic_login();
             log.Show();
-            clinic_nurse main = new clinic_nurse();
+            Clinic_doctor main = new Clinic_doctor();
             main.Close();
             Visible = false;
         }
 
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            clinic_app_ms ser = new clinic_app_ms();
+            clinic_doctor_service2 ser = new clinic_doctor_service2();
             ser.Show();
         }
     }

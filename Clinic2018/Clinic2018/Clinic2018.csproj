@@ -131,6 +131,12 @@
     <Compile Include="clinic_approve_step2.Designer.cs">
       <DependentUpon>clinic_approve_step2.cs</DependentUpon>
     </Compile>
+    <Compile Include="clinic_app_ms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clinic_app_ms.Designer.cs">
+      <DependentUpon>clinic_app_ms.cs</DependentUpon>
+    </Compile>
     <Compile Include="clinic_barcode.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,11 +167,35 @@
     <Compile Include="Clinic_doctor.Designer.cs">
       <DependentUpon>Clinic_doctor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clinic_doctor2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clinic_doctor2.Designer.cs">
+      <DependentUpon>Clinic_doctor2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="clinic_doctor3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clinic_doctor3.Designer.cs">
+      <DependentUpon>clinic_doctor3.cs</DependentUpon>
+    </Compile>
     <Compile Include="clinic_doctor_service.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="clinic_doctor_service.Designer.cs">
       <DependentUpon>clinic_doctor_service.cs</DependentUpon>
+    </Compile>
+    <Compile Include="clinic_doctor_service2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clinic_doctor_service2.Designer.cs">
+      <DependentUpon>clinic_doctor_service2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="clinic_doctor_service3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clinic_doctor_service3.Designer.cs">
+      <DependentUpon>clinic_doctor_service3.cs</DependentUpon>
     </Compile>
     <Compile Include="clinic_insert.cs">
       <SubType>Form</SubType>
@@ -395,6 +425,9 @@
     <EmbeddedResource Include="clinic_approve_step2.resx">
       <DependentUpon>clinic_approve_step2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="clinic_app_ms.resx">
+      <DependentUpon>clinic_app_ms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="clinic_barcode.resx">
       <DependentUpon>clinic_barcode.cs</DependentUpon>
     </EmbeddedResource>
@@ -410,8 +443,20 @@
     <EmbeddedResource Include="Clinic_doctor.resx">
       <DependentUpon>Clinic_doctor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Clinic_doctor2.resx">
+      <DependentUpon>Clinic_doctor2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="clinic_doctor3.resx">
+      <DependentUpon>clinic_doctor3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="clinic_doctor_service.resx">
       <DependentUpon>clinic_doctor_service.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="clinic_doctor_service2.resx">
+      <DependentUpon>clinic_doctor_service2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="clinic_doctor_service3.resx">
+      <DependentUpon>clinic_doctor_service3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="clinic_insert.resx">
       <DependentUpon>clinic_insert.cs</DependentUpon>

@@ -143,7 +143,7 @@ namespace Clinic2018
             int next = open + 20;
        
                 //   MessageBox.Show("เปลี่ยนเป็นสถานะ ปิด ");
-                string query = ("Update schedule_work_doctor set swd_status_room = 0 ,emp_doc_id = 0 ,swd_status = '" + comboBox2.SelectedItem.ToString() + "',swd_end_date = '' ");
+                string query = ("Update schedule_work_doctor set swd_status_room = 0 ,emp_doc_id = 0 ,swd_note = '',swd_status = '" + comboBox2.SelectedItem.ToString() + "',swd_end_date = '' ");
                 cmd = new SqlCommand(query, conn);
                 sda = new SqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -206,7 +206,7 @@ namespace Clinic2018
                 lbldate.Text = sdr["swd_end_date"].ToString();
                 if (today == end_date)
                 {
-                    query = ("Update schedule_work_doctor set swd_status_room = 0 ,emp_doc_id = 0 ,swd_status = 'ปิด'");
+                    query = ("Update schedule_work_doctor set swd_note = '' , swd_status_room = 0 ,emp_doc_id = 0 ,swd_status = 'ปิด'");
                     cmd = new SqlCommand(query, conn);
                     sda = new SqlDataAdapter(cmd);
                     dt = new DataTable();
@@ -220,7 +220,7 @@ namespace Clinic2018
                 else
                 {
                     // MessageBox.Show("ยังไม่หมดเวลา");
-                    query = ("Update schedule_work_doctor set swd_status_room = 0 ,emp_doc_id = 0 ,swd_status = 'เปิด'");
+                    query = ("Update schedule_work_doctor set swd_note = '',swd_status_room = 0 ,emp_doc_id = 0 ,swd_status = 'เปิด'");
                     cmd = new SqlCommand(query, conn);
                     sda = new SqlDataAdapter(cmd);
                     dt = new DataTable();

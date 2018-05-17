@@ -38,7 +38,9 @@ namespace Clinic2018
             user.Show();
         }
 
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
 
-
+        }
     }
 }

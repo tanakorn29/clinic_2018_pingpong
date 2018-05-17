@@ -24,7 +24,7 @@ namespace Clinic2018
         public clinic_time_attendance()
         {
             InitializeComponent();
-
+            /*
             string query = ("select id_time, start_time, end_time, date_work, remark,emp_ru_id, emp_doc_id from time_attendance");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
@@ -46,7 +46,7 @@ namespace Clinic2018
                 dataGridView1.Rows[n].Cells[6].Value = item["emp_doc_id"].ToString();
 
             }
-
+            */
 
         }
 
@@ -269,6 +269,11 @@ namespace Clinic2018
         private void textBox1_MouseClick(object sender, MouseEventArgs e)
         {
             textBox1.Clear();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

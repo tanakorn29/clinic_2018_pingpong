@@ -146,8 +146,8 @@ namespace Clinic2018
                 MessageBox.Show("ส่งเข้าห้องตรวจเรียบร้อย   คุณคิวที่    " + value);
             }
 
-        //    MessageBox.Show("ส่งคิวเรียบร้อย");
-
+            //    MessageBox.Show("ส่งคิวเรียบร้อย");
+            conn.Close();
 
 
 

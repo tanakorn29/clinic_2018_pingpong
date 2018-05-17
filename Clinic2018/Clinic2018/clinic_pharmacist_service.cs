@@ -22,7 +22,7 @@ namespace Clinic2018
         {
             InitializeComponent();
             conn.Open();
-            string  query = ("select medicine_use.medi_use_id , medical.medi_name, treatment_record.treatr_id, opd.opd_name from opd inner join treatment_record on treatment_record.opd_id = opd.opd_id inner join medicine_use on medicine_use.treatr_id = treatment_record.treatr_id inner join medical on medical.medi_id = medicine_use.medi_id where medicine_use.medi_use_status = 2");
+            string  query = ("select medicine_use.medi_use_id , medical.medi_name, medicine_use.medi_num,treatment_record.treatr_id, opd.opd_name from opd inner join treatment_record on treatment_record.opd_id = opd.opd_id inner join medicine_use on medicine_use.treatr_id = treatment_record.treatr_id inner join medical on medical.medi_id = medicine_use.medi_id where medicine_use.medi_use_status = 2");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -36,8 +36,9 @@ namespace Clinic2018
 
                 dataGridView3.Rows[n].Cells[0].Value = item["medi_use_id"].ToString();
                 dataGridView3.Rows[n].Cells[1].Value = item["medi_name"].ToString();
-                dataGridView3.Rows[n].Cells[2].Value = item["treatr_id"].ToString();
-                dataGridView3.Rows[n].Cells[3].Value = item["opd_name"].ToString();
+                dataGridView3.Rows[n].Cells[2].Value = item["medi_num"].ToString();
+                dataGridView3.Rows[n].Cells[3].Value = item["treatr_id"].ToString();
+                dataGridView3.Rows[n].Cells[4].Value = item["opd_name"].ToString();
             }
 
             query = ("select medi_id,medi_name,medi_qty from medical");
@@ -69,7 +70,8 @@ namespace Clinic2018
 
             textBox1.Text = row.Cells[0].Value.ToString();
             textBox2.Text = row.Cells[1].Value.ToString();
-            textBox4.Text = row.Cells[2].Value.ToString();
+            textBox3.Text = row.Cells[2].Value.ToString();
+            textBox4.Text = row.Cells[3].Value.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)

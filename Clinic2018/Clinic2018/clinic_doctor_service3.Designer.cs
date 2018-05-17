@@ -1,6 +1,6 @@
 ﻿namespace Clinic2018
 {
-    partial class clinic_doctor_service
+    partial class clinic_doctor_service3
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblposition = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtdocid = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -105,9 +106,6 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label15 = new System.Windows.Forms.Label();
-            this.lblposition = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -117,16 +115,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1370, 749);
-            this.panel1.TabIndex = 0;
             // 
             // groupBox3
             // 
@@ -139,12 +127,30 @@
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.groupBox5);
-            this.groupBox3.Location = new System.Drawing.Point(12, 124);
+            this.groupBox3.Location = new System.Drawing.Point(26, 124);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1319, 613);
-            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "ข้อมูลคนไข้";
+            // 
+            // lblposition
+            // 
+            this.lblposition.AutoSize = true;
+            this.lblposition.Location = new System.Drawing.Point(543, 18);
+            this.lblposition.Name = "lblposition";
+            this.lblposition.Size = new System.Drawing.Size(10, 13);
+            this.lblposition.TabIndex = 9;
+            this.lblposition.Text = "-";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(449, 19);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(71, 13);
+            this.label15.TabIndex = 8;
+            this.label15.Text = "ตำแหน่งงาน :";
             // 
             // groupBox2
             // 
@@ -226,7 +232,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(198, 21);
             this.comboBox1.TabIndex = 21;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -356,7 +361,6 @@
             this.txtw.Name = "txtw";
             this.txtw.Size = new System.Drawing.Size(100, 20);
             this.txtw.TabIndex = 2;
-            this.txtw.TextChanged += new System.EventHandler(this.txtw_TextChanged);
             // 
             // label27
             // 
@@ -402,7 +406,6 @@
             this.label21.Size = new System.Drawing.Size(58, 13);
             this.label21.TabIndex = 1;
             this.label21.Text = "หมายเหตุ :";
-            this.label21.Click += new System.EventHandler(this.label21_Click);
             // 
             // button2
             // 
@@ -421,7 +424,6 @@
             this.lblsername.Size = new System.Drawing.Size(10, 13);
             this.lblsername.TabIndex = 1;
             this.lblsername.Text = "-";
-            this.lblsername.Click += new System.EventHandler(this.lblsername_Click);
             // 
             // lblopdid
             // 
@@ -432,7 +434,6 @@
             this.lblopdid.TabIndex = 1;
             this.lblopdid.Text = "-";
             this.lblopdid.TextChanged += new System.EventHandler(this.lblopdid_TextChanged);
-            this.lblopdid.Click += new System.EventHandler(this.lblopdid_Click);
             // 
             // label13
             // 
@@ -760,11 +761,10 @@
             this.Column6,
             this.Column7,
             this.Column19});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(26, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(950, 106);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.TabIndex = 9;
             // 
             // Column1
             // 
@@ -811,36 +811,15 @@
             this.Column19.HeaderText = "ตำแหน่งงาน";
             this.Column19.Name = "Column19";
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(449, 19);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(71, 13);
-            this.label15.TabIndex = 8;
-            this.label15.Text = "ตำแหน่งงาน :";
-            // 
-            // lblposition
-            // 
-            this.lblposition.AutoSize = true;
-            this.lblposition.Location = new System.Drawing.Point(543, 18);
-            this.lblposition.Name = "lblposition";
-            this.lblposition.Size = new System.Drawing.Size(10, 13);
-            this.lblposition.TabIndex = 9;
-            this.lblposition.Text = "-";
-            this.lblposition.Click += new System.EventHandler(this.lblposition_Click);
-            // 
-            // clinic_doctor_service
+            // clinic_doctor_service3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 749);
-            this.Controls.Add(this.panel1);
-            this.Name = "clinic_doctor_service";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.dataGridView1);
+            this.Name = "clinic_doctor_service3";
             this.Text = "ข้อมูลการรักษา(แพทย์) - ระบบบริหารจัดการงานบริการงานแพทย์และอนามัย ";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.panel1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -859,11 +838,24 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label lblposition;
+        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtdocid;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtiddis;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtdis;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtsystoms;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtremark;
         private System.Windows.Forms.TextBox txthert;
         private System.Windows.Forms.TextBox txtd;
@@ -881,32 +873,14 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.Button button24;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtsystoms;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox txtdis;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox txtiddis;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtdocid;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox txtnum;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.Label lbldoctor;
         private System.Windows.Forms.Label lblmed;
         private System.Windows.Forms.Label lblopd;
@@ -914,19 +888,25 @@
         private System.Windows.Forms.TextBox txtre2;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
-        private System.Windows.Forms.TextBox txtnum;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -936,7 +916,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
-        private System.Windows.Forms.Label lblposition;
-        private System.Windows.Forms.Label label15;
     }
 }

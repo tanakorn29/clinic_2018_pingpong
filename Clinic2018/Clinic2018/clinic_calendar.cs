@@ -67,7 +67,7 @@ namespace Clinic2018
             // TODO: This line of code loads data into the 'dataSet1.districts' table. You can move, or remove it, as needed.
          //   this.districtsTableAdapter.Fill(this.dataSet1.districts);
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.CustomFormat = "dd-MM-yyyy";
+            dateTimePicker1.CustomFormat = "yyyy-MM-dd";
         }
 
 
@@ -208,6 +208,16 @@ namespace Clinic2018
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

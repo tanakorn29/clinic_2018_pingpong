@@ -19,17 +19,21 @@ namespace Clinic2018
             Application.SetCompatibleTextRenderingDefault(false);
             //    Application.Run(new clinic_approve());
             //     Application.Run(new clinic_login());
-            // Application.Run(new clinc_nurse_service());
+            //Application.Run(new clinc_nurse_service());
             //  Application.Run(new clinic_search());
             //Application.Run(new clinic_calendar());
             //Application.Run(new clinic_test_1()); 
             //    Application.Run(new clinic_login());
-            
-                       Application.Run(new clinic_time_attendance());
-                        Application.Run(new clinic_user_control());
-                        Application.Run(new clinic_login());
-                        
-            //     Application.Run(new sent_room());
+          //  Application.Run(new clinic_doctor3());
+           Application.Run(new clinic_time_attendance());
+            // Application.Run(new Clinic_doctor());
+            //Application.Run(new clinic_login());
+
+            //  Application.Run(new pageswd());
+
+            //   Application.Run(new clinic_app_ms());
+            //  Application.Run(new clinic_app_ms());
+            //  Application.Run(new sent_room());
             //       Application.Run(new Form5());
             //     Application.Run(new clinic_calendar());
             //    Application.Run(new clinic_timeschedule());
@@ -46,8 +50,8 @@ namespace Clinic2018
 
             //Application.Run(new clinic_doctor_service());
 
-         //   Application.Run(new clinic_pharmacist_service());
-            //     Application.Run(new clinic_user_control());
+            //   Application.Run(new clinic_pharmacist_service());
+        //    Application.Run(new clinic_user_control());
 
         }
     }
