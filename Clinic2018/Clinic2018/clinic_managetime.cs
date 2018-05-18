@@ -13,7 +13,7 @@ namespace Clinic2018
 {
     public partial class clinic_managetime : Form
     {
-        SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-26BM5UJ\SQLEXPRESS; Initial Catalog = Clinic2018; MultipleActiveResultSets = true; User ID = sa; Password = 1234");
+        SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-CGKA91D\SQLEXPRESS; Initial Catalog = Clinic2018; MultipleActiveResultSets = true; User ID = sa; Password = 1234");
         SqlCommand cmd;
         SqlDataAdapter sda;
         DataTable dt;
@@ -79,6 +79,11 @@ namespace Clinic2018
             clnlog.Close();
             Visible = false;
             MessageBox.Show("จัดตารางปฏิบัติงานแพทย์ประจำเดือน  " + comboBox1.SelectedItem.ToString());
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lb6 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lb8 = new System.Windows.Forms.Label();
-            this.lb9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnapp = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lb9 = new System.Windows.Forms.Label();
+            this.lb8 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lb6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -54,58 +54,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1106, 501);
             this.panel1.TabIndex = 0;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnapp);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.lb9);
-            this.groupBox3.Controls.Add(this.lb8);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.lb6);
-            this.groupBox3.Location = new System.Drawing.Point(668, 113);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(407, 210);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "รายละเอียดการนัด";
-            // 
-            // lb6
-            // 
-            this.lb6.AutoSize = true;
-            this.lb6.Location = new System.Drawing.Point(83, 26);
-            this.lb6.Name = "lb6";
-            this.lb6.Size = new System.Drawing.Size(65, 13);
-            this.lb6.TabIndex = 0;
-            this.lb6.Text = "แพทย์ผู้นัด :";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(154, 26);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(10, 13);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "-";
-            // 
-            // lb8
-            // 
-            this.lb8.AutoSize = true;
-            this.lb8.Location = new System.Drawing.Point(114, 50);
-            this.lb8.Name = "lb8";
-            this.lb8.Size = new System.Drawing.Size(34, 13);
-            this.lb8.TabIndex = 0;
-            this.lb8.Text = "วันที่ :";
-            // 
-            // lb9
-            // 
-            this.lb9.AutoSize = true;
-            this.lb9.Location = new System.Drawing.Point(113, 74);
-            this.lb9.Name = "lb9";
-            this.lb9.Size = new System.Drawing.Size(35, 13);
-            this.lb9.TabIndex = 0;
-            this.lb9.Text = "เวลา :";
             // 
             // groupBox1
             // 
@@ -124,15 +72,32 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(576, 425);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // label1
+            // groupBox3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(154, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(10, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "-";
+            this.groupBox3.Controls.Add(this.btnapp);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.lb9);
+            this.groupBox3.Controls.Add(this.lb8);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.lb6);
+            this.groupBox3.Location = new System.Drawing.Point(668, 113);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(407, 210);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "รายละเอียดการนัด";
+            // 
+            // btnapp
+            // 
+            this.btnapp.Location = new System.Drawing.Point(157, 142);
+            this.btnapp.Name = "btnapp";
+            this.btnapp.Size = new System.Drawing.Size(75, 23);
+            this.btnapp.TabIndex = 3;
+            this.btnapp.Text = "บันทึก";
+            this.btnapp.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -143,14 +108,50 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "-";
             // 
-            // btnapp
+            // label1
             // 
-            this.btnapp.Location = new System.Drawing.Point(157, 142);
-            this.btnapp.Name = "btnapp";
-            this.btnapp.Size = new System.Drawing.Size(75, 23);
-            this.btnapp.TabIndex = 3;
-            this.btnapp.Text = "บันทึก";
-            this.btnapp.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(154, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(10, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "-";
+            // 
+            // lb9
+            // 
+            this.lb9.AutoSize = true;
+            this.lb9.Location = new System.Drawing.Point(113, 74);
+            this.lb9.Name = "lb9";
+            this.lb9.Size = new System.Drawing.Size(35, 13);
+            this.lb9.TabIndex = 0;
+            this.lb9.Text = "เวลา :";
+            // 
+            // lb8
+            // 
+            this.lb8.AutoSize = true;
+            this.lb8.Location = new System.Drawing.Point(114, 50);
+            this.lb8.Name = "lb8";
+            this.lb8.Size = new System.Drawing.Size(34, 13);
+            this.lb8.TabIndex = 0;
+            this.lb8.Text = "วันที่ :";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(154, 26);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(10, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "-";
+            // 
+            // lb6
+            // 
+            this.lb6.AutoSize = true;
+            this.lb6.Location = new System.Drawing.Point(83, 26);
+            this.lb6.Name = "lb6";
+            this.lb6.Size = new System.Drawing.Size(65, 13);
+            this.lb6.TabIndex = 0;
+            this.lb6.Text = "แพทย์ผู้นัด :";
             // 
             // clinic_appointment
             // 
@@ -162,10 +163,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "รายละเอียดการนัด - ระบบบริหารจัดการงานบริการงานแพทย์และอนามัย ";
             this.panel1.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }

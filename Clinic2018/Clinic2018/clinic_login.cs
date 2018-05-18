@@ -22,7 +22,7 @@ namespace Clinic2018
         {
             try
             {
-                SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-26BM5UJ\SQLEXPRESS; Initial Catalog = Clinic2018; MultipleActiveResultSets=true; User ID = sa; Password = 1234");
+                SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-CGKA91D\SQLEXPRESS; Initial Catalog = Clinic2018; MultipleActiveResultSets=true; User ID = sa; Password = 1234");
                 SqlCommand cmd = new SqlCommand("select employee_ru.emp_ru_name,position.pos_name,time_attendance.remark from employee_ru inner join user_control on user_control.emp_ru_id = employee_ru.emp_ru_id inner join position on position.pos_id = employee_ru.pos_id inner join time_attendance on time_attendance.emp_ru_id = employee_ru.emp_ru_id  where uct_user=@uct_user and uct_password=@uct_password", conn);
                 SqlCommand cmd1 = new SqlCommand("select employee_doctor.emp_doc_name ,schedule_work_doctor.room_id,time_attendance.remark from employee_doctor inner join user_control on user_control.emp_doc_id = employee_doctor.emp_doc_id inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id = employee_doctor.emp_doc_id  inner join time_attendance on time_attendance.emp_doc_id = employee_doctor.emp_doc_id where uct_user=@uct_user and uct_password=@uct_password", conn);
                 conn.Open();
