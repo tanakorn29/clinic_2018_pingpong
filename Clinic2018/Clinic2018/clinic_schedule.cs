@@ -101,5 +101,14 @@ namespace Clinic2018
             txtday.Text = row.Cells[2].Value.ToString();
             txttime.Text = row.Cells[3].Value.ToString();
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            selectedRow = e.RowIndex;
+            DataGridViewRow row = dataGridView1.Rows[selectedRow];
+            txtname1.Text = row.Cells[1].Value.ToString();
+            txtday1.Text = row.Cells[2].Value.ToString();
+            txttime1.Text = row.Cells[3].Value.ToString();
+        }
     }
 }

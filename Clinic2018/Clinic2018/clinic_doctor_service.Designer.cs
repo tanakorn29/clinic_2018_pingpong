@@ -30,6 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblposition = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtdocid = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -105,8 +107,6 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label15 = new System.Windows.Forms.Label();
-            this.lblposition = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -125,7 +125,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1370, 749);
+            this.panel1.Size = new System.Drawing.Size(1348, 733);
             this.panel1.TabIndex = 0;
             // 
             // groupBox3
@@ -145,6 +145,25 @@
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "ข้อมูลคนไข้";
+            // 
+            // lblposition
+            // 
+            this.lblposition.AutoSize = true;
+            this.lblposition.Location = new System.Drawing.Point(543, 18);
+            this.lblposition.Name = "lblposition";
+            this.lblposition.Size = new System.Drawing.Size(10, 13);
+            this.lblposition.TabIndex = 9;
+            this.lblposition.Text = "-";
+            this.lblposition.Click += new System.EventHandler(this.lblposition_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(449, 19);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(71, 13);
+            this.label15.TabIndex = 8;
+            this.label15.Text = "ตำแหน่งงาน :";
             // 
             // groupBox2
             // 
@@ -811,30 +830,11 @@
             this.Column19.HeaderText = "ตำแหน่งงาน";
             this.Column19.Name = "Column19";
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(449, 19);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(71, 13);
-            this.label15.TabIndex = 8;
-            this.label15.Text = "ตำแหน่งงาน :";
-            // 
-            // lblposition
-            // 
-            this.lblposition.AutoSize = true;
-            this.lblposition.Location = new System.Drawing.Point(543, 18);
-            this.lblposition.Name = "lblposition";
-            this.lblposition.Size = new System.Drawing.Size(10, 13);
-            this.lblposition.TabIndex = 9;
-            this.lblposition.Text = "-";
-            this.lblposition.Click += new System.EventHandler(this.lblposition_Click);
-            // 
             // clinic_doctor_service
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1348, 733);
             this.Controls.Add(this.panel1);
             this.Name = "clinic_doctor_service";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

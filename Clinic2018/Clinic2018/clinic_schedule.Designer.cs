@@ -37,6 +37,9 @@
             this.สถานะสิทธิ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txttime = new System.Windows.Forms.TextBox();
             this.txtday = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.t3 = new System.Windows.Forms.Label();
@@ -51,8 +54,6 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txttime = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txttime1 = new System.Windows.Forms.TextBox();
@@ -61,7 +62,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -157,6 +157,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "จัดการแพทย์ทำงานแทน";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(153, 25);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(168, 24);
+            this.comboBox1.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label6.Location = new System.Drawing.Point(116, 104);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(31, 16);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "เวลา:";
+            // 
+            // txttime
+            // 
+            this.txttime.Enabled = false;
+            this.txttime.Location = new System.Drawing.Point(153, 101);
+            this.txttime.Name = "txttime";
+            this.txttime.Size = new System.Drawing.Size(168, 22);
+            this.txttime.TabIndex = 8;
+            // 
             // txtday
             // 
             this.txtday.Enabled = false;
@@ -242,6 +268,7 @@
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.Size = new System.Drawing.Size(594, 194);
             this.dataGridView2.TabIndex = 1;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -282,24 +309,6 @@
             this.dataGridViewTextBoxColumn6.HeaderText = "หมายเหตุ";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // txttime
-            // 
-            this.txttime.Enabled = false;
-            this.txttime.Location = new System.Drawing.Point(153, 101);
-            this.txttime.Name = "txttime";
-            this.txttime.Size = new System.Drawing.Size(168, 22);
-            this.txttime.TabIndex = 8;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label6.Location = new System.Drawing.Point(116, 104);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 16);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "เวลา:";
             // 
             // groupBox4
             // 
@@ -380,14 +389,6 @@
             this.label5.Size = new System.Drawing.Size(55, 16);
             this.label5.TabIndex = 0;
             this.label5.Text = "ชื่อแพทย์ :";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(153, 25);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(168, 24);
-            this.comboBox1.TabIndex = 10;
             // 
             // clinic_schedule
             // 
