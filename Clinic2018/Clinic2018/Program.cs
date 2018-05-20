@@ -25,12 +25,12 @@ namespace Clinic2018
             //Application.Run(new clinic_test_1()); 
             //    Application.Run(new clinic_login());
           //  Application.Run(new clinic_doctor3());
-         //  Application.Run(new clinic_schedule());
+         Application.Run(new clinic_schedule());
             // Application.Run(new Clinic_doctor());
-           Application.Run(new clinic_login());
+        //   Application.Run(new clinic_login());
            
 
-                   Application.Run(new clinic_time_attendance());
+          //         Application.Run(new clinic_time_attendance());
             //  Application.Run(new pageswd());
 
             //   Application.Run(new clinic_app_ms());

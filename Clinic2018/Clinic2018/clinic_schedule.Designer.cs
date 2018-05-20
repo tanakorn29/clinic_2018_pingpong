@@ -30,6 +30,7 @@
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,6 +38,8 @@
             this.สถานะสิทธิ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtswd = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txttime = new System.Windows.Forms.TextBox();
@@ -48,6 +51,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,11 +59,13 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtswdwork1 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txttime1 = new System.Windows.Forms.TextBox();
             this.txtday1 = new System.Windows.Forms.TextBox();
             this.txtname1 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
@@ -87,6 +93,7 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column6,
             this.Column5,
             this.Column1,
             this.Column3,
@@ -99,6 +106,12 @@
             this.dataGridView1.Size = new System.Drawing.Size(594, 194);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "รหัสอ้างอิงตารางงานแพทย์";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // Column5
             // 
@@ -142,6 +155,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtswd);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txttime);
@@ -150,17 +165,35 @@
             this.groupBox1.Controls.Add(this.t3);
             this.groupBox1.Controls.Add(this.t1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.groupBox1.Location = new System.Drawing.Point(120, 113);
+            this.groupBox1.Location = new System.Drawing.Point(120, 87);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(394, 193);
+            this.groupBox1.Size = new System.Drawing.Size(394, 219);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "จัดการแพทย์ทำงานแทน";
             // 
+            // txtswd
+            // 
+            this.txtswd.Enabled = false;
+            this.txtswd.Location = new System.Drawing.Point(153, 24);
+            this.txtswd.Name = "txtswd";
+            this.txtswd.Size = new System.Drawing.Size(168, 22);
+            this.txtswd.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label7.Location = new System.Drawing.Point(61, 27);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(86, 16);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "ลำดับตารางงาน :";
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(153, 25);
+            this.comboBox1.Location = new System.Drawing.Point(153, 59);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(168, 24);
             this.comboBox1.TabIndex = 10;
@@ -169,7 +202,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label6.Location = new System.Drawing.Point(116, 104);
+            this.label6.Location = new System.Drawing.Point(116, 138);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 16);
             this.label6.TabIndex = 9;
@@ -178,7 +211,7 @@
             // txttime
             // 
             this.txttime.Enabled = false;
-            this.txttime.Location = new System.Drawing.Point(153, 101);
+            this.txttime.Location = new System.Drawing.Point(153, 135);
             this.txttime.Name = "txttime";
             this.txttime.Size = new System.Drawing.Size(168, 22);
             this.txttime.TabIndex = 8;
@@ -186,14 +219,14 @@
             // txtday
             // 
             this.txtday.Enabled = false;
-            this.txtday.Location = new System.Drawing.Point(153, 64);
+            this.txtday.Location = new System.Drawing.Point(153, 98);
             this.txtday.Name = "txtday";
             this.txtday.Size = new System.Drawing.Size(168, 22);
             this.txtday.TabIndex = 7;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(153, 144);
+            this.button2.Location = new System.Drawing.Point(153, 178);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 23);
             this.button2.TabIndex = 3;
@@ -205,7 +238,7 @@
             // 
             this.t3.AutoSize = true;
             this.t3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.t3.Location = new System.Drawing.Point(77, 64);
+            this.t3.Location = new System.Drawing.Point(77, 98);
             this.t3.Name = "t3";
             this.t3.Size = new System.Drawing.Size(70, 16);
             this.t3.TabIndex = 0;
@@ -215,7 +248,7 @@
             // 
             this.t1.AutoSize = true;
             this.t1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.t1.Location = new System.Drawing.Point(92, 28);
+            this.t1.Location = new System.Drawing.Point(92, 62);
             this.t1.Name = "t1";
             this.t1.Size = new System.Drawing.Size(55, 16);
             this.t1.TabIndex = 0;
@@ -257,6 +290,7 @@
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column7,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
@@ -269,6 +303,12 @@
             this.dataGridView2.Size = new System.Drawing.Size(594, 194);
             this.dataGridView2.TabIndex = 1;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "รหัสอ้างอิงตารางงาน";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -312,26 +352,56 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.txtswdwork1);
+            this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.txttime1);
             this.groupBox4.Controls.Add(this.txtday1);
             this.groupBox4.Controls.Add(this.txtname1);
-            this.groupBox4.Controls.Add(this.button3);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.groupBox4.Location = new System.Drawing.Point(120, 316);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(394, 193);
+            this.groupBox4.Size = new System.Drawing.Size(394, 209);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "อนุมัติการเลื่อนปฏิบัติงาน";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(153, 180);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(141, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "อนุมัติการเลื่อนปฏิบัติงาน";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtswdwork1
+            // 
+            this.txtswdwork1.Enabled = false;
+            this.txtswdwork1.Location = new System.Drawing.Point(153, 21);
+            this.txtswdwork1.Name = "txtswdwork1";
+            this.txtswdwork1.Size = new System.Drawing.Size(168, 22);
+            this.txtswdwork1.TabIndex = 14;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label8.Location = new System.Drawing.Point(61, 24);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(86, 16);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "ลำดับตารางงาน :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label1.Location = new System.Drawing.Point(116, 104);
+            this.label1.Location = new System.Drawing.Point(116, 133);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 16);
             this.label1.TabIndex = 9;
@@ -340,7 +410,7 @@
             // txttime1
             // 
             this.txttime1.Enabled = false;
-            this.txttime1.Location = new System.Drawing.Point(153, 101);
+            this.txttime1.Location = new System.Drawing.Point(153, 130);
             this.txttime1.Name = "txttime1";
             this.txttime1.Size = new System.Drawing.Size(168, 22);
             this.txttime1.TabIndex = 8;
@@ -348,7 +418,7 @@
             // txtday1
             // 
             this.txtday1.Enabled = false;
-            this.txtday1.Location = new System.Drawing.Point(153, 64);
+            this.txtday1.Location = new System.Drawing.Point(153, 93);
             this.txtday1.Name = "txtday1";
             this.txtday1.Size = new System.Drawing.Size(168, 22);
             this.txtday1.TabIndex = 7;
@@ -356,25 +426,16 @@
             // txtname1
             // 
             this.txtname1.Enabled = false;
-            this.txtname1.Location = new System.Drawing.Point(153, 28);
+            this.txtname1.Location = new System.Drawing.Point(153, 57);
             this.txtname1.Name = "txtname1";
             this.txtname1.Size = new System.Drawing.Size(168, 22);
             this.txtname1.TabIndex = 5;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(153, 148);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(108, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "อนุมัติ";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label4.Location = new System.Drawing.Point(77, 64);
+            this.label4.Location = new System.Drawing.Point(77, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 16);
             this.label4.TabIndex = 0;
@@ -384,7 +445,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label5.Location = new System.Drawing.Point(92, 28);
+            this.label5.Location = new System.Drawing.Point(92, 57);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 16);
             this.label5.TabIndex = 0;
@@ -427,20 +488,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtday;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn สถานะสิทธิ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txttime;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -448,9 +497,27 @@
         private System.Windows.Forms.TextBox txttime1;
         private System.Windows.Forms.TextBox txtday1;
         private System.Windows.Forms.TextBox txtname1;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn สถานะสิทธิ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.TextBox txtswd;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.TextBox txtswdwork1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button1;
     }
 }

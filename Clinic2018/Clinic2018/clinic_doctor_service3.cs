@@ -399,5 +399,30 @@ namespace Clinic2018
 
             MessageBox.Show("จ่ายยาเรียบร้อย");
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string query = ("select * from disease where disease = '" + comboBox1.SelectedItem.ToString() + "'");
+            cmd = new SqlCommand(query, conn);
+
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+            sdr = cmd.ExecuteReader();
+
+            if (sdr.Read())
+            {
+
+                txtiddis.Text = (sdr["disease_id"].ToString());
+                txtdis.Text = (sdr["disease"].ToString());
+
+
+
+
+
+
+
+            }
+        }
     }
 }

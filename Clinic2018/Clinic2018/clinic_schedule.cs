@@ -21,7 +21,7 @@ namespace Clinic2018
         public clinic_schedule()
         {
             InitializeComponent();
-            string query = ("select employee_doctor.emp_doc_id,employee_doctor.emp_doc_name , schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.room_id,schedule_work_doctor.swd_note from schedule_work_doctor inner join employee_doctor on employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id where schedule_work_doctor.swd_status_room = 2");
+            string query = ("select schedule_work_doctor.swd_id,employee_doctor.emp_doc_id,employee_doctor.emp_doc_name , schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.room_id,schedule_work_doctor.swd_note from schedule_work_doctor inner join employee_doctor on employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id where schedule_work_doctor.swd_status_room = 2");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -31,20 +31,20 @@ namespace Clinic2018
             {
                 int n = dataGridView1.Rows.Add();
 
-
-                dataGridView1.Rows[n].Cells[0].Value = item["emp_doc_id"].ToString();
-                dataGridView1.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
-                dataGridView1.Rows[n].Cells[2].Value = item["swd_day_work"].ToString();
-                dataGridView1.Rows[n].Cells[3].Value = item["swd_start_time"].ToString();
-                dataGridView1.Rows[n].Cells[4].Value = item["room_id"].ToString();
-                dataGridView1.Rows[n].Cells[5].Value = item["swd_note"].ToString();
+                dataGridView1.Rows[n].Cells[0].Value = item["swd_id"].ToString();
+                dataGridView1.Rows[n].Cells[1].Value = item["emp_doc_id"].ToString();
+                dataGridView1.Rows[n].Cells[2].Value = item["emp_doc_name"].ToString();
+                dataGridView1.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
+                dataGridView1.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
+                dataGridView1.Rows[n].Cells[5].Value = item["room_id"].ToString();
+                dataGridView1.Rows[n].Cells[6].Value = item["swd_note"].ToString();
 
 
 
             }
 
 
-            query = ("select employee_doctor.emp_doc_id,employee_doctor.emp_doc_name , schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.room_id,schedule_work_doctor.swd_note from schedule_work_doctor inner join employee_doctor on employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id where schedule_work_doctor.swd_status_room = 3");
+            query = ("select schedule_work_doctor.swd_id,employee_doctor.emp_doc_id,employee_doctor.emp_doc_name , schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.room_id,schedule_work_doctor.swd_note from schedule_work_doctor inner join employee_doctor on employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id where schedule_work_doctor.swd_status_room = 3");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -54,13 +54,13 @@ namespace Clinic2018
             {
                 int n = dataGridView2.Rows.Add();
 
-
-                dataGridView2.Rows[n].Cells[0].Value = item["emp_doc_id"].ToString();
-                dataGridView2.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
-                dataGridView2.Rows[n].Cells[2].Value = item["swd_day_work"].ToString();
-                dataGridView2.Rows[n].Cells[3].Value = item["swd_start_time"].ToString();
-                dataGridView2.Rows[n].Cells[4].Value = item["room_id"].ToString();
-                dataGridView2.Rows[n].Cells[5].Value = item["swd_note"].ToString();
+                dataGridView2.Rows[n].Cells[0].Value = item["swd_id"].ToString();
+                dataGridView2.Rows[n].Cells[1].Value = item["emp_doc_id"].ToString();
+                dataGridView2.Rows[n].Cells[2].Value = item["emp_doc_name"].ToString();
+                dataGridView2.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
+                dataGridView2.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
+                dataGridView2.Rows[n].Cells[5].Value = item["room_id"].ToString();
+                dataGridView2.Rows[n].Cells[6].Value = item["swd_note"].ToString();
 
 
 
@@ -90,25 +90,111 @@ namespace Clinic2018
 
         private void button2_Click(object sender, EventArgs e)
         {
+            conn.Open();
+            string query = ("select * from employee_doctor where emp_doc_name = '" + comboBox1.SelectedItem.ToString() + "'");
+            cmd = new SqlCommand(query, conn);
 
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+            sdr = cmd.ExecuteReader();
+            if (sdr.Read())
+            {
+               int doc_id = Convert.ToInt32(sdr["emp_doc_id"].ToString());
+                query = ("Update schedule_work_doctor set swd_note = 'รอการอนุมัติทำงานแทน',swd_status_room = 4,emp_doc_id = '"+doc_id+"'where swd_id = '" + txtswd.Text+"'");
+                cmd = new SqlCommand(query, conn);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+
+
+                clinic_schedule m3 = new clinic_schedule();
+                m3.Show();
+                clinic_schedule clnlog = new clinic_schedule();
+                clnlog.Close();
+                Visible = false;
+
+
+
+
+
+
+
+            }
+         
+
+
+            conn.Close();
         }
         int selectedRow;
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             selectedRow = e.RowIndex;
             DataGridViewRow row = dataGridView1.Rows[selectedRow];
-         
-            txtday.Text = row.Cells[2].Value.ToString();
-            txttime.Text = row.Cells[3].Value.ToString();
+            txtswd.Text = row.Cells[0].Value.ToString();
+            txtday.Text = row.Cells[3].Value.ToString();
+            txttime.Text = row.Cells[4].Value.ToString();
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             selectedRow = e.RowIndex;
-            DataGridViewRow row = dataGridView1.Rows[selectedRow];
-            txtname1.Text = row.Cells[1].Value.ToString();
-            txtday1.Text = row.Cells[2].Value.ToString();
-            txttime1.Text = row.Cells[3].Value.ToString();
+            DataGridViewRow row = dataGridView2.Rows[selectedRow];
+            txtswdwork1.Text = row.Cells[0].Value.ToString();
+            txtname1.Text = row.Cells[2].Value.ToString();
+            txtday1.Text = row.Cells[3].Value.ToString();
+            txttime1.Text = row.Cells[4].Value.ToString();
+        }
+
+   
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            conn.Open();
+            string query = ("select * from employee_doctor where emp_doc_name = '" + txtname1.Text + "'");
+            cmd = new SqlCommand(query, conn);
+
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+            sdr = cmd.ExecuteReader();
+            if (sdr.Read())
+            {
+                int doc_id = Convert.ToInt32(sdr["emp_doc_id"].ToString());
+               // MessageBox.Show("" + doc_id);
+             
+                query = ("Update schedule_work_doctor set swd_note = '',swd_status_room = 1,emp_doc_id = '" + doc_id + "'where swd_id = '" + txtswdwork1.Text + "'");
+                cmd = new SqlCommand(query, conn);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+
+                query = ("update appointment SET status_approve = 3 where emp_doc_id = '"+doc_id+"'");
+                cmd = new SqlCommand(query, conn);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+
+                MessageBox.Show("อนุมัติการเลื่อนปฏิบัติงานเรียบร้อย");
+                clinic_schedule m3 = new clinic_schedule();
+                m3.Show();
+                clinic_schedule clnlog = new clinic_schedule();
+                clnlog.Close();
+                Visible = false;
+
+
+
+
+
+
+
+            }
+
+
+
+            conn.Close();
+
         }
     }
 }
