@@ -52,7 +52,7 @@ namespace Clinic2018
             {
                 string privil = sdr["privil_status"].ToString();
 
-                if(privil != "อนุญาต")
+                if(privil != "ได้รับสิทธิการรักษา")
                 {
                     S1.Text = (sdr["emp_ru_idcard"].ToString());
                     S2.Text = (sdr["emp_ru_name"].ToString());
@@ -112,7 +112,7 @@ namespace Clinic2018
             if (sdr.Read())
             {
                 string privil_status = sdr["privil_status"].ToString();
-                if(privil_status != "ได้รับสิทธิการรักษา")
+                if (privil_status != "ได้รับสิทธิการรักษา")
                 {
 
                     string emp_ru_name = sdr["emp_ru_name"].ToString();
@@ -156,104 +156,513 @@ namespace Clinic2018
                     if (sdr.Read())
                     {
                         int id = Convert.ToInt32(sdr["opd_id"].ToString());
-                        query = ("insert into privilege (privil_status,emp_ru_idcard,date,time,opd_id,emp_ru_id) values('ได้รับสิทธิการรักษา','" + emp_ru_idcard + "',SYSDATETIME(), SYSDATETIME(),'"+ id + "','"+ emp_ru_id + "');");
+
+                        query = ("select count(*) from privilege where emp_ru_id = '" + emp_ru_id + "'");
                         cmd = new SqlCommand(query, conn);
                         sda = new SqlDataAdapter(cmd);
                         dt = new DataTable();
                         sda.Fill(dt);
-                        query = ("select privil_id from privilege where emp_ru_idcard = '" + emp_ru_idcard + "'");
-                        cmd = new SqlCommand(query, conn);
-                        sdr = cmd.ExecuteReader();
-                        if (sdr.Read())
+                        //  sdr = cmd.ExecuteReader();
+                        int count_par = (int)cmd.ExecuteScalar();
+                        if (count_par == 1)
                         {
-                            int privil_id = Convert.ToInt32(sdr["privil_id"].ToString());
-                            query = ("update opd set privil_id = '"+ privil_id + "' where opd_idcard = '"+ emp_ru_idcard + "'");
+                            query = ("update privilege set privil_status = 'ได้รับสิทธิการรักษา', opd_id = '" + id + "' , date = SYSDATETIME() , time = SYSDATETIME() where emp_ru_id = '" + emp_ru_id + "'");
                             cmd = new SqlCommand(query, conn);
                             sda = new SqlDataAdapter(cmd);
                             dt = new DataTable();
                             sda.Fill(dt);
-
-
-                          
-                            query = ("insert into user_control (uct_user,uct_password,emp_ru_id,opd_id)values ('"+ emp_ru_idcard + "','"+ emp_ru_birthday + "','"+ emp_ru_id + "','"+ id + "');");
-
-
+                            query = ("select privil_id from privilege where emp_ru_idcard = '" + emp_ru_idcard + "'");
                             cmd = new SqlCommand(query, conn);
-                            sda = new SqlDataAdapter(cmd);
-                            dt = new DataTable();
-                            sda.Fill(dt);
+                            sdr = cmd.ExecuteReader();
+                            if (sdr.Read())
+                            {
+                                int privil_id = Convert.ToInt32(sdr["privil_id"].ToString());
+                                query = ("update opd set privil_id = '" + privil_id + "' where opd_idcard = '" + emp_ru_idcard + "'");
+                                cmd = new SqlCommand(query, conn);
+                                sda = new SqlDataAdapter(cmd);
+                                dt = new DataTable();
+                                sda.Fill(dt);
+
+
+
+                                query = ("insert into user_control (uct_user,uct_password,emp_ru_id,opd_id)values ('" + emp_ru_idcard + "','" + emp_ru_birthday + "','" + emp_ru_id + "','" + id + "');");
+
+
+                                cmd = new SqlCommand(query, conn);
+                                sda = new SqlDataAdapter(cmd);
+                                dt = new DataTable();
+                                sda.Fill(dt);
 
 
 
 
-                            string fontpath = Environment.GetEnvironmentVariable("SystemRoot") + "../fonts/THSarabun.ttf";
-                            BaseFont basefont = BaseFont.CreateFont(fontpath, BaseFont.IDENTITY_H, true);
-                            iTextSharp.text.Font arabicFont = new iTextSharp.text.Font(basefont, 24, iTextSharp.text.Font.NORMAL);
-                            var el = new Chunk();
-                            iTextSharp.text.Font f2 = new iTextSharp.text.Font(basefont, el.Font.Size,
-                                                            el.Font.Style, el.Font.Color);
-                            el.Font = f2;
+                                string fontpath = Environment.GetEnvironmentVariable("SystemRoot") + "../fonts/THSarabun.ttf";
+                                BaseFont basefont = BaseFont.CreateFont(fontpath, BaseFont.IDENTITY_H, true);
+                                iTextSharp.text.Font arabicFont = new iTextSharp.text.Font(basefont, 30, iTextSharp.text.Font.NORMAL);
+                                var el = new Chunk();
+                                iTextSharp.text.Font f2 = new iTextSharp.text.Font(basefont, el.Font.Size,
+                                                                el.Font.Style, el.Font.Color);
+                                el.Font = f2;
 
-                            Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
+                                Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
 
-                            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("" + S2.Text + ".pdf", FileMode.Create));
-                            doc.Open();
-                            iTextSharp.text.pdf.PdfContentByte cb = wri.DirectContent;
-                            iTextSharp.text.pdf.Barcode128 bc = new Barcode128();
-                            bc.TextAlignment = Element.ALIGN_LEFT;
-                            bc.Code = S1.Text;
-                            bc.StartStopText = false;
-                            bc.CodeType = iTextSharp.text.pdf.Barcode128.EAN13;
-                            bc.Extended = true;
+                                PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("" + S2.Text + ".pdf", FileMode.Create));
+                                doc.Open();
+                                iTextSharp.text.pdf.PdfContentByte cb = wri.DirectContent;
+                                iTextSharp.text.pdf.Barcode128 bc = new Barcode128();
+                                bc.TextAlignment = Element.ALIGN_LEFT;
+                                bc.Code = S1.Text;
+                                bc.StartStopText = false;
+                                bc.CodeType = iTextSharp.text.pdf.Barcode128.EAN13;
+                                bc.Extended = true;
 
-                            iTextSharp.text.Image img = bc.CreateImageWithBarcode(cb,
-                              iTextSharp.text.BaseColor.BLACK, iTextSharp.text.BaseColor.BLACK);
+                                iTextSharp.text.Image ru = iTextSharp.text.Image.GetInstance("ru.png");
+                                ru.ScalePercent(15f);
 
-                            cb.SetTextMatrix(5.5f, 3.0f);
-                            img.ScaleToFit(150, 200);
-                            img.SetAbsolutePosition(1.5f, 1);
 
-                            PdfPTable table = new PdfPTable(3);
-                            table.AddCell(new Phrase(70, "บัตรประจำตัวคนไข้", el.Font));
-                            table.AddCell(new Phrase(10, "" + S2.Text + "", el.Font));
-                            table.AddCell(img);
-                            table.AddCell(new Phrase(70, "รหัสเข้าสู่ระบบ", el.Font));
-                            table.AddCell(new Phrase(70, "รหัสชื่อผู้ใช้ " + S1.Text + "", el.Font));
-                            table.AddCell(new Phrase(10, "รหัสผ่าน" + S3.Text + "", el.Font));
-                            doc.Add(table);
-                            doc.Close();
-                            System.Diagnostics.Process.Start("" + S2.Text + ".pdf");
 
-                            clinic_approve_step2 appr2 = new clinic_approve_step2();
-                            appr2.Show();
-                            clinic_approve approve = new clinic_approve();
-                            approve.Close();
-                            Visible = false;
 
+                                iTextSharp.text.Image img = bc.CreateImageWithBarcode(cb,
+                                  iTextSharp.text.BaseColor.BLACK, iTextSharp.text.BaseColor.BLACK);
+
+                                cb.SetTextMatrix(100f, 150.5f);
+                                img.ScaleToFit(150, 159);
+                                img.SetAbsolutePosition(100f, 150f);
+                                //     doc.Add(ru);
+                                PdfPTable headerTable = new PdfPTable(2);
+                                headerTable.TotalWidth = 530f;
+                                headerTable.HorizontalAlignment = 0;
+                                headerTable.SpacingAfter = 20;
+                                //headerTable.DefaultCell.Border = Rectangle.NO_BORDER;
+
+                                float[] headerTableColWidth = new float[2];
+                                headerTableColWidth[0] = 220f;
+                                headerTableColWidth[1] = 310f;
+
+                                headerTable.SetWidths(headerTableColWidth);
+                                headerTable.LockedWidth = true;
+
+                                PdfPCell headerTableCell_0 = new PdfPCell(ru);
+                                headerTableCell_0.HorizontalAlignment = Element.ALIGN_LEFT;
+                                headerTableCell_0.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                                headerTable.AddCell(headerTableCell_0);
+
+                                PdfPCell head = new PdfPCell(new Phrase(70, "งานแพทย์และอนามัย มหาวิทยาลัยรามคำแหง\nบัตรประวัติผู้ป่วย", el.Font));
+
+                                head.HorizontalAlignment = Element.ALIGN_LEFT;
+                                head.VerticalAlignment = Element.ALIGN_BOTTOM;
+                                head.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                                //       headerTable.AddCell(new PdfPCell(ru));
+                                headerTable.AddCell(head);
+
+                                doc.Add(headerTable);
+                                //   Paragraph pa = new Paragraph(""+head+"");
+                                //   doc.Add(pa);
+                                PdfPTable table = new PdfPTable(1);
+                                //  table.AddCell(new PdfPCell(ru));
+                                table.AddCell(new PdfPCell(new Phrase(70, "ชื่อ             " + S2.Text + "\nวันเดือนปีเกิด            " + S3.Text + "\nอายุ" + emp_ru_age + " \nโทรศัพท์มือถือ        " + S4.Text + "\n เบอร์โทรศัพท์บ้าน             "           + emp_ru_telhome + "\nเบอร์โทรผู้ปกครอง           " + emp_ru_telparent + "\nที่อยู่ผู้ปกครอง           " + em_ru_addressparent + "\nชื่อบิดา            " + emp_ru_namedad + "\nชื่อมารดา            " + emp_ru_namemom + "\nชื่อสามีหรือภรรยา            " + emp_ru_namehusband_and_wife + "\nที่อยู่           " + emp_ru_address + "\nสังกัด      " + S5.Text + "\nรหัสเข้าสู่ระบบ\nรหัสชื่อผู้ใช้            " + S1.Text + "\nรหัสผ่าน              " + S3.Text + "", el.Font)));
+                                table.AddCell(new PdfPCell(img));
+                                //   table.AddCell(new Phrase(10, "" + S2.Text + "", el.Font));
+                                // table.AddCell(img);
+                                // table.AddCell(new Phrase(70, "รหัสเข้าสู่ระบบ", el.Font));
+                                //  table.AddCell(new Phrase(70, "รหัสชื่อผู้ใช้ " + S1.Text + "", el.Font));
+                                //  table.AddCell(new Phrase(10, "รหัสผ่าน" + S3.Text + "", el.Font));
+                                doc.Add(table);
+                                doc.Close();
+                                System.Diagnostics.Process.Start("" + S2.Text + ".pdf");
+
+                                clinic_approve_step2 appr2 = new clinic_approve_step2();
+                                appr2.Show();
+                                clinic_approve approve = new clinic_approve();
+                                approve.Close();
+                                Visible = false;
+
+
+                            }
                         }
+                        else
+                        {
+                            query = ("insert into privilege (privil_status,emp_ru_idcard,date,time,opd_id,emp_ru_id) values('ได้รับสิทธิการรักษา','" + emp_ru_idcard + "',SYSDATETIME(), SYSDATETIME(),'" + id + "','" + emp_ru_id + "');");
+                            cmd = new SqlCommand(query, conn);
+                            sda = new SqlDataAdapter(cmd);
+                            dt = new DataTable();
+                            sda.Fill(dt);
+                            query = ("select privil_id from privilege where emp_ru_idcard = '" + emp_ru_idcard + "'");
+                            cmd = new SqlCommand(query, conn);
+                            sdr = cmd.ExecuteReader();
+                            if (sdr.Read())
+                            {
+                                int privil_id = Convert.ToInt32(sdr["privil_id"].ToString());
+                                query = ("update opd set privil_id = '" + privil_id + "' where opd_idcard = '" + emp_ru_idcard + "'");
+                                cmd = new SqlCommand(query, conn);
+                                sda = new SqlDataAdapter(cmd);
+                                dt = new DataTable();
+                                sda.Fill(dt);
+
+
+
+                                query = ("insert into user_control (uct_user,uct_password,emp_ru_id,opd_id)values ('" + emp_ru_idcard + "','" + emp_ru_birthday + "','" + emp_ru_id + "','" + id + "');");
+
+
+                                cmd = new SqlCommand(query, conn);
+                                sda = new SqlDataAdapter(cmd);
+                                dt = new DataTable();
+                                sda.Fill(dt);
+
+
+
+
+                                string fontpath = Environment.GetEnvironmentVariable("SystemRoot") + "../fonts/THSarabun.ttf";
+                                BaseFont basefont = BaseFont.CreateFont(fontpath, BaseFont.IDENTITY_H, true);
+                                iTextSharp.text.Font arabicFont = new iTextSharp.text.Font(basefont, 30, iTextSharp.text.Font.NORMAL);
+                                var el = new Chunk();
+                                iTextSharp.text.Font f2 = new iTextSharp.text.Font(basefont, el.Font.Size,
+                                                                el.Font.Style, el.Font.Color);
+                                el.Font = f2;
+
+                                Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
+
+                                PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("" + S2.Text + ".pdf", FileMode.Create));
+                                doc.Open();
+                                iTextSharp.text.pdf.PdfContentByte cb = wri.DirectContent;
+                                iTextSharp.text.pdf.Barcode128 bc = new Barcode128();
+                                bc.TextAlignment = Element.ALIGN_LEFT;
+                                bc.Code = S1.Text;
+                                bc.StartStopText = false;
+                                bc.CodeType = iTextSharp.text.pdf.Barcode128.EAN13;
+                                bc.Extended = true;
+
+                                iTextSharp.text.Image ru = iTextSharp.text.Image.GetInstance("ru.png");
+                                ru.ScalePercent(15f);
+
+
+
+
+                                iTextSharp.text.Image img = bc.CreateImageWithBarcode(cb,
+                                  iTextSharp.text.BaseColor.BLACK, iTextSharp.text.BaseColor.BLACK);
+
+                                cb.SetTextMatrix(100f, 150.5f);
+                                img.ScaleToFit(150, 159);
+                                img.SetAbsolutePosition(100f, 150f);
+                                //     doc.Add(ru);
+                                PdfPTable headerTable = new PdfPTable(2);
+                                headerTable.TotalWidth = 530f;
+                                headerTable.HorizontalAlignment = 0;
+                                headerTable.SpacingAfter = 20;
+                                //headerTable.DefaultCell.Border = Rectangle.NO_BORDER;
+
+                                float[] headerTableColWidth = new float[2];
+                                headerTableColWidth[0] = 220f;
+                                headerTableColWidth[1] = 310f;
+
+                                headerTable.SetWidths(headerTableColWidth);
+                                headerTable.LockedWidth = true;
+
+                                PdfPCell headerTableCell_0 = new PdfPCell(ru);
+                                headerTableCell_0.HorizontalAlignment = Element.ALIGN_LEFT;
+                                headerTableCell_0.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                                headerTable.AddCell(headerTableCell_0);
+
+                                PdfPCell head = new PdfPCell(new Phrase(70, "งานแพทย์และอนามัย มหาวิทยาลัยรามคำแหง\nบัตรประวัติผู้ป่วย", el.Font));
+
+                                head.HorizontalAlignment = Element.ALIGN_LEFT;
+                                head.VerticalAlignment = Element.ALIGN_BOTTOM;
+                                head.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                                //       headerTable.AddCell(new PdfPCell(ru));
+                                headerTable.AddCell(head);
+
+                                doc.Add(headerTable);
+                                //   Paragraph pa = new Paragraph(""+head+"");
+                                //   doc.Add(pa);
+                                PdfPTable table = new PdfPTable(1);
+                                //  table.AddCell(new PdfPCell(ru));
+                                table.AddCell(new PdfPCell(new Phrase(70, "ชื่อ " + S2.Text + "\nวันเดือนปีเกิด " + S3.Text + "\nอายุ" + emp_ru_age + " \nโทรศัพท์มือถือ " + S4.Text + "\n เบอร์โทรศัพท์บ้าน" + emp_ru_telhome + "\nเบอร์โทรผู้ปกครอง" + emp_ru_telparent + "\nที่อยู่ผู้ปกครอง" + em_ru_addressparent + "\nชื่อบิดา" + emp_ru_namedad + "\nชื่อมารดา" + emp_ru_namemom + "\nชื่อสามีหรือภรรยา" + emp_ru_namehusband_and_wife + "\nที่อยู่" + emp_ru_address + "\nสังกัด  " + S5.Text + "\nรหัสเข้าสู่ระบบ\nรหัสชื่อผู้ใช้ " + S1.Text + "\nรหัสผ่าน " + S3.Text + "", el.Font)));
+                                table.AddCell(new PdfPCell(img));
+                                //   table.AddCell(new Phrase(10, "" + S2.Text + "", el.Font));
+                                // table.AddCell(img);
+                                // table.AddCell(new Phrase(70, "รหัสเข้าสู่ระบบ", el.Font));
+                                //  table.AddCell(new Phrase(70, "รหัสชื่อผู้ใช้ " + S1.Text + "", el.Font));
+                                //  table.AddCell(new Phrase(10, "รหัสผ่าน" + S3.Text + "", el.Font));
+                                doc.Add(table);
+                                doc.Close();
+                                System.Diagnostics.Process.Start("" + S2.Text + ".pdf");
+
+                                clinic_approve_step2 appr2 = new clinic_approve_step2();
+                                appr2.Show();
+                                clinic_approve approve = new clinic_approve();
+                                approve.Close();
+                                Visible = false;
+
+                            }
+                        }
+                        /*
+                        if (count_par == 1)
+                        {
+
+                            query = ("update privilege set privil_status = 'ได้รับสิทธิการรักษา', opd_id = '" + id + "' , date = SYSDATETIME() , time = SYSDATETIME() where emp_ru_id = '" + emp_ru_id + "'");
+                            cmd = new SqlCommand(query, conn);
+                            sda = new SqlDataAdapter(cmd);
+                            dt = new DataTable();
+                            sda.Fill(dt);
+                            query = ("select privil_id from privilege where emp_ru_idcard = '" + emp_ru_idcard + "'");
+                            cmd = new SqlCommand(query, conn);
+                            sdr = cmd.ExecuteReader();
+                            if (sdr.Read())
+                            {
+                                int privil_id = Convert.ToInt32(sdr["privil_id"].ToString());
+                                query = ("update opd set privil_id = '" + privil_id + "' where opd_idcard = '" + emp_ru_idcard + "'");
+                                cmd = new SqlCommand(query, conn);
+                                sda = new SqlDataAdapter(cmd);
+                                dt = new DataTable();
+                                sda.Fill(dt);
+
+
+
+                                query = ("insert into user_control (uct_user,uct_password,emp_ru_id,opd_id)values ('" + emp_ru_idcard + "','" + emp_ru_birthday + "','" + emp_ru_id + "','" + id + "');");
+
+
+                                cmd = new SqlCommand(query, conn);
+                                sda = new SqlDataAdapter(cmd);
+                                dt = new DataTable();
+                                sda.Fill(dt);
+
+
+
+
+                                string fontpath = Environment.GetEnvironmentVariable("SystemRoot") + "../fonts/THSarabun.ttf";
+                                BaseFont basefont = BaseFont.CreateFont(fontpath, BaseFont.IDENTITY_H, true);
+                                iTextSharp.text.Font arabicFont = new iTextSharp.text.Font(basefont, 30, iTextSharp.text.Font.NORMAL);
+                                var el = new Chunk();
+                                iTextSharp.text.Font f2 = new iTextSharp.text.Font(basefont, el.Font.Size,
+                                                                el.Font.Style, el.Font.Color);
+                                el.Font = f2;
+
+                                Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
+
+                                PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("" + S2.Text + ".pdf", FileMode.Create));
+                                doc.Open();
+                                iTextSharp.text.pdf.PdfContentByte cb = wri.DirectContent;
+                                iTextSharp.text.pdf.Barcode128 bc = new Barcode128();
+                                bc.TextAlignment = Element.ALIGN_LEFT;
+                                bc.Code = S1.Text;
+                                bc.StartStopText = false;
+                                bc.CodeType = iTextSharp.text.pdf.Barcode128.EAN13;
+                                bc.Extended = true;
+
+                                iTextSharp.text.Image ru = iTextSharp.text.Image.GetInstance("ru.png");
+                                ru.ScalePercent(15f);
+
+
+
+
+                                iTextSharp.text.Image img = bc.CreateImageWithBarcode(cb,
+                                  iTextSharp.text.BaseColor.BLACK, iTextSharp.text.BaseColor.BLACK);
+
+                                cb.SetTextMatrix(100f, 150.5f);
+                                img.ScaleToFit(150, 159);
+                                img.SetAbsolutePosition(100f, 150f);
+                                //     doc.Add(ru);
+                                PdfPTable headerTable = new PdfPTable(2);
+                                headerTable.TotalWidth = 530f;
+                                headerTable.HorizontalAlignment = 0;
+                                headerTable.SpacingAfter = 20;
+                                //headerTable.DefaultCell.Border = Rectangle.NO_BORDER;
+
+                                float[] headerTableColWidth = new float[2];
+                                headerTableColWidth[0] = 220f;
+                                headerTableColWidth[1] = 310f;
+
+                                headerTable.SetWidths(headerTableColWidth);
+                                headerTable.LockedWidth = true;
+
+                                PdfPCell headerTableCell_0 = new PdfPCell(ru);
+                                headerTableCell_0.HorizontalAlignment = Element.ALIGN_LEFT;
+                                headerTableCell_0.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                                headerTable.AddCell(headerTableCell_0);
+
+                                PdfPCell head = new PdfPCell(new Phrase(70, "งานแพทย์และอนามัย มหาวิทยาลัยรามคำแหง\nบัตรประวัติผู้ป่วย", el.Font));
+
+                                head.HorizontalAlignment = Element.ALIGN_LEFT;
+                                head.VerticalAlignment = Element.ALIGN_BOTTOM;
+                                head.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                                //       headerTable.AddCell(new PdfPCell(ru));
+                                headerTable.AddCell(head);
+
+                                doc.Add(headerTable);
+                                //   Paragraph pa = new Paragraph(""+head+"");
+                                //   doc.Add(pa);
+                                PdfPTable table = new PdfPTable(1);
+                                //  table.AddCell(new PdfPCell(ru));
+                                table.AddCell(new PdfPCell(new Phrase(70, "ชื่อ " + S2.Text + "\nวันเดือนปีเกิด " + S3.Text + "\nอายุ" + emp_ru_age + " \nโทรศัพท์มือถือ " + S4.Text + "\n เบอร์โทรศัพท์บ้าน" + emp_ru_telhome + "\nเบอร์โทรผู้ปกครอง" + emp_ru_telparent + "\nที่อยู่ผู้ปกครอง" + em_ru_addressparent + "\nชื่อบิดา" + emp_ru_namedad + "\nชื่อมารดา" + emp_ru_namemom + "\nชื่อสามีหรือภรรยา" + emp_ru_namehusband_and_wife + "\nที่อยู่" + emp_ru_address + "\nสังกัด  " + S5.Text + "\nรหัสเข้าสู่ระบบ\nรหัสชื่อผู้ใช้ " + S1.Text + "\nรหัสผ่าน " + S3.Text + "", el.Font)));
+                                table.AddCell(new PdfPCell(img));
+                                //   table.AddCell(new Phrase(10, "" + S2.Text + "", el.Font));
+                                // table.AddCell(img);
+                                // table.AddCell(new Phrase(70, "รหัสเข้าสู่ระบบ", el.Font));
+                                //  table.AddCell(new Phrase(70, "รหัสชื่อผู้ใช้ " + S1.Text + "", el.Font));
+                                //  table.AddCell(new Phrase(10, "รหัสผ่าน" + S3.Text + "", el.Font));
+                                doc.Add(table);
+                                doc.Close();
+                                System.Diagnostics.Process.Start("" + S2.Text + ".pdf");
+
+                                clinic_approve_step2 appr2 = new clinic_approve_step2();
+                                appr2.Show();
+                                clinic_approve approve = new clinic_approve();
+                                approve.Close();
+                                Visible = false;
+
+
+                            }
+                            else
+                            {
+                            */
+                            /*
+                                query = ("insert into privilege (privil_status,emp_ru_idcard,date,time,opd_id,emp_ru_id) values('ได้รับสิทธิการรักษา','" + emp_ru_idcard + "',SYSDATETIME(), SYSDATETIME(),'" + id + "','" + emp_ru_id + "');");
+                                cmd = new SqlCommand(query, conn);
+                                sda = new SqlDataAdapter(cmd);
+                                dt = new DataTable();
+                                sda.Fill(dt);
+                                query = ("select privil_id from privilege where emp_ru_idcard = '" + emp_ru_idcard + "'");
+                                cmd = new SqlCommand(query, conn);
+                                sdr = cmd.ExecuteReader();
+                                if (sdr.Read())
+                                {
+                                    int privil_id = Convert.ToInt32(sdr["privil_id"].ToString());
+                                    query = ("update opd set privil_id = '" + privil_id + "' where opd_idcard = '" + emp_ru_idcard + "'");
+                                    cmd = new SqlCommand(query, conn);
+                                    sda = new SqlDataAdapter(cmd);
+                                    dt = new DataTable();
+                                    sda.Fill(dt);
+
+
+
+                                    query = ("insert into user_control (uct_user,uct_password,emp_ru_id,opd_id)values ('" + emp_ru_idcard + "','" + emp_ru_birthday + "','" + emp_ru_id + "','" + id + "');");
+
+
+                                    cmd = new SqlCommand(query, conn);
+                                    sda = new SqlDataAdapter(cmd);
+                                    dt = new DataTable();
+                                    sda.Fill(dt);
+
+
+
+
+                                    string fontpath = Environment.GetEnvironmentVariable("SystemRoot") + "../fonts/THSarabun.ttf";
+                                    BaseFont basefont = BaseFont.CreateFont(fontpath, BaseFont.IDENTITY_H, true);
+                                    iTextSharp.text.Font arabicFont = new iTextSharp.text.Font(basefont, 30, iTextSharp.text.Font.NORMAL);
+                                    var el = new Chunk();
+                                    iTextSharp.text.Font f2 = new iTextSharp.text.Font(basefont, el.Font.Size,
+                                                                    el.Font.Style, el.Font.Color);
+                                    el.Font = f2;
+
+                                    Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
+
+                                    PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("" + S2.Text + ".pdf", FileMode.Create));
+                                    doc.Open();
+                                    iTextSharp.text.pdf.PdfContentByte cb = wri.DirectContent;
+                                    iTextSharp.text.pdf.Barcode128 bc = new Barcode128();
+                                    bc.TextAlignment = Element.ALIGN_LEFT;
+                                    bc.Code = S1.Text;
+                                    bc.StartStopText = false;
+                                    bc.CodeType = iTextSharp.text.pdf.Barcode128.EAN13;
+                                    bc.Extended = true;
+
+                                    iTextSharp.text.Image ru = iTextSharp.text.Image.GetInstance("ru.png");
+                                    ru.ScalePercent(15f);
+
+
+
+
+                                    iTextSharp.text.Image img = bc.CreateImageWithBarcode(cb,
+                                      iTextSharp.text.BaseColor.BLACK, iTextSharp.text.BaseColor.BLACK);
+
+                                    cb.SetTextMatrix(100f, 150.5f);
+                                    img.ScaleToFit(150, 159);
+                                    img.SetAbsolutePosition(100f, 150f);
+                                    //     doc.Add(ru);
+                                    PdfPTable headerTable = new PdfPTable(2);
+                                    headerTable.TotalWidth = 530f;
+                                    headerTable.HorizontalAlignment = 0;
+                                    headerTable.SpacingAfter = 20;
+                                    //headerTable.DefaultCell.Border = Rectangle.NO_BORDER;
+
+                                    float[] headerTableColWidth = new float[2];
+                                    headerTableColWidth[0] = 220f;
+                                    headerTableColWidth[1] = 310f;
+
+                                    headerTable.SetWidths(headerTableColWidth);
+                                    headerTable.LockedWidth = true;
+
+                                    PdfPCell headerTableCell_0 = new PdfPCell(ru);
+                                    headerTableCell_0.HorizontalAlignment = Element.ALIGN_LEFT;
+                                    headerTableCell_0.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                                    headerTable.AddCell(headerTableCell_0);
+
+                                    PdfPCell head = new PdfPCell(new Phrase(70, "งานแพทย์และอนามัย มหาวิทยาลัยรามคำแหง\nบัตรประวัติผู้ป่วย", el.Font));
+
+                                    head.HorizontalAlignment = Element.ALIGN_LEFT;
+                                    head.VerticalAlignment = Element.ALIGN_BOTTOM;
+                                    head.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                                    //       headerTable.AddCell(new PdfPCell(ru));
+                                    headerTable.AddCell(head);
+
+                                    doc.Add(headerTable);
+                                    //   Paragraph pa = new Paragraph(""+head+"");
+                                    //   doc.Add(pa);
+                                    PdfPTable table = new PdfPTable(1);
+                                    //  table.AddCell(new PdfPCell(ru));
+                                    table.AddCell(new PdfPCell(new Phrase(70, "ชื่อ " + S2.Text + "\nวันเดือนปีเกิด " + S3.Text + "\nอายุ" + emp_ru_age + " \nโทรศัพท์มือถือ " + S4.Text + "\n เบอร์โทรศัพท์บ้าน" + emp_ru_telhome + "\nเบอร์โทรผู้ปกครอง" + emp_ru_telparent + "\nที่อยู่ผู้ปกครอง" + em_ru_addressparent + "\nชื่อบิดา" + emp_ru_namedad + "\nชื่อมารดา" + emp_ru_namemom + "\nชื่อสามีหรือภรรยา" + emp_ru_namehusband_and_wife + "\nที่อยู่" + emp_ru_address + "\nสังกัด  " + S5.Text + "\nรหัสเข้าสู่ระบบ\nรหัสชื่อผู้ใช้ " + S1.Text + "\nรหัสผ่าน " + S3.Text + "", el.Font)));
+                                    table.AddCell(new PdfPCell(img));
+                                    //   table.AddCell(new Phrase(10, "" + S2.Text + "", el.Font));
+                                    // table.AddCell(img);
+                                    // table.AddCell(new Phrase(70, "รหัสเข้าสู่ระบบ", el.Font));
+                                    //  table.AddCell(new Phrase(70, "รหัสชื่อผู้ใช้ " + S1.Text + "", el.Font));
+                                    //  table.AddCell(new Phrase(10, "รหัสผ่าน" + S3.Text + "", el.Font));
+                                    doc.Add(table);
+                                    doc.Close();
+                                    System.Diagnostics.Process.Start("" + S2.Text + ".pdf");
+
+                                    clinic_approve_step2 appr2 = new clinic_approve_step2();
+                                    appr2.Show();
+                                    clinic_approve approve = new clinic_approve();
+                                    approve.Close();
+                                    Visible = false;
+
+                                }
+                                */
+
+
+                       
+
                     }
 
 
-                }
-           
-                
-                /*
-                query = ("insert into opd (opd_name,opd_idcard,opd_birthday,opd_age,opd_telwork,opd_telmobile ,opd_telhome,emp_ru_telparent,emp_ru_nameparent,em_ru_addressparent,emp_ru_namedad,eru.emp_ru_namemom,emp_ru_namehusband_and_wife,emp_ru_address)"+
-                    "values('"+emp_ru_name+" ','"+emp_ru_idcard+" ','"+emp_ru_birthday+" ','"+emp_ru_age+" ',"+
-                    "'"+emp_ru_age+" ','"+emp_ru_telwork+" ','"+emp_ru_telmobile+" ','"+emp_ru_telhome+" ',"+
-                    "'"+emp_ru_telparent+"','"+emp_ru_nameparent+" ','"+ em_ru_addressparent + " '"+
-                    ",'"+ emp_ru_namedad + "','"+emp_ru_namemom+" ','"+ emp_ru_namehusband_and_wife + " ',"+
-                    "'"+ emp_ru_address + "')");
-                cmd = new SqlCommand(query, conn);
-                sda = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                sda.Fill(dt);
+                        /*
+                        query = ("insert into opd (opd_name,opd_idcard,opd_birthday,opd_age,opd_telwork,opd_telmobile ,opd_telhome,emp_ru_telparent,emp_ru_nameparent,em_ru_addressparent,emp_ru_namedad,eru.emp_ru_namemom,emp_ru_namehusband_and_wife,emp_ru_address)"+
+                            "values('"+emp_ru_name+" ','"+emp_ru_idcard+" ','"+emp_ru_birthday+" ','"+emp_ru_age+" ',"+
+                            "'"+emp_ru_age+" ','"+emp_ru_telwork+" ','"+emp_ru_telmobile+" ','"+emp_ru_telhome+" ',"+
+                            "'"+emp_ru_telparent+"','"+emp_ru_nameparent+" ','"+ em_ru_addressparent + " '"+
+                            ",'"+ emp_ru_namedad + "','"+emp_ru_namemom+" ','"+ emp_ru_namehusband_and_wife + " ',"+
+                            "'"+ emp_ru_address + "')");
+                        cmd = new SqlCommand(query, conn);
+                        sda = new SqlDataAdapter(cmd);
+                        dt = new DataTable();
+                        sda.Fill(dt);
 
-    */
-             
-            }
-         
+            */
+
+
+                    }
+
+                }
+
+
+
+            conn.Close();
+
         }
+
+          
+        
 
         private void tb1_MouseClick(object sender, MouseEventArgs e)
         {
