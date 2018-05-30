@@ -402,6 +402,8 @@ namespace Clinic2018
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            conn.Open();
             string query = ("select * from disease where disease = '" + comboBox1.SelectedItem.ToString() + "'");
             cmd = new SqlCommand(query, conn);
 
@@ -423,6 +425,21 @@ namespace Clinic2018
 
 
             }
+
+
+            conn.Close();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            selectedRow = e.RowIndex;
+            DataGridViewRow row = dataGridView1.Rows[selectedRow];
+            lblopdid.Text = row.Cells[6].Value.ToString();
+            lblsername.Text = row.Cells[7].Value.ToString();
+            // lblopd.Text = row.Cells[7].Value.ToString();
+            txtdocid.Text = row.Cells[5].Value.ToString();
+            string position = row.Cells[8].Value.ToString();
+            lblposition.Text = position;
         }
     }
 }

@@ -425,6 +425,7 @@ namespace Clinic2018
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            conn.Open();
             string query = ("select * from disease where disease = '" + comboBox1.SelectedItem.ToString() + "'");
             cmd = new SqlCommand(query, conn);
 
@@ -446,6 +447,8 @@ namespace Clinic2018
 
 
             }
+
+            conn.Close();
         }
     }
 }

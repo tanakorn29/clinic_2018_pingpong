@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -66,6 +67,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lblidapp = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -79,6 +81,8 @@
             this.lbldocname = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.lbltime1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -358,16 +362,16 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(179, 26);
+            this.textBox3.Location = new System.Drawing.Point(80, 22);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(211, 20);
+            this.textBox3.Size = new System.Drawing.Size(163, 20);
             this.textBox3.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label2.Location = new System.Drawing.Point(123, 26);
+            this.label2.Location = new System.Drawing.Point(39, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 16);
             this.label2.TabIndex = 1;
@@ -382,7 +386,8 @@
             this.Column6,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
+            this.dataGridViewTextBoxColumn4,
+            this.Column8});
             this.dataGridView2.Location = new System.Drawing.Point(16, 68);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(508, 197);
@@ -418,6 +423,11 @@
             // 
             this.dataGridViewTextBoxColumn4.HeaderText = "แพทย์ผู้ทำการรักษา";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "วัน";
+            this.Column8.Name = "Column8";
             // 
             // groupBox5
             // 
@@ -549,11 +559,26 @@
             this.label5.TabIndex = 15;
             this.label5.Text = "ข้อมูลการนัดหมาย";
             // 
+            // lbltime1
+            // 
+            this.lbltime1.AutoSize = true;
+            this.lbltime1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.lbltime1.Location = new System.Drawing.Point(1006, 15);
+            this.lbltime1.Name = "lbltime1";
+            this.lbltime1.Size = new System.Drawing.Size(66, 25);
+            this.lbltime1.TabIndex = 16;
+            this.lbltime1.Text = "00.00";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // clinic_app_ms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1107, 749);
+            this.Controls.Add(this.lbltime1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -611,12 +636,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbldocname;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Label lblname;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lbltime;
@@ -633,5 +652,14 @@
         private System.Windows.Forms.Label lblidapp;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.Label lbltime1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

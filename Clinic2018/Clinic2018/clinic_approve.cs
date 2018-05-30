@@ -56,7 +56,10 @@ namespace Clinic2018
                 {
                     S1.Text = (sdr["emp_ru_idcard"].ToString());
                     S2.Text = (sdr["emp_ru_name"].ToString());
-                    S3.Text = (sdr["emp_ru_birthday"].ToString());
+                    DateTime birthday = Convert.ToDateTime(sdr["emp_ru_birthday"].ToString());
+                    string date_birth = String.Format("{0:yyyy-MM-dd}", birthday);
+                    S3.Text = (date_birth);
+
                     S4.Text = (sdr["emp_ru_telmobile"].ToString());
                     S5.Text = (sdr["workplace"].ToString());
                     S6.Text = (sdr["privil_status"].ToString());
@@ -117,7 +120,9 @@ namespace Clinic2018
 
                     string emp_ru_name = sdr["emp_ru_name"].ToString();
                     string emp_ru_idcard = sdr["emp_ru_idcard"].ToString();
-                    string emp_ru_birthday = sdr["emp_ru_birthday"].ToString();
+                    DateTime birthday = Convert.ToDateTime(sdr["emp_ru_birthday"].ToString());
+                    string date_birth = String.Format("{0:yyyy-MM-dd}", birthday);
+                    string emp_ru_birthday = date_birth;
                     string emp_ru_age = sdr["emp_ru_age"].ToString();
                     string emp_ru_telwork = sdr["emp_ru_telwork"].ToString();
                     string emp_ru_telmobile = sdr["emp_ru_telmobile"].ToString();

@@ -371,7 +371,7 @@
             // txtw
             // 
             this.txtw.Enabled = false;
-            this.txtw.Location = new System.Drawing.Point(105, 10);
+            this.txtw.Location = new System.Drawing.Point(111, 8);
             this.txtw.Name = "txtw";
             this.txtw.Size = new System.Drawing.Size(100, 20);
             this.txtw.TabIndex = 2;
@@ -389,7 +389,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(8, 73);
+            this.label26.Location = new System.Drawing.Point(8, 70);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(97, 13);
             this.label26.TabIndex = 1;

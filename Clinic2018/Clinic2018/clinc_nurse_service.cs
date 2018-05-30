@@ -12,6 +12,7 @@ using System.Globalization;
 
 namespace Clinic2018
 {
+
     public partial class clinc_nurse_service : Form
     {
         SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-CGKA91D\SQLEXPRESS; Initial Catalog = Clinic2018; MultipleActiveResultSets=true; User ID = sa; Password = 1234");
@@ -19,6 +20,7 @@ namespace Clinic2018
         SqlDataAdapter sda;
         DataTable dt;
         SqlDataReader sdr;
+        Timer t = new Timer();
         public clinc_nurse_service()
         {
             InitializeComponent();
@@ -92,10 +94,13 @@ namespace Clinic2018
         {
             // TODO: This line of code loads data into the 'dataSet2.queue_visit_record' table. You can move, or remove it, as needed.
             //    this.queue_visit_recordTableAdapter.Fill(this.dataSet2.queue_visit_record);
-
+            t.Interval = 1000;
+            t.Tick += new EventHandler(this.t_Tick);
+            t.Start();
             lblday.Text = DateTime.Now.ToString("dddd", new CultureInfo("th-TH"));
             conn.Open();
-            string query = ("select schedule_work_doctor.swd_id,empdoc.emp_doc_name,empdoc.emp_doc_specialist,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id from employee_doctor empdoc inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id  = empdoc.emp_doc_id inner join room on room.room_id = schedule_work_doctor.room_id where swd_status_room = 1 AND room.room_status = 1 AND swd_day_work = '" + lblday.Text + "'");
+            /*
+            string query = ("select schedule_work_doctor.swd_id,empdoc.emp_doc_name,empdoc.emp_doc_specialist,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id from employee_doctor empdoc inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id  = empdoc.emp_doc_id inner join room on room.room_id = schedule_work_doctor.room_id inner join time_attendance on time_attendance.emp_doc_id = empdoc.emp_doc_id where swd_status_room = 1 AND room.room_status = 1 AND swd_day_work = '" + lblday.Text + "' AND remark = 'เข้างาน'");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -118,6 +123,7 @@ namespace Clinic2018
 
             }
 
+            */
             conn.Close();
 
         }
@@ -231,6 +237,206 @@ namespace Clinic2018
         {
 
         }
+
+        private void t_Tick(object sender, EventArgs e)
+        {
+            int hh = DateTime.Now.Hour;
+            int mm = DateTime.Now.Minute;
+            //   int ss = DateTime.Now.Second;
+
+            String time = "";
+
+            if (hh < 10)
+            {
+                time += "0" + hh;
+            }
+            else
+            {
+                time += hh;
+            }
+            time += ".";
+
+            if (mm < 10)
+            {
+                time += "0" + mm;
+            }
+            else
+            {
+                time += mm;
+            }
+            /*
+            time += ":";
+
+            if (ss < 10)
+            {
+                time += "0" + ss;
+            }
+            else
+            {
+                time += ss;
+            }
+            */
+           timelbl.Text = time;
+
+        }
+
+        private void timelbl_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+
+
+          
+            lblday.Text = DateTime.Now.ToString("dddd", new CultureInfo("th-TH"));
+            conn.Open();
+
+
+
+
+
+            double time = Convert.ToDouble(timelbl.Text);
+            if (time <= 12.00)
+            {
+
+                string query = ("select schedule_work_doctor.swd_id,empdoc.emp_doc_name,empdoc.emp_doc_specialist,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id from employee_doctor empdoc inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id  = empdoc.emp_doc_id inner join room on room.room_id = schedule_work_doctor.room_id inner join time_attendance on time_attendance.emp_doc_id = empdoc.emp_doc_id where swd_status_room = 1 AND room.room_status = 1 AND swd_day_work = '" + lblday.Text + "' AND remark = 'เข้างาน' AND swd_timezone = 'เช้า'");
+                cmd = new SqlCommand(query, conn);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+
+                foreach (DataRow item in dt.Rows)
+                {
+                    int n = dataGridView2.Rows.Add();
+
+
+
+                    dataGridView2.Rows[n].Cells[0].Value = item["swd_id"].ToString();
+                    dataGridView2.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
+                    dataGridView2.Rows[n].Cells[2].Value = item["emp_doc_specialist"].ToString();
+                    dataGridView2.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
+                    dataGridView2.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
+                    dataGridView2.Rows[n].Cells[5].Value = item["swd_end_time"].ToString();
+                    dataGridView2.Rows[n].Cells[6].Value = item["swd_note"].ToString();
+                    dataGridView2.Rows[n].Cells[7].Value = item["room_id"].ToString();
+
+                }
+
+            }
+            else if (time >= 12.01)
+            {
+
+                string query = ("select schedule_work_doctor.swd_id,empdoc.emp_doc_name,empdoc.emp_doc_specialist,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id from employee_doctor empdoc inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id  = empdoc.emp_doc_id inner join room on room.room_id = schedule_work_doctor.room_id inner join time_attendance on time_attendance.emp_doc_id = empdoc.emp_doc_id where swd_status_room = 1 AND room.room_status = 1 AND swd_day_work = '" + lblday.Text + "' AND remark = 'เข้างาน' AND swd_timezone = 'บ่าย'");
+                cmd = new SqlCommand(query, conn);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+
+                foreach (DataRow item in dt.Rows)
+                {
+                    int n = dataGridView2.Rows.Add();
+
+
+
+                    dataGridView2.Rows[n].Cells[0].Value = item["swd_id"].ToString();
+                    dataGridView2.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
+                    dataGridView2.Rows[n].Cells[2].Value = item["emp_doc_specialist"].ToString();
+                    dataGridView2.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
+                    dataGridView2.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
+                    dataGridView2.Rows[n].Cells[5].Value = item["swd_end_time"].ToString();
+                    dataGridView2.Rows[n].Cells[6].Value = item["swd_note"].ToString();
+                    dataGridView2.Rows[n].Cells[7].Value = item["room_id"].ToString();
+
+                }
+            }
+
+            conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                //  MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OKCancel);
+            }
+        }
+
+        private void timelbl_Click(object sender, EventArgs e)
+        {
+
+        }
+        /*
+private void lbltime_TextChanged(object sender, EventArgs e)
+{
+lblday.Text = DateTime.Now.ToString("dddd", new CultureInfo("th-TH"));
+conn.Open();
+
+
+
+
+
+double time = Convert.ToDouble(lbltime.Text);
+if (time <= 08.30)
+{
+
+string query = ("select schedule_work_doctor.swd_id,empdoc.emp_doc_name,empdoc.emp_doc_specialist,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id from employee_doctor empdoc inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id  = empdoc.emp_doc_id inner join room on room.room_id = schedule_work_doctor.room_id inner join time_attendance on time_attendance.emp_doc_id = empdoc.emp_doc_id where swd_status_room = 1 AND room.room_status = 1 AND swd_day_work = '" + lblday.Text + "' AND remark = 'เข้างาน' AND swd_timezone = 'เช้า'");
+cmd = new SqlCommand(query, conn);
+sda = new SqlDataAdapter(cmd);
+dt = new DataTable();
+sda.Fill(dt);
+
+foreach (DataRow item in dt.Rows)
+{
+  int n = dataGridView2.Rows.Add();
+
+
+
+  dataGridView2.Rows[n].Cells[0].Value = item["swd_id"].ToString();
+  dataGridView2.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
+  dataGridView2.Rows[n].Cells[2].Value = item["emp_doc_specialist"].ToString();
+  dataGridView2.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
+  dataGridView2.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
+  dataGridView2.Rows[n].Cells[5].Value = item["swd_end_time"].ToString();
+  dataGridView2.Rows[n].Cells[6].Value = item["swd_note"].ToString();
+  dataGridView2.Rows[n].Cells[7].Value = item["room_id"].ToString();
+
+}
+
+}
+else if (time >= 13.00)
+{
+
+string query = ("select schedule_work_doctor.swd_id,empdoc.emp_doc_name,empdoc.emp_doc_specialist,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id from employee_doctor empdoc inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id  = empdoc.emp_doc_id inner join room on room.room_id = schedule_work_doctor.room_id inner join time_attendance on time_attendance.emp_doc_id = empdoc.emp_doc_id where swd_status_room = 1 AND room.room_status = 1 AND swd_day_work = '" + lblday.Text + "' AND remark = 'เข้างาน' AND swd_timezone = 'บ่าย'");
+cmd = new SqlCommand(query, conn);
+sda = new SqlDataAdapter(cmd);
+dt = new DataTable();
+sda.Fill(dt);
+
+foreach (DataRow item in dt.Rows)
+{
+  int n = dataGridView2.Rows.Add();
+
+
+
+  dataGridView2.Rows[n].Cells[0].Value = item["swd_id"].ToString();
+  dataGridView2.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
+  dataGridView2.Rows[n].Cells[2].Value = item["emp_doc_specialist"].ToString();
+  dataGridView2.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
+  dataGridView2.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
+  dataGridView2.Rows[n].Cells[5].Value = item["swd_end_time"].ToString();
+  dataGridView2.Rows[n].Cells[6].Value = item["swd_note"].ToString();
+  dataGridView2.Rows[n].Cells[7].Value = item["room_id"].ToString();
+
+}
+}
+
+conn.Close();
+}
+
+private void lbltime_Click(object sender, EventArgs e)
+{
+
+}
+*/
 
 
         /*

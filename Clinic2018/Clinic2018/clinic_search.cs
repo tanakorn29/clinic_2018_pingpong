@@ -86,7 +86,9 @@ namespace Clinic2018
                    {
                         dataGridView1.Rows[n].Cells[0].Value = item["emp_ru_idcard"].ToString();
                         dataGridView1.Rows[n].Cells[1].Value = item["emp_ru_name"].ToString();
-                        dataGridView1.Rows[n].Cells[2].Value = item["emp_ru_birthday"].ToString();
+                        DateTime birthday = Convert.ToDateTime(item["emp_ru_birthday"].ToString());
+                        string date_birth = String.Format("{0:yyyy-MM-dd}", birthday);
+                        dataGridView1.Rows[n].Cells[2].Value = date_birth;
                         dataGridView1.Rows[n].Cells[3].Value = item["emp_ru_telmobile"].ToString();
                        dataGridView1.Rows[n].Cells[4].Value = item["privil_status"].ToString();
 

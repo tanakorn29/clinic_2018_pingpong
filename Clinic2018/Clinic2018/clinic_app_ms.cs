@@ -19,12 +19,12 @@ namespace Clinic2018
         SqlDataAdapter sda;
         DataTable dt;
         SqlDataReader sdr;
-    
+        Timer t = new Timer();
 
         public clinic_app_ms()
         {
             InitializeComponent();
-            textBox2.Text = "00:00";
+            textBox2.Text = "00.00";
             conn.Open();
             string query = ("select appointment.app_id ,opd.opd_idcard,opd.opd_name,employee_doctor.emp_doc_id,employee_doctor.emp_doc_name from appointment inner join employee_doctor on employee_doctor.emp_doc_id = appointment.emp_doc_id inner join opd on opd.opd_id = appointment.opd_id  where status_approve = 1");
             cmd = new SqlCommand(query, conn);
@@ -48,7 +48,7 @@ namespace Clinic2018
 
             }
 
-            query = ("select appointment.app_id,appointment.app_date,appointment.app_time ,opd.opd_idcard,opd.opd_name,employee_doctor.emp_doc_name from appointment inner join employee_doctor on employee_doctor.emp_doc_id = appointment.emp_doc_id inner join opd on opd.opd_id = appointment.opd_id where status_approve = 2");
+            query = ("select appointment.app_id,appointment.app_date,appointment.app_time ,opd.opd_idcard,opd.opd_name,employee_doctor.emp_doc_name,appointment.day from appointment inner join employee_doctor on employee_doctor.emp_doc_id = appointment.emp_doc_id inner join opd on opd.opd_id = appointment.opd_id where status_approve = 2");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -63,10 +63,11 @@ namespace Clinic2018
                 dataGridView2.Rows[n].Cells[0].Value = item["app_id"].ToString();
                 dataGridView2.Rows[n].Cells[1].Value = item["app_date"].ToString();
                 dataGridView2.Rows[n].Cells[2].Value = item["app_time"].ToString();
+            //    dataGridView2.Rows[n].Cells[3].Value = item["day"].ToString();
                 dataGridView2.Rows[n].Cells[3].Value = item["opd_idcard"].ToString();
                 dataGridView2.Rows[n].Cells[4].Value = item["opd_name"].ToString();
                 dataGridView2.Rows[n].Cells[5].Value = item["emp_doc_name"].ToString();
-                //  dataGridView1.Rows[n].Cells[4].Value = item["room_id"].ToString();
+                dataGridView2.Rows[n].Cells[6].Value = item["day"].ToString();
 
 
             }
@@ -75,6 +76,10 @@ namespace Clinic2018
   
         private void clinic_app_ms_Load(object sender, EventArgs e)
         {
+            t.Interval = 1000;
+            t.Tick += new EventHandler(this.timer1_Tick);
+            t.Start();
+
             dtp1.Format = DateTimePickerFormat.Custom;
             dtp1.CustomFormat = "yyyy-MM-dd";
             //lblday.Text = DateTime.Now.ToString("dddd", new CultureInfo("th-TH"));
@@ -84,23 +89,158 @@ namespace Clinic2018
         {
             //   MessageBox.Show(lbltime.Text);
             conn.Open();
-        
-            string query = ("Update appointment SET app_date = '"+dtp1.Text+"' , app_time = '"+textBox2.Text+"',app_remark = '"+txtremark.Text+ "',status_approve = 2,status_app = 1 where app_id = '" + lb11.Text+"'");
-            cmd = new SqlCommand(query, conn);
-            sda = new SqlDataAdapter(cmd);
-            dt = new DataTable();
+            DateTime date = Convert.ToDateTime(dtp1.Text);
+            string day = String.Format("{0:dddd}", date);
+            double time = Convert.ToDouble(textBox2.Text);
 
-            sda.Fill(dt);
+            if (time <= 12.00)
+            {
+                string query = ("select count(*) from schedule_work_doctor where emp_doc_id = '" +lbliddoc.Text +"' AND swd_timezone = 'เช้า' AND swd_day_work = '"+day+"'");
+                cmd = new SqlCommand(query, conn);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+                int count_appswd = (int)cmd.ExecuteScalar();
+                if(count_appswd == 1)
+                {
 
-            clinic_app_ms doc1 = new clinic_app_ms();
-            doc1.Show();
-            clinic_app_ms clnlog = new clinic_app_ms();
-            clnlog.Close();
-            Visible = false;
-            MessageBox.Show("นัดหมายเรียบร้อย");
+                   // MessageBox.Show("เช้า" + day);
+                    query = ("select schedule_work_doctor.swd_id,schedule_work_doctor.swd_timezone from schedule_work_doctor where emp_doc_id = '" + lbliddoc.Text + "' AND swd_timezone = 'เช้า' AND swd_day_work = '" + day + "'");
+                    cmd = new SqlCommand(query, conn);
+                    //    conn.Open();
+                    sda = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    sda.Fill(dt);
+                    sdr = cmd.ExecuteReader();
+                    if (sdr.Read())
+                    {
+                        int swd_id = Convert.ToInt32(sdr["swd_id"].ToString());
+                        string timezone = sdr["swd_timezone"].ToString();
+                         query = ("select count(*) from appointment where app_time = '"+textBox2.Text+ "' AND day = '"+day+ "' AND swd_id = '"+swd_id+"'");
+                        cmd = new SqlCommand(query, conn);
+                        sda = new SqlDataAdapter(cmd);
+                        dt = new DataTable();
+                        sda.Fill(dt);
+                        int count_app = (int)cmd.ExecuteScalar();
+                        if(count_app < 1)
+                        {
+                      //    MessageBox.Show("   " + swd_id + "    " + timezone + "   " + count_app + "    " + lbliddoc.Text);
+                     
+                            query = ("Update appointment SET day = '" + day + "',app_date = '" + dtp1.Text + "' , app_time = '" + textBox2.Text + "',app_remark = '" + txtremark.Text + "',status_approve = 2,status_app = 1 , swd_id = '" + swd_id + "' where app_id = '" + lb11.Text + "' ");
+                            cmd = new SqlCommand(query, conn);
+                            sda = new SqlDataAdapter(cmd);
+                            dt = new DataTable();
 
+                            sda.Fill(dt);
+
+                            clinic_app_ms doc1 = new clinic_app_ms();
+                            doc1.Show();
+                            clinic_app_ms clnlog = new clinic_app_ms();
+                            clnlog.Close();
+                            Visible = false;
+                            MessageBox.Show("นัดหมายเรียบร้อย");
+                     
+                        }
+                        else
+                        {
+                            MessageBox.Show(" มีคนไข้นัดอยู่แล้ว " );
+                        }
+                     
+
+                    }
+
+              }
+                else
+                {
+                    MessageBox.Show("ตารางปฏิบัติงานว่าง");
+                }
+
+
+
+            }
+            else if (time >= 12.01)
+            {
+                string query = ("select count(*) from schedule_work_doctor where emp_doc_id = '" + lbliddoc.Text + "' AND swd_timezone = 'บ่าย' AND swd_day_work = '" + day + "'");
+                cmd = new SqlCommand(query, conn);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+                int count_appswd = (int)cmd.ExecuteScalar();
+                if (count_appswd == 1)
+                {
+
+                    // MessageBox.Show("เช้า" + day);
+                    query = ("select schedule_work_doctor.swd_id,schedule_work_doctor.swd_timezone from schedule_work_doctor where emp_doc_id = '" + lbliddoc.Text + "' AND swd_timezone = 'บ่าย' AND swd_day_work = '" + day + "'");
+                    cmd = new SqlCommand(query, conn);
+                    //    conn.Open();
+                    sda = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    sda.Fill(dt);
+                    sdr = cmd.ExecuteReader();
+                    if (sdr.Read())
+                    {
+                        int swd_id = Convert.ToInt32(sdr["swd_id"].ToString());
+                        string timezone = sdr["swd_timezone"].ToString();
+                        query = ("select count(*) from appointment where app_time = '" + textBox2.Text + "' AND day = '" + day + "' AND swd_id = '" + swd_id + "'");
+                        cmd = new SqlCommand(query, conn);
+                        sda = new SqlDataAdapter(cmd);
+                        dt = new DataTable();
+                        sda.Fill(dt);
+                        int count_app = (int)cmd.ExecuteScalar();
+                        if (count_app < 1)
+                        {
+                            //    MessageBox.Show("   " + swd_id + "    " + timezone + "   " + count_app + "    " + lbliddoc.Text);
+
+                            query = ("Update appointment SET day = '" + day + "',app_date = '" + dtp1.Text + "' , app_time = '" + textBox2.Text + "',app_remark = '" + txtremark.Text + "',status_approve = 2,status_app = 1 , swd_id = '" + swd_id + "' where app_id = '" + lb11.Text + "' ");
+                            cmd = new SqlCommand(query, conn);
+                            sda = new SqlDataAdapter(cmd);
+                            dt = new DataTable();
+
+                            sda.Fill(dt);
+
+                            clinic_app_ms doc1 = new clinic_app_ms();
+                            doc1.Show();
+                            clinic_app_ms clnlog = new clinic_app_ms();
+                            clnlog.Close();
+                            Visible = false;
+                            MessageBox.Show("นัดหมายเรียบร้อย");
+
+                        }
+                        else
+                        {
+                            MessageBox.Show(" มีคนไข้นัดอยู่แล้ว ");
+                        }
+
+
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("ตารางปฏิบัติงานว่าง");
+                }
+
+            }
+
+
+
+
+
+
+
+
+            /*
+
+                  clinic_app_ms doc1 = new clinic_app_ms();
+              doc1.Show();
+              clinic_app_ms clnlog = new clinic_app_ms();
+              clnlog.Close();
+              Visible = false;
+              MessageBox.Show("นัดหมายเรียบร้อย");
+              */
             conn.Close();
-        }
+            }
+        
         int selectedRow;
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -182,6 +322,47 @@ namespace Clinic2018
             lbldate.Text = row.Cells[1].Value.ToString();
             lbltime.Text = row.Cells[2].Value.ToString();
             lblname.Text = row.Cells[4].Value.ToString();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            int hh = DateTime.Now.Hour;
+            int mm = DateTime.Now.Minute;
+            //   int ss = DateTime.Now.Second;
+
+            String time = "";
+
+            if (hh < 10)
+            {
+                time += "0" + hh;
+            }
+            else
+            {
+                time += hh;
+            }
+            time += ".";
+
+            if (mm < 10)
+            {
+                time += "0" + mm;
+            }
+            else
+            {
+                time += mm;
+            }
+            /*
+            time += ":";
+
+            if (ss < 10)
+            {
+                time += "0" + ss;
+            }
+            else
+            {
+                time += ss;
+            }
+            */
+            lbltime1.Text = time;
         }
     }
 }

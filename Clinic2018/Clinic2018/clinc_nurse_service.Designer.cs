@@ -93,11 +93,15 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.timelbl = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataSet2 = new Clinic2018.DataSet2();
             this.queuevisitrecordBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.queue_visit_recordTableAdapter = new Clinic2018.DataSet2TableAdapters.queue_visit_recordTableAdapter();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -108,6 +112,7 @@
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.queuevisitrecordBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -667,12 +672,24 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.timelbl);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1348, 26);
             this.panel2.TabIndex = 0;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // timelbl
+            // 
+            this.timelbl.AutoSize = true;
+            this.timelbl.Location = new System.Drawing.Point(1274, 9);
+            this.timelbl.Name = "timelbl";
+            this.timelbl.Size = new System.Drawing.Size(10, 13);
+            this.timelbl.TabIndex = 9;
+            this.timelbl.Text = "-";
+            this.timelbl.TextChanged += new System.EventHandler(this.timelbl_TextChanged);
+            this.timelbl.Click += new System.EventHandler(this.timelbl_Click);
             // 
             // panel3
             // 
@@ -726,6 +743,8 @@
             this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.queuevisitrecordBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -804,5 +823,9 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label lblday;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label timelbl;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timer3;
     }
 }

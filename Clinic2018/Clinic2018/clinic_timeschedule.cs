@@ -25,8 +25,8 @@ namespace Clinic2018
         public clinic_timeschedule()
         {
             InitializeComponent();
-            txtstarttime.Text = "0:00";
-            txtendtime.Text = "0:00";
+            txtstarttime.Text = "0.00";
+            txtendtime.Text = "0.00";
       
             string query = ("select schedule_work_doctor.swd_month_work,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id,schedule_work_doctor.swd_status_room,schedule_work_doctor.swd_timezone,schedule_work_doctor.swd_status from schedule_work_doctor inner join room on room.room_id = schedule_work_doctor.room_id");
             cmd = new SqlCommand(query, conn);

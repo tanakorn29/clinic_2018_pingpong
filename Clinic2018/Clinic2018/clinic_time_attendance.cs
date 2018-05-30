@@ -65,7 +65,7 @@ namespace Clinic2018
         {
             int hh = DateTime.Now.Hour;
             int mm = DateTime.Now.Minute;
-            int ss = DateTime.Now.Second;
+         //   int ss = DateTime.Now.Second;
 
             String time = "";
 
@@ -77,7 +77,7 @@ namespace Clinic2018
             {
                 time += hh;
             }
-            time += ":";
+            time += ".";
 
             if (mm < 10)
             {
@@ -87,6 +87,7 @@ namespace Clinic2018
             {
                 time += mm;
             }
+            /*
             time += ":";
 
             if (ss < 10)
@@ -97,7 +98,7 @@ namespace Clinic2018
             {
                 time += ss;
             }
-
+            */
             label1.Text = time;
 
         }
@@ -116,127 +117,142 @@ namespace Clinic2018
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
-            textBox1.MaxLength = 13;
-            if(radioButton1.Checked == true)
+            try
             {
-                
-                string query = ("select emp_ru_id from employee_ru where emp_ru_idcard = '"+textBox1.Text+"'");
-                cmd = new SqlCommand(query, conn);
-                conn.Open();
-                sda = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                sda.Fill(dt);
-                sdr = cmd.ExecuteReader();
-        
-                if (sdr.Read())
+                textBox1.MaxLength = 13;
+                double time = Convert.ToDouble(label1.Text);
+                if (time <= 08.30)
                 {
-                    int emp_id = Convert.ToInt32(sdr["emp_ru_id"].ToString());
+                    // MessageBox.Show("เข้างาน");
 
-                    query = ("insert time_attendance (start_time,end_time,date_work,remark,emp_ru_id,emp_doc_id) values(SYSDATETIME(),'',SYSDATETIME(),'เข้างาน','"+emp_id+"','')");
+                    string query = ("select emp_ru_id from employee_ru where emp_ru_idcard = '" + textBox1.Text + "'");
+                    cmd = new SqlCommand(query, conn);
+                    conn.Open();
+                    sda = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    sda.Fill(dt);
+                    sdr = cmd.ExecuteReader();
+
+                    if (sdr.Read())
+                    {
+                        int emp_id = Convert.ToInt32(sdr["emp_ru_id"].ToString());
+
+                        query = ("insert time_attendance (start_time,end_time,date_work,remark,emp_ru_id,emp_doc_id) values(SYSDATETIME(),'',SYSDATETIME(),'เข้างาน','" + emp_id + "','')");
+                        cmd = new SqlCommand(query, conn);
+                        sda = new SqlDataAdapter(cmd);
+                        dt = new DataTable();
+                        sda.Fill(dt);
+                        clinic_time_attendance m2 = new clinic_time_attendance();
+                        m2.Show();
+                        clinic_time_attendance clnlog = new clinic_time_attendance();
+                        clnlog.Close();
+                        Visible = false;
+                        MessageBox.Show("เข้างานเรียบร้อย");
+
+                    }
+                    query = ("select emp_doc_id from employee_doctor where emp_doc_idcard ='" + textBox1.Text + "'");
                     cmd = new SqlCommand(query, conn);
                     sda = new SqlDataAdapter(cmd);
                     dt = new DataTable();
                     sda.Fill(dt);
-                    clinic_time_attendance m2 = new clinic_time_attendance();
-                    m2.Show();
-                    clinic_time_attendance clnlog = new clinic_time_attendance();
-                    clnlog.Close();
-                    Visible = false;
-                    MessageBox.Show("เข้างานเรียบร้อย");
+                    sdr = cmd.ExecuteReader();
+                    if (sdr.Read())
+                    {
+                        int emp_doc_id = Convert.ToInt32(sdr["emp_doc_id"].ToString());
 
-                }
-                query = ("select emp_doc_id from employee_doctor where emp_doc_idcard ='" + textBox1.Text + "'");
-                cmd = new SqlCommand(query, conn);
-                sda = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                sda.Fill(dt);
-                sdr = cmd.ExecuteReader();
-                if (sdr.Read())
-                {
-                    int emp_doc_id = Convert.ToInt32(sdr["emp_doc_id"].ToString());
+                        query = ("insert time_attendance (start_time,end_time,date_work,remark,emp_ru_id,emp_doc_id) values(SYSDATETIME(),'',SYSDATETIME(),'เข้างาน','','" + emp_doc_id + "')");
+                        cmd = new SqlCommand(query, conn);
 
-                    query = ("insert time_attendance (start_time,end_time,date_work,remark,emp_ru_id,emp_doc_id) values(SYSDATETIME(),'',SYSDATETIME(),'เข้างาน','','" + emp_doc_id + "')");
-                    cmd = new SqlCommand(query, conn);
-                  
-                    sda = new SqlDataAdapter(cmd);
-                    dt = new DataTable();
-                    sda.Fill(dt);
-                    query = ("UPDATE room SET room.room_status = 1 FROM room  INNER JOIN schedule_work_doctor ON room.room_id = schedule_work_doctor.room_id INNER JOIN employee_doctor ON employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id where emp_doc_idcard = '"+ textBox1.Text + "'");
-                    cmd = new SqlCommand(query, conn);
-                    sda = new SqlDataAdapter(cmd);
-                    dt = new DataTable();
+                        sda = new SqlDataAdapter(cmd);
+                        dt = new DataTable();
+                        sda.Fill(dt);
+                        query = ("UPDATE room SET room.room_status = 1 FROM room  INNER JOIN schedule_work_doctor ON room.room_id = schedule_work_doctor.room_id INNER JOIN employee_doctor ON employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id where emp_doc_idcard = '" + textBox1.Text + "'");
+                        cmd = new SqlCommand(query, conn);
+                        sda = new SqlDataAdapter(cmd);
+                        dt = new DataTable();
 
-                    sda.Fill(dt);
-                    clinic_time_attendance m2 = new clinic_time_attendance();
-                    m2.Show();
-                    clinic_time_attendance clnlog = new clinic_time_attendance();
-                    clnlog.Close();
-                    Visible = false;
-                    MessageBox.Show("เข้างานเรียบร้อย");
-                }
+                        sda.Fill(dt);
+                        clinic_time_attendance m2 = new clinic_time_attendance();
+                        m2.Show();
+                        clinic_time_attendance clnlog = new clinic_time_attendance();
+                        clnlog.Close();
+                        Visible = false;
+                        MessageBox.Show("เข้างานเรียบร้อย");
+                    }
 
                     conn.Close();
-            }else if (radioButton2.Checked == true)
-            {
 
-                string query = ("select emp_ru_id from employee_ru where emp_ru_idcard = '" + textBox1.Text + "'");
-                cmd = new SqlCommand(query, conn);
-                conn.Open();
-                sda = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                sda.Fill(dt);
-                sdr = cmd.ExecuteReader();
-
-                if (sdr.Read())
+                }
+                else if (time <= 12.31)
                 {
-                    int emp_id = Convert.ToInt32(sdr["emp_ru_id"].ToString());
-                    query = ("UPDATE time_attendance SET end_time = SYSDATETIME(),remark = 'ออกจากงาน' where emp_ru_id = '"+emp_id+"'");
+                    //   MessageBox.Show("ออกงาน");
+
+                    string query = ("select emp_ru_id from employee_ru where emp_ru_idcard = '" + textBox1.Text + "'");
+                    cmd = new SqlCommand(query, conn);
+                    conn.Open();
+                    sda = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    sda.Fill(dt);
+                    sdr = cmd.ExecuteReader();
+
+                    if (sdr.Read())
+                    {
+                        int emp_id = Convert.ToInt32(sdr["emp_ru_id"].ToString());
+                        query = ("UPDATE time_attendance SET end_time = SYSDATETIME(),remark = 'ออกจากงาน' where emp_ru_id = '" + emp_id + "'");
+                        cmd = new SqlCommand(query, conn);
+                        sda = new SqlDataAdapter(cmd);
+                        dt = new DataTable();
+
+                        sda.Fill(dt);
+                        clinic_time_attendance m2 = new clinic_time_attendance();
+                        m2.Show();
+                        clinic_time_attendance clnlog = new clinic_time_attendance();
+                        clnlog.Close();
+                        Visible = false;
+                        MessageBox.Show("ออกจากงานเรียบร้อย");
+
+                    }
+
+                    query = ("select emp_doc_id from employee_doctor where emp_doc_idcard ='" + textBox1.Text + "'");
                     cmd = new SqlCommand(query, conn);
                     sda = new SqlDataAdapter(cmd);
                     dt = new DataTable();
-
                     sda.Fill(dt);
-                    clinic_time_attendance m2 = new clinic_time_attendance();
-                    m2.Show();
-                    clinic_time_attendance clnlog = new clinic_time_attendance();
-                    clnlog.Close();
-                    Visible = false;
-                    MessageBox.Show("ออกจากงานเรียบร้อย");
+                    sdr = cmd.ExecuteReader();
+                    if (sdr.Read())
+                    {
+                        int emp_doc_id = Convert.ToInt32(sdr["emp_doc_id"].ToString());
+                        query = ("UPDATE time_attendance SET end_time = SYSDATETIME(),remark = 'ออกจากงาน' where emp_doc_id = '" + emp_doc_id + "'");
+                        cmd = new SqlCommand(query, conn);
+                        sda = new SqlDataAdapter(cmd);
+                        dt = new DataTable();
+
+                        sda.Fill(dt);
+                        query = ("UPDATE room SET room.room_status = 0 FROM room  INNER JOIN schedule_work_doctor ON room.room_id = schedule_work_doctor.room_id INNER JOIN employee_doctor ON employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id where emp_doc_idcard = '" + textBox1.Text + "'");
+                        cmd = new SqlCommand(query, conn);
+                        sda = new SqlDataAdapter(cmd);
+                        dt = new DataTable();
+
+                        sda.Fill(dt);
+                        clinic_time_attendance m2 = new clinic_time_attendance();
+                        m2.Show();
+                        clinic_time_attendance clnlog = new clinic_time_attendance();
+                        clnlog.Close();
+                        Visible = false;
+                        MessageBox.Show("ออกจากงานเรียบร้อย");
+
+                    }
+
+                    conn.Close();
 
                 }
 
-                query = ("select emp_doc_id from employee_doctor where emp_doc_idcard ='" + textBox1.Text + "'");
-                cmd = new SqlCommand(query, conn);
-                sda = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                sda.Fill(dt);
-                sdr = cmd.ExecuteReader();
-                if (sdr.Read())
-                {
-                    int emp_doc_id = Convert.ToInt32(sdr["emp_doc_id"].ToString());
-                    query = ("UPDATE time_attendance SET end_time = SYSDATETIME(),remark = 'ออกจากงาน' where emp_doc_id = '" + emp_doc_id + "'");
-                    cmd = new SqlCommand(query, conn);
-                    sda = new SqlDataAdapter(cmd);
-                    dt = new DataTable();
-
-                    sda.Fill(dt);
-                    query = ("UPDATE room SET room.room_status = 0 FROM room  INNER JOIN schedule_work_doctor ON room.room_id = schedule_work_doctor.room_id INNER JOIN employee_doctor ON employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id where emp_doc_idcard = '" + textBox1.Text + "'");
-                    cmd = new SqlCommand(query, conn);
-                    sda = new SqlDataAdapter(cmd);
-                    dt = new DataTable();
-
-                    sda.Fill(dt);
-                    clinic_time_attendance m2 = new clinic_time_attendance();
-                    m2.Show();
-                    clinic_time_attendance clnlog = new clinic_time_attendance();
-                    clnlog.Close();
-                    Visible = false;
-                    MessageBox.Show("ออกจากงานเรียบร้อย");
-
-                }
-
-                conn.Close();
             }
+            catch (Exception ex)
+            {
+              //  MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OKCancel);
+            }
+         
 
             /*
             string query = ("insert time_attendance (start_time,end_time,date_work,remark,emp_ru_id,emp_doc_id) values(SYSDATETIME(),SYSDATETIME(),SYSDATETIME(),'',1,1)");
@@ -244,6 +260,8 @@ namespace Clinic2018
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
             sda.Fill(dt);*/
+
+
         }
 
         private void textBox1_Leave(object sender, EventArgs e)
@@ -274,6 +292,11 @@ namespace Clinic2018
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void label1_TextChanged(object sender, EventArgs e)
+        {
+     
         }
     }
 }
