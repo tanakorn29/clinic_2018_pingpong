@@ -61,7 +61,12 @@ namespace Clinic2018
 
 
                 dataGridView2.Rows[n].Cells[0].Value = item["app_id"].ToString();
-                dataGridView2.Rows[n].Cells[1].Value = item["app_date"].ToString();
+      
+
+                DateTime app_date = Convert.ToDateTime(item["app_date"].ToString());
+                string date_app= String.Format("{0:yyyy-MM-dd}", app_date);
+                dataGridView2.Rows[n].Cells[1].Value = date_app;
+
                 dataGridView2.Rows[n].Cells[2].Value = item["app_time"].ToString();
             //    dataGridView2.Rows[n].Cells[3].Value = item["day"].ToString();
                 dataGridView2.Rows[n].Cells[3].Value = item["opd_idcard"].ToString();
