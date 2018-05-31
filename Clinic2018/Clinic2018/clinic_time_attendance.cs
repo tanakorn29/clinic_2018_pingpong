@@ -121,7 +121,7 @@ namespace Clinic2018
             {
                 textBox1.MaxLength = 13;
                 double time = Convert.ToDouble(label1.Text);
-                if (time <= 08.30)
+                if (time <= 12.00)
                 {
                     // MessageBox.Show("เข้างาน");
 
@@ -183,7 +183,7 @@ namespace Clinic2018
                     conn.Close();
 
                 }
-                else if (time <= 12.31)
+                else if (time >= 12.01)
                 {
                     //   MessageBox.Show("ออกงาน");
 

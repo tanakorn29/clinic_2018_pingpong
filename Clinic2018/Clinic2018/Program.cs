@@ -30,11 +30,11 @@ namespace Clinic2018
          //    Application.Run(new clinic_barcode());
   //  Application.Run(new clinic_time_attendance());
       //    Application.Run(new clinic_user_control());
-        //    Application.Run(new clinic_time_attendance());
+          Application.Run(new clinic_time_attendance());
             //   Application.Run(new clinic_app_ms());
 
            //   Application.Run(new Form8());
-           Application.Run(new clinic_app_ms());
+           Application.Run(new clinic_login());
 
 
             //  Application.Run(new pageswd());

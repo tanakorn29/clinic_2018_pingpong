@@ -59,7 +59,7 @@ namespace Clinic2018
 
             }
 
-            query = ("select medi_id,medi_name,medi_qty from medical");
+            query = ("select medi_id,medi_name,medi_qty,medi_unit from medical");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -74,7 +74,7 @@ namespace Clinic2018
                 dataGridView2.Rows[n].Cells[0].Value = item["medi_id"].ToString();
                 dataGridView2.Rows[n].Cells[1].Value = item["medi_name"].ToString();
                 dataGridView2.Rows[n].Cells[2].Value = item["medi_qty"].ToString();
-
+                dataGridView2.Rows[n].Cells[3].Value = item["medi_unit"].ToString();
             }
 
 

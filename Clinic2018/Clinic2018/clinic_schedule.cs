@@ -100,8 +100,8 @@ namespace Clinic2018
             sdr = cmd.ExecuteReader();
             if (sdr.Read())
             {
-               int doc_id = Convert.ToInt32(sdr["emp_doc_id"].ToString());
-                query = ("Update schedule_work_doctor set swd_note = 'รอการอนุมัติทำงานแทน',swd_status_room = 4,emp_doc_id = '"+doc_id+"'where swd_id = '" + txtswd.Text+"'");
+                int doc_id = Convert.ToInt32(sdr["emp_doc_id"].ToString());
+                query = ("Update schedule_work_doctor set swd_note = 'รอการอนุมัติทำงานแทน',swd_status_room = 4,emp_doc_id = '" + doc_id + "'where swd_id = '" + txtswd.Text + "'");
                 cmd = new SqlCommand(query, conn);
                 sda = new SqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -121,7 +121,7 @@ namespace Clinic2018
 
 
             }
-         
+
 
 
             conn.Close();
@@ -162,26 +162,38 @@ namespace Clinic2018
             if (sdr.Read())
             {
                 int doc_id = Convert.ToInt32(sdr["emp_doc_id"].ToString());
-               // MessageBox.Show("" + doc_id);
-             
-                query = ("Update schedule_work_doctor set swd_note = '',swd_status_room = 1,emp_doc_id = '" + doc_id + "'where swd_id = '" + txtswdwork1.Text + "'");
+                // MessageBox.Show("" + doc_id);
+
+                query = ("Update schedule_work_doctor set swd_note = '',swd_status_room = 1,emp_doc_id = '" + doc_id + "' where swd_id = '" + txtswdwork1.Text + "'");
                 cmd = new SqlCommand(query, conn);
                 sda = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 sda.Fill(dt);
-
-                query = ("update appointment SET status_approve = 3 where emp_doc_id = '"+doc_id+"'");
+                query = ("select swd_id from schedule_work_doctor where swd_status_room = 1 AND emp_doc_id = '" + doc_id + "' AND swd_id = '" + txtswdwork1.Text + "'");
                 cmd = new SqlCommand(query, conn);
+
                 sda = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 sda.Fill(dt);
+                sdr = cmd.ExecuteReader();
+                if (sdr.Read())
+                {
+                    int swd_id = Convert.ToInt32(sdr["swd_id"].ToString());
+                    query = ("update appointment SET status_approve = 3 ,swd_id = '" + swd_id + "'where emp_doc_id = '" + doc_id + "'");
+                    cmd = new SqlCommand(query, conn);
+                    sda = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    sda.Fill(dt);
 
-                MessageBox.Show("อนุมัติการเลื่อนปฏิบัติงานเรียบร้อย");
-                clinic_schedule m3 = new clinic_schedule();
-                m3.Show();
-                clinic_schedule clnlog = new clinic_schedule();
-                clnlog.Close();
-                Visible = false;
+                    MessageBox.Show("อนุมัติการเลื่อนปฏิบัติงานเรียบร้อย");
+                    clinic_schedule m3 = new clinic_schedule();
+                    m3.Show();
+                    clinic_schedule clnlog = new clinic_schedule();
+                    clnlog.Close();
+                    Visible = false;
+
+
+                }
 
 
 

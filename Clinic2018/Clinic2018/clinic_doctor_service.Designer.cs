@@ -91,9 +91,6 @@
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label41 = new System.Windows.Forms.Label();
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.button24 = new System.Windows.Forms.Button();
@@ -107,6 +104,10 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -715,27 +716,13 @@
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column9,
             this.Column10,
-            this.Column15});
+            this.Column15,
+            this.Column20});
             this.dataGridView2.Location = new System.Drawing.Point(455, 280);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(324, 177);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "ลำดับ";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "ชื่อยา";
-            this.Column10.Name = "Column10";
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "จำนวนยา";
-            this.Column15.Name = "Column15";
             // 
             // label41
             // 
@@ -830,6 +817,26 @@
             this.Column19.HeaderText = "ตำแหน่งงาน";
             this.Column19.Name = "Column19";
             // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "ลำดับ";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "ชื่อยา";
+            this.Column10.Name = "Column10";
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "จำนวนยา";
+            this.Column15.Name = "Column15";
+            // 
+            // Column20
+            // 
+            this.Column20.HeaderText = "หน่วยยา";
+            this.Column20.Name = "Column20";
+            // 
             // clinic_doctor_service
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -899,9 +906,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtdocid;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -938,5 +942,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
         private System.Windows.Forms.Label lblposition;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
     }
 }

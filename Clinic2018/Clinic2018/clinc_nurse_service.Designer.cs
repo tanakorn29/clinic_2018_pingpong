@@ -102,6 +102,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.lbltimezone = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -133,6 +134,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.lbltimezone);
             this.groupBox5.Controls.Add(this.lblday);
             this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Controls.Add(this.dataGridView2);
@@ -719,6 +721,16 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "qvr_time";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
+            // lbltimezone
+            // 
+            this.lbltimezone.AutoSize = true;
+            this.lbltimezone.Location = new System.Drawing.Point(625, 20);
+            this.lbltimezone.Name = "lbltimezone";
+            this.lbltimezone.Size = new System.Drawing.Size(10, 13);
+            this.lbltimezone.TabIndex = 4;
+            this.lbltimezone.Text = "-";
+            this.lbltimezone.TextChanged += new System.EventHandler(this.lbltimezone_TextChanged);
+            // 
             // clinc_nurse_service
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -827,5 +839,6 @@
         private System.Windows.Forms.Label timelbl;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Label lbltimezone;
     }
 }

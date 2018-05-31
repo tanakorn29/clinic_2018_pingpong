@@ -297,9 +297,85 @@ namespace Clinic2018
 
 
             double time = Convert.ToDouble(timelbl.Text);
+              
             if (time <= 12.00)
             {
+                    lbltimezone.Text = "เช้า";
+/*
+                string query = ("select schedule_work_doctor.swd_id,empdoc.emp_doc_name,empdoc.emp_doc_specialist,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id from employee_doctor empdoc inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id  = empdoc.emp_doc_id inner join room on room.room_id = schedule_work_doctor.room_id inner join time_attendance on time_attendance.emp_doc_id = empdoc.emp_doc_id where swd_status_room = 1 AND room.room_status = 1 AND swd_day_work = '" + lblday.Text + "' AND remark = 'เข้างาน' AND swd_timezone = 'เช้า'");
+                cmd = new SqlCommand(query, conn);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                sda.Fill(dt);
 
+                foreach (DataRow item in dt.Rows)
+                {
+                    int n = dataGridView2.Rows.Add();
+
+                        
+
+                    dataGridView2.Rows[n].Cells[0].Value = item["swd_id"].ToString();
+                    dataGridView2.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
+                    dataGridView2.Rows[n].Cells[2].Value = item["emp_doc_specialist"].ToString();
+                    dataGridView2.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
+                    dataGridView2.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
+                    dataGridView2.Rows[n].Cells[5].Value = item["swd_end_time"].ToString();
+                    dataGridView2.Rows[n].Cells[6].Value = item["swd_note"].ToString();
+                    dataGridView2.Rows[n].Cells[7].Value = item["room_id"].ToString();
+             
+               }
+              
+            */
+            }
+            else if (time >= 12.01)
+            {
+                    lbltimezone.Text = "บ่าย";
+                    /*
+                                    string query = ("select schedule_work_doctor.swd_id,empdoc.emp_doc_name,empdoc.emp_doc_specialist,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id from employee_doctor empdoc inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id  = empdoc.emp_doc_id inner join room on room.room_id = schedule_work_doctor.room_id inner join time_attendance on time_attendance.emp_doc_id = empdoc.emp_doc_id where swd_status_room = 1 AND room.room_status = 1 AND swd_day_work = '" + lblday.Text + "' AND remark = 'เข้างาน' AND swd_timezone = 'บ่าย'");
+                                    cmd = new SqlCommand(query, conn);
+                                    sda = new SqlDataAdapter(cmd);
+                                    dt = new DataTable();
+                                    sda.Fill(dt);
+
+                                    foreach (DataRow item in dt.Rows)
+                                    {
+                                        int n = dataGridView2.Rows.Add();
+
+
+
+                                        dataGridView2.Rows[n].Cells[0].Value = item["swd_id"].ToString();
+                                        dataGridView2.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
+                                        dataGridView2.Rows[n].Cells[2].Value = item["emp_doc_specialist"].ToString();
+                                        dataGridView2.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
+                                        dataGridView2.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
+                                        dataGridView2.Rows[n].Cells[5].Value = item["swd_end_time"].ToString();
+                                        dataGridView2.Rows[n].Cells[6].Value = item["swd_note"].ToString();
+                                        dataGridView2.Rows[n].Cells[7].Value = item["room_id"].ToString();
+
+                                    }
+                                    */
+
+                }
+
+            conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                //  MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OKCancel);
+            }
+        }
+
+        private void timelbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbltimezone_TextChanged(object sender, EventArgs e)
+        {
+            string timezone = lbltimezone.Text;
+            if (timezone == "เช้า")
+            {
                 string query = ("select schedule_work_doctor.swd_id,empdoc.emp_doc_name,empdoc.emp_doc_specialist,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id from employee_doctor empdoc inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id  = empdoc.emp_doc_id inner join room on room.room_id = schedule_work_doctor.room_id inner join time_attendance on time_attendance.emp_doc_id = empdoc.emp_doc_id where swd_status_room = 1 AND room.room_status = 1 AND swd_day_work = '" + lblday.Text + "' AND remark = 'เข้างาน' AND swd_timezone = 'เช้า'");
                 cmd = new SqlCommand(query, conn);
                 sda = new SqlDataAdapter(cmd);
@@ -322,46 +398,34 @@ namespace Clinic2018
                     dataGridView2.Rows[n].Cells[7].Value = item["room_id"].ToString();
 
                 }
-
             }
-            else if (time >= 12.01)
+            else if (timezone == "บ่าย")
             {
+     
+                                   string query = ("select schedule_work_doctor.swd_id,empdoc.emp_doc_name,empdoc.emp_doc_specialist,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id from employee_doctor empdoc inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id  = empdoc.emp_doc_id inner join room on room.room_id = schedule_work_doctor.room_id inner join time_attendance on time_attendance.emp_doc_id = empdoc.emp_doc_id where swd_status_room = 1 AND room.room_status = 1 AND swd_day_work = '" + lblday.Text + "' AND remark = 'เข้างาน' AND swd_timezone = 'บ่าย'");
+                                   cmd = new SqlCommand(query, conn);
+                                   sda = new SqlDataAdapter(cmd);
+                                   dt = new DataTable();
+                                   sda.Fill(dt);
 
-                string query = ("select schedule_work_doctor.swd_id,empdoc.emp_doc_name,empdoc.emp_doc_specialist,schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.swd_end_time,schedule_work_doctor.swd_note,schedule_work_doctor.room_id from employee_doctor empdoc inner join schedule_work_doctor on schedule_work_doctor.emp_doc_id  = empdoc.emp_doc_id inner join room on room.room_id = schedule_work_doctor.room_id inner join time_attendance on time_attendance.emp_doc_id = empdoc.emp_doc_id where swd_status_room = 1 AND room.room_status = 1 AND swd_day_work = '" + lblday.Text + "' AND remark = 'เข้างาน' AND swd_timezone = 'บ่าย'");
-                cmd = new SqlCommand(query, conn);
-                sda = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                sda.Fill(dt);
-
-                foreach (DataRow item in dt.Rows)
-                {
-                    int n = dataGridView2.Rows.Add();
+                                   foreach (DataRow item in dt.Rows)
+                                   {
+                                       int n = dataGridView2.Rows.Add();
 
 
 
-                    dataGridView2.Rows[n].Cells[0].Value = item["swd_id"].ToString();
-                    dataGridView2.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
-                    dataGridView2.Rows[n].Cells[2].Value = item["emp_doc_specialist"].ToString();
-                    dataGridView2.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
-                    dataGridView2.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
-                    dataGridView2.Rows[n].Cells[5].Value = item["swd_end_time"].ToString();
-                    dataGridView2.Rows[n].Cells[6].Value = item["swd_note"].ToString();
-                    dataGridView2.Rows[n].Cells[7].Value = item["room_id"].ToString();
+                                       dataGridView2.Rows[n].Cells[0].Value = item["swd_id"].ToString();
+                                       dataGridView2.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
+                                       dataGridView2.Rows[n].Cells[2].Value = item["emp_doc_specialist"].ToString();
+                                       dataGridView2.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
+                                       dataGridView2.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
+                                       dataGridView2.Rows[n].Cells[5].Value = item["swd_end_time"].ToString();
+                                       dataGridView2.Rows[n].Cells[6].Value = item["swd_note"].ToString();
+                                       dataGridView2.Rows[n].Cells[7].Value = item["room_id"].ToString();
 
-                }
+                                   }
+                                   
             }
-
-            conn.Close();
-
-            }
-            catch (Exception ex)
-            {
-                //  MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OKCancel);
-            }
-        }
-
-        private void timelbl_Click(object sender, EventArgs e)
-        {
 
         }
         /*
@@ -386,18 +450,18 @@ sda.Fill(dt);
 
 foreach (DataRow item in dt.Rows)
 {
-  int n = dataGridView2.Rows.Add();
+int n = dataGridView2.Rows.Add();
 
 
 
-  dataGridView2.Rows[n].Cells[0].Value = item["swd_id"].ToString();
-  dataGridView2.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
-  dataGridView2.Rows[n].Cells[2].Value = item["emp_doc_specialist"].ToString();
-  dataGridView2.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
-  dataGridView2.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
-  dataGridView2.Rows[n].Cells[5].Value = item["swd_end_time"].ToString();
-  dataGridView2.Rows[n].Cells[6].Value = item["swd_note"].ToString();
-  dataGridView2.Rows[n].Cells[7].Value = item["room_id"].ToString();
+dataGridView2.Rows[n].Cells[0].Value = item["swd_id"].ToString();
+dataGridView2.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
+dataGridView2.Rows[n].Cells[2].Value = item["emp_doc_specialist"].ToString();
+dataGridView2.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
+dataGridView2.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
+dataGridView2.Rows[n].Cells[5].Value = item["swd_end_time"].ToString();
+dataGridView2.Rows[n].Cells[6].Value = item["swd_note"].ToString();
+dataGridView2.Rows[n].Cells[7].Value = item["room_id"].ToString();
 
 }
 
@@ -413,18 +477,18 @@ sda.Fill(dt);
 
 foreach (DataRow item in dt.Rows)
 {
-  int n = dataGridView2.Rows.Add();
+int n = dataGridView2.Rows.Add();
 
 
 
-  dataGridView2.Rows[n].Cells[0].Value = item["swd_id"].ToString();
-  dataGridView2.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
-  dataGridView2.Rows[n].Cells[2].Value = item["emp_doc_specialist"].ToString();
-  dataGridView2.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
-  dataGridView2.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
-  dataGridView2.Rows[n].Cells[5].Value = item["swd_end_time"].ToString();
-  dataGridView2.Rows[n].Cells[6].Value = item["swd_note"].ToString();
-  dataGridView2.Rows[n].Cells[7].Value = item["room_id"].ToString();
+dataGridView2.Rows[n].Cells[0].Value = item["swd_id"].ToString();
+dataGridView2.Rows[n].Cells[1].Value = item["emp_doc_name"].ToString();
+dataGridView2.Rows[n].Cells[2].Value = item["emp_doc_specialist"].ToString();
+dataGridView2.Rows[n].Cells[3].Value = item["swd_day_work"].ToString();
+dataGridView2.Rows[n].Cells[4].Value = item["swd_start_time"].ToString();
+dataGridView2.Rows[n].Cells[5].Value = item["swd_end_time"].ToString();
+dataGridView2.Rows[n].Cells[6].Value = item["swd_note"].ToString();
+dataGridView2.Rows[n].Cells[7].Value = item["room_id"].ToString();
 
 }
 }
