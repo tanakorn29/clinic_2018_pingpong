@@ -76,6 +76,29 @@ namespace Clinic2018
 
 
             }
+   
+            query = ("select employee_doctor.emp_doc_name , schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.room_id,schedule_work_doctor.swd_note from schedule_work_doctor inner join employee_doctor on employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id where schedule_work_doctor.swd_status_room = 1");
+            cmd = new SqlCommand(query, conn);
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                int n = dataGridView3.Rows.Add();
+
+
+
+                dataGridView3.Rows[n].Cells[0].Value = item["emp_doc_name"].ToString();
+                dataGridView3.Rows[n].Cells[1].Value = item["swd_day_work"].ToString();
+                dataGridView3.Rows[n].Cells[2].Value = item["swd_start_time"].ToString();
+                dataGridView3.Rows[n].Cells[3].Value = item["room_id"].ToString();
+                dataGridView3.Rows[n].Cells[4].Value = item["swd_note"].ToString();
+
+
+
+            }
+         
             conn.Close();
         }
   
@@ -368,6 +391,84 @@ namespace Clinic2018
             }
             */
             lbltime1.Text = time;
+        }
+
+        private void lb11_TextChanged(object sender, EventArgs e)
+        {
+      
+
+        }
+
+        private void lbldoc_TextChanged(object sender, EventArgs e)
+        {
+            conn.Open();
+            dataGridView3.Rows.Clear();
+            dataGridView3.Refresh();
+            string query = ("select employee_doctor.emp_doc_name , schedule_work_doctor.swd_day_work,schedule_work_doctor.swd_start_time,schedule_work_doctor.room_id,schedule_work_doctor.swd_note from schedule_work_doctor inner join employee_doctor on employee_doctor.emp_doc_id = schedule_work_doctor.emp_doc_id where schedule_work_doctor.swd_status_room = 1 AND employee_doctor.emp_doc_name = '"+lbldoc.Text+"'");
+            cmd = new SqlCommand(query, conn);
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                int n = dataGridView3.Rows.Add();
+
+
+
+                dataGridView3.Rows[n].Cells[0].Value = item["emp_doc_name"].ToString();
+                dataGridView3.Rows[n].Cells[1].Value = item["swd_day_work"].ToString();
+                dataGridView3.Rows[n].Cells[2].Value = item["swd_start_time"].ToString();
+                dataGridView3.Rows[n].Cells[3].Value = item["room_id"].ToString();
+                dataGridView3.Rows[n].Cells[4].Value = item["swd_note"].ToString();
+
+
+
+            }
+            conn.Close();
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            conn.Open();
+            dataGridView2.Rows.Clear();
+            dataGridView2.Refresh();
+
+            string query = ("select appointment.app_id,appointment.app_date,appointment.app_time ,opd.opd_idcard,opd.opd_name,employee_doctor.emp_doc_name,appointment.day from appointment inner join employee_doctor on employee_doctor.emp_doc_id = appointment.emp_doc_id inner join opd on opd.opd_id = appointment.opd_id where status_approve = 2 AND opd_name LIKE '%" + textBox3.Text + "%'");
+            cmd = new SqlCommand(query, conn);
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                int n = dataGridView2.Rows.Add();
+
+
+
+                dataGridView2.Rows[n].Cells[0].Value = item["app_id"].ToString();
+
+
+                DateTime app_date = Convert.ToDateTime(item["app_date"].ToString());
+                string date_app = String.Format("{0:yyyy-MM-dd}", app_date);
+                dataGridView2.Rows[n].Cells[1].Value = date_app;
+
+                dataGridView2.Rows[n].Cells[2].Value = item["app_time"].ToString();
+                //    dataGridView2.Rows[n].Cells[3].Value = item["day"].ToString();
+                dataGridView2.Rows[n].Cells[3].Value = item["opd_idcard"].ToString();
+                dataGridView2.Rows[n].Cells[4].Value = item["opd_name"].ToString();
+                dataGridView2.Rows[n].Cells[5].Value = item["emp_doc_name"].ToString();
+                dataGridView2.Rows[n].Cells[6].Value = item["day"].ToString();
+
+
+            }
+
+
+
+
+
+
+            conn.Close();
         }
     }
 }
