@@ -52,7 +52,6 @@
             this.lb22 = new System.Windows.Forms.Label();
             this.lb2 = new System.Windows.Forms.Label();
             this.lb11 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.lb1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -196,7 +195,6 @@
             this.gb2.Controls.Add(this.lb22);
             this.gb2.Controls.Add(this.lb2);
             this.gb2.Controls.Add(this.lb11);
-            this.gb2.Controls.Add(this.label1);
             this.gb2.Controls.Add(this.lb1);
             this.gb2.Location = new System.Drawing.Point(18, 177);
             this.gb2.Name = "gb2";
@@ -237,11 +235,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label5.Location = new System.Drawing.Point(75, 151);
+            this.label5.Location = new System.Drawing.Point(51, 151);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 20);
+            this.label5.Size = new System.Drawing.Size(83, 20);
             this.label5.TabIndex = 2;
-            this.label5.Text = "label1 :";
+            this.label5.Text = "สถานะสิทธิ :";
             // 
             // lb44
             // 
@@ -308,17 +306,6 @@
             this.lb11.Name = "lb11";
             this.lb11.Size = new System.Drawing.Size(0, 20);
             this.lb11.TabIndex = 9;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(381, 192);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 20);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "ส่งให้พยาบาล**";
             // 
             // lb1
             // 
@@ -414,7 +401,6 @@
         private System.Windows.Forms.Label lb2;
         private System.Windows.Forms.Label lb11;
         private System.Windows.Forms.Label lb1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem conferm;
     }

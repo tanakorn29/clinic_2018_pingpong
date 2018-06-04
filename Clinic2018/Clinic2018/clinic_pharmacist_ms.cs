@@ -54,7 +54,76 @@ namespace Clinic2018
         int selectedRow;
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            selectedRow = e.RowIndex;
+            DataGridViewRow row = dataGridView1.Rows[selectedRow];
+            lblmedi.Text = row.Cells[0].Value.ToString();
+            lblcount.Text = row.Cells[2].Value.ToString();
+            lblmediunit.Text = row.Cells[3].Value.ToString();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+            try
+            {
+                int qty = Convert.ToInt32(lblcount.Text);
+                int sub = qty + Convert.ToInt32(textBox1.Text);
+                string query = ("UPDATE medical SET medi_qty = '" + sub + "' , medi_qty_use = '" + sub + "' WHERE medi_name = '" + lblmedi.Text + "'");
+                cmd = new SqlCommand(query, conn);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+
+                sda.Fill(dt);
+                clinic_pharmacist_ms doc1 = new clinic_pharmacist_ms();
+                doc1.Show();
+                clinic_pharmacist_ms clnlog = new clinic_pharmacist_ms();
+                clnlog.Close();
+                Visible = false;
+                MessageBox.Show("อัพเดตข้อมูลเรียบร้อย");
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("มีข้อผิดพลาด");
+            }
+   
+
+            conn.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+            try
+            {
+                string namemedi = txtmedi.Text;
+                int medi_no = Convert.ToInt32(txtmedino.Text);
+                int medi_num = Convert.ToInt32(txtmedinum.Text);
+                string unit_medi = txtmediunit.Text;
+                double unit_price = Convert.ToDouble(txtpriceunit.Text);
+                double price = Convert.ToDouble(txtprice.Text);
+                string query = ("insert into medical (medi_name,medi_no,medi_qty_use,medi_qty,medi_unit,medi_price_unit,medi_price) values ('"+namemedi+"','"+medi_no+"','"+medi_num+"','"+medi_num+"','"+ unit_medi+"','"+unit_price+"','"+price+"')");
+                cmd = new SqlCommand(query, conn);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+
+                sda.Fill(dt);
+                clinic_pharmacist_ms doc1 = new clinic_pharmacist_ms();
+                doc1.Show();
+                clinic_pharmacist_ms clnlog = new clinic_pharmacist_ms();
+                clnlog.Close();
+                Visible = false;
+                MessageBox.Show("อัพเดตข้อมูลเรียบร้อย");
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("มีข้อผิดพลาด");
+            }
+
+
+            conn.Close();
         }
     }
 }
