@@ -392,6 +392,10 @@ namespace Clinic2018
                                 doc.Close();
                                 System.Diagnostics.Process.Start("" + S2.Text + ".pdf");
 
+
+
+
+
                                 clinic_approve_step2 appr2 = new clinic_approve_step2();
                                 appr2.Show();
                                 clinic_approve approve = new clinic_approve();

@@ -61,7 +61,7 @@ namespace Clinic2018
 
             }
 
-            query = ("select medi_id,medi_name,medi_qty,medi_unit from medical");
+            query = ("select medi_id,medi_name,medi_qty_use,medi_unit from medical");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -75,7 +75,7 @@ namespace Clinic2018
 
                 dataGridView2.Rows[n].Cells[0].Value = item["medi_id"].ToString();
                 dataGridView2.Rows[n].Cells[1].Value = item["medi_name"].ToString();
-                dataGridView2.Rows[n].Cells[2].Value = item["medi_qty"].ToString();
+                dataGridView2.Rows[n].Cells[2].Value = item["medi_qty_use"].ToString();
                 dataGridView2.Rows[n].Cells[3].Value = item["medi_unit"].ToString();
             }
 
@@ -186,9 +186,9 @@ namespace Clinic2018
             dt = new DataTable();
             sda.Fill(dt);
 
-            clinic_doctor_service m3 = new clinic_doctor_service();
+            clinic_doctor_service2 m3 = new clinic_doctor_service2();
             m3.Show();
-            clinic_doctor_service clnlog = new clinic_doctor_service();
+            clinic_doctor_service2 clnlog = new clinic_doctor_service2();
             clnlog.Close();
             Visible = false;
 
@@ -242,8 +242,8 @@ namespace Clinic2018
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             selectedRow = e.RowIndex;
-            DataGridViewRow row = dataGridView2.Rows[selectedRow];
-            lblmed.Text = row.Cells[0].Value.ToString();
+            DataGridViewRow row = dataGridView3.Rows[selectedRow];
+            lblidt.Text = row.Cells[3].Value.ToString();
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -255,12 +255,80 @@ namespace Clinic2018
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string query = ("insert into  medicine_use (medi_use_remark,medi_use_date,medi_use_status,medi_num,treatr_id,medi_id)values ('" + txtre2.Text + "',SYSDATETIME(),1,'" + txtnum.Text + "','" + lblidt.Text + "','" + lblmed.Text + "')");
+            conn.Open();
+            string query = ("select medi_qty_use from medical where medi_id = '" + lblmed.Text + "'");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
-            //  MessageBox.Show("บันทึกการรักษาเรียบร้อย");
             sda.Fill(dt);
+            sdr = cmd.ExecuteReader();
+            if (sdr.Read())
+            {
+                int nummed = Convert.ToInt32(sdr["medi_qty_use"].ToString());
+                int cut_stock = nummed - Convert.ToInt32(txtnum.Text);
+                if (nummed < 5)
+                {
+
+                    MessageBox.Show("ยาใกล้หมดคลังแล้ว");
+
+                    query = ("Update medical set medi_qty_use = '" + cut_stock + "' where medi_id = '" + lblmed.Text + "'");
+                    cmd = new SqlCommand(query, conn);
+                    sda = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    sda.Fill(dt);
+
+
+                    query = ("insert into  medicine_use (medi_use_remark,medi_use_date,medi_use_status,medi_num,treatr_id,medi_id)values ('" + txtre2.Text + "',SYSDATETIME(),1,'" + txtnum.Text + "','" + lblidt.Text + "','" + lblmed.Text + "')");
+                    cmd = new SqlCommand(query, conn);
+                    sda = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    //  MessageBox.Show("บันทึกการรักษาเรียบร้อย");
+                    sda.Fill(dt);
+
+                    clinic_doctor_service2 m3 = new clinic_doctor_service2();
+                    m3.Show();
+                    clinic_doctor_service2 clnlog = new clinic_doctor_service2();
+                    clnlog.Close();
+                    Visible = false;
+
+
+                    MessageBox.Show("บันทึกใบจ่ายยาเรียบร้อย");
+
+                }
+                else if (nummed < 0)
+                {
+                    MessageBox.Show("ยาหมดคลังแล้ว");
+                }
+                else if (nummed > 5)
+                {
+                    query = ("Update medical set medi_qty_use = '" + cut_stock + "' where medi_id = '" + lblmed.Text + "'");
+                    cmd = new SqlCommand(query, conn);
+                    sda = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    sda.Fill(dt);
+
+
+                    query = ("insert into  medicine_use (medi_use_remark,medi_use_date,medi_use_status,medi_num,treatr_id,medi_id)values ('" + txtre2.Text + "',SYSDATETIME(),1,'" + txtnum.Text + "','" + lblidt.Text + "','" + lblmed.Text + "')");
+                    cmd = new SqlCommand(query, conn);
+                    sda = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    //  MessageBox.Show("บันทึกการรักษาเรียบร้อย");
+                    sda.Fill(dt);
+
+                    clinic_doctor_service2 m3 = new clinic_doctor_service2();
+                    m3.Show();
+                    clinic_doctor_service2 clnlog = new clinic_doctor_service2();
+                    clnlog.Close();
+                    Visible = false;
+
+
+                    MessageBox.Show("บันทึกใบจ่ายยาเรียบร้อย");
+                }
+
+
+            }
+
+            conn.Close();
 
             /*
             query = ("Update treatment_record SET treatr_status = 0 where treatr_id = '"+lblidt.Text+"'");
@@ -270,14 +338,7 @@ namespace Clinic2018
             sda.Fill(dt);
             */
 
-            clinic_doctor_service m3 = new clinic_doctor_service();
-            m3.Show();
-            clinic_doctor_service clnlog = new clinic_doctor_service();
-            clnlog.Close();
-            Visible = false;
 
-
-            MessageBox.Show("บันทึกใบจ่ายยาเรียบร้อย");
 
         }
 
@@ -297,9 +358,9 @@ namespace Clinic2018
             dt = new DataTable();
             sda.Fill(dt);
 
-            clinic_doctor_service m3 = new clinic_doctor_service();
+            clinic_doctor_service2 m3 = new clinic_doctor_service2();
             m3.Show();
-            clinic_doctor_service clnlog = new clinic_doctor_service();
+            clinic_doctor_service2 clnlog = new clinic_doctor_service2();
             clnlog.Close();
             Visible = false;
 

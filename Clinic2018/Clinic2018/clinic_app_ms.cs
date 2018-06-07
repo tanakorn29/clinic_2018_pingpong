@@ -61,11 +61,13 @@ namespace Clinic2018
 
 
                 dataGridView2.Rows[n].Cells[0].Value = item["app_id"].ToString();
-      
+                System.Globalization.CultureInfo _cultureEnInfo = new System.Globalization.CultureInfo("en-US");
 
                 DateTime app_date = Convert.ToDateTime(item["app_date"].ToString());
+
                 string date_app= String.Format("{0:yyyy-MM-dd}", app_date);
-                dataGridView2.Rows[n].Cells[1].Value = date_app;
+                string date_th = app_date.ToString("yyyy-MM-dd", _cultureEnInfo);
+                dataGridView2.Rows[n].Cells[1].Value = date_th;
 
                 dataGridView2.Rows[n].Cells[2].Value = item["app_time"].ToString();
             //    dataGridView2.Rows[n].Cells[3].Value = item["day"].ToString();
@@ -90,6 +92,7 @@ namespace Clinic2018
 
 
                 dataGridView3.Rows[n].Cells[0].Value = item["emp_doc_name"].ToString();
+                
                 dataGridView3.Rows[n].Cells[1].Value = item["swd_day_work"].ToString();
                 dataGridView3.Rows[n].Cells[2].Value = item["swd_start_time"].ToString();
                 dataGridView3.Rows[n].Cells[3].Value = item["room_id"].ToString();

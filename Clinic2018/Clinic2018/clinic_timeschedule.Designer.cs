@@ -65,8 +65,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lbldate = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -384,6 +384,7 @@
             this.label10.Size = new System.Drawing.Size(160, 31);
             this.label10.TabIndex = 5;
             this.label10.Text = "dd/MM/yyyy";
+            this.label10.TextChanged += new System.EventHandler(this.label10_TextChanged);
             this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label9
@@ -410,14 +411,6 @@
             this.groupBox4.TabIndex = 16;
             this.groupBox4.TabStop = false;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(25, 22);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 0;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
             // lbldate
             // 
             this.lbldate.AutoSize = true;
@@ -427,6 +420,15 @@
             this.lbldate.Size = new System.Drawing.Size(14, 20);
             this.lbldate.TabIndex = 1;
             this.lbldate.Text = "-";
+            this.lbldate.TextChanged += new System.EventHandler(this.lbldate_TextChanged);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(25, 22);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 0;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // clinic_timeschedule
             // 

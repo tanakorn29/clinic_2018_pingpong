@@ -54,7 +54,7 @@ namespace Clinic2018
             }
 
 
-       //     groupBox4.Visible = false;
+            //     groupBox4.Visible = false;
             /*
                   query = ("select schedule_work_doctor.swd_status from schedule_work_doctor inner join room on room.room_id = schedule_work_doctor.room_id where schedule_work_doctor.swd_timezone = 'เช้า' OR schedule_work_doctor.swd_timezone = 'บ่าย'");
             cmd = new SqlCommand(query, conn);
@@ -71,8 +71,19 @@ namespace Clinic2018
 
             }
             */
+            /*
+            string date1 = label10.Text;
+            string date2 = lbldate.Text;
 
-
+            if (date1 == date2)
+            {
+                MessageBox.Show("TEST1");
+            }
+            else
+            {
+                MessageBox.Show("TEST2");
+            }
+            */
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -189,51 +200,9 @@ namespace Clinic2018
 
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "dd-MM-yyyy";
-            conn.Open();
-            string today = DateTime.Now.ToString("dd-MM-yyyy", new CultureInfo("th-TH"));
-            string query = ("select swd_end_date from schedule_work_doctor");
-            cmd = new SqlCommand(query, conn);
-            sda = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            sda.Fill(dt);
-            sdr = cmd.ExecuteReader();
-
-            //    string end_date = dateTimePicker1.Text;
-            if (sdr.Read())
-            {
-
-                string end_date = sdr["swd_end_date"].ToString();
-                lbldate.Text = sdr["swd_end_date"].ToString();
-                if (today == end_date)
-                {
-                    query = ("Update schedule_work_doctor set swd_note = '' , swd_status_room = 0 ,emp_doc_id = 0 ,swd_status = 'ปิด'");
-                    cmd = new SqlCommand(query, conn);
-                    sda = new SqlDataAdapter(cmd);
-                    dt = new DataTable();
-
-                    sda.Fill(dt);
-                    conn.Close();
+     
           
-
-                    MessageBox.Show("เปลี่ยนสถานะ ปิด");
-                }
-                else
-                {
-                    // MessageBox.Show("ยังไม่หมดเวลา");
-                    query = ("Update schedule_work_doctor set swd_note = '',swd_status_room = 0 ,emp_doc_id = 0 ,swd_status = 'เปิด'");
-                    cmd = new SqlCommand(query, conn);
-                    sda = new SqlDataAdapter(cmd);
-                    dt = new DataTable();
-
-                    sda.Fill(dt);
-                    conn.Close();
-             
-                   MessageBox.Show("เปลี่ยนสถานะ เปิด");
-                }
-
-            }
-
-            conn.Close();
+          
 
         }
 
@@ -325,6 +294,12 @@ namespace Clinic2018
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+     
+  
+           /* string date =  dateTimePicker1.Text;
+            lbldate.Text = date;
+          */
+       
             string query = ("Update schedule_work_doctor set swd_end_date = '"+ dateTimePicker1.Text + "'");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
@@ -337,7 +312,64 @@ namespace Clinic2018
             clnlog.Close();
             Visible = false;
             //     groupBox4.Visible = true;
-      //      lbldate.Text = ""+    dateTimePicker1.Text;
+            //      lbldate.Text = ""+    dateTimePicker1.Text;
+        }
+
+        private void label10_TextChanged(object sender, EventArgs e)
+        {
+       
+            conn.Open();
+            string today = DateTime.Now.ToString("dd-MM-yyyy", new CultureInfo("th-TH"));
+            string query = ("select swd_end_date from schedule_work_doctor");
+            cmd = new SqlCommand(query, conn);
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+            sdr = cmd.ExecuteReader();
+
+            //    string end_date = dateTimePicker1.Text;
+            if (sdr.Read())
+            {
+
+                string end_date = sdr["swd_end_date"].ToString();
+                lbldate.Text = sdr["swd_end_date"].ToString();
+                if (today == end_date)
+                {
+                    query = ("Update schedule_work_doctor set swd_note = '' , swd_status_room = 0 ,emp_doc_id = 0 ,swd_status = 'ปิด'");
+                    cmd = new SqlCommand(query, conn);
+                    sda = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+
+                    sda.Fill(dt);
+                    conn.Close();
+
+
+                    MessageBox.Show("เปลี่ยนสถานะ ปิด");
+                }
+                else
+                {
+                    // MessageBox.Show("ยังไม่หมดเวลา");
+                    query = ("Update schedule_work_doctor set swd_note = '',swd_status_room = 0 ,emp_doc_id = 0 ,swd_status = 'เปิด'");
+                    cmd = new SqlCommand(query, conn);
+                    sda = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+
+                    sda.Fill(dt);
+                    conn.Close();
+
+                    MessageBox.Show("เปลี่ยนสถานะ เปิด");
+                }
+
+            }
+
+            conn.Close();
+            
+        }
+
+        private void lbldate_TextChanged(object sender, EventArgs e)
+        {
+
+          
         }
         /*
 private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)

@@ -28,10 +28,14 @@ namespace Clinic2018
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DateTime date = Convert.ToDateTime(dateTimePicker1.Text);
-            string date_birth = String.Format("{0:dddd}", date);
-
-            MessageBox.Show("" + date_birth);
+            CultureInfo ThaiCulture = new CultureInfo("th-TH");
+            System.Globalization.CultureInfo _cultureEnInfo = new System.Globalization.CultureInfo("en-US");
+            DateTime date = Convert.ToDateTime(dateTimePicker1.Text, ThaiCulture);
+            string date_birth = String.Format("{0:yyyy}", date);
+            string date_en = date.ToString("yyyy-MM-dd", _cultureEnInfo);
+            string date_th = date.ToString("yyyy-MM-dd", ThaiCulture);
+            label1.Text = date_th + " ค.ศ. " + date_en;
+          //  MessageBox.Show("" + date_birth);
         }
     }
 }

@@ -69,9 +69,12 @@
             this.textBox1.Size = new System.Drawing.Size(183, 20);
             this.textBox1.TabIndex = 6;
             this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
+            this.textBox1.CursorChanged += new System.EventHandler(this.textBox1_CursorChanged);
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
             this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
+            this.textBox1.Move += new System.EventHandler(this.textBox1_Move);
+            this.textBox1.Validated += new System.EventHandler(this.textBox1_Validated);
             // 
             // lblemp
             // 
@@ -82,6 +85,8 @@
             this.lblemp.Size = new System.Drawing.Size(19, 25);
             this.lblemp.TabIndex = 7;
             this.lblemp.Text = "-";
+            this.lblemp.TextChanged += new System.EventHandler(this.lblemp_TextChanged);
+            this.lblemp.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.lblemp_ControlRemoved);
             // 
             // clinic_time_attendance
             // 

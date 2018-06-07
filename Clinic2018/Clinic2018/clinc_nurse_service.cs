@@ -194,27 +194,35 @@ namespace Clinic2018
 
             foreach (int value in collection)
             {
-                query = ("Update queue_diag_room Set qdr_record = '" + value + "' where opd_id = '" + lblopdid.Text + "'");
-                //  
-                cmd = new SqlCommand(query, conn);
-                sda = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                sda.Fill(dt);
+                if (value <= 5)
+                {
+                    query = ("Update queue_diag_room Set qdr_record = '" + value + "' where opd_id = '" + lblopdid.Text + "'");
+                    //  
+                    cmd = new SqlCommand(query, conn);
+                    sda = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    sda.Fill(dt);
 
-                query = ("Update visit_record set vr_status = 1 where opd_id = '" + lblopdid.Text + "'");
-                //  
-                cmd = new SqlCommand(query, conn);
-                sda = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                sda.Fill(dt);
+                    query = ("Update visit_record set vr_status = 1 where opd_id = '" + lblopdid.Text + "'");
+                    //  
+                    cmd = new SqlCommand(query, conn);
+                    sda = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    sda.Fill(dt);
 
 
-                clinc_nurse_service s2 = new clinc_nurse_service();
-                s2.Show();
-                sent_room clnlog = new sent_room();
-                clnlog.Close();
-                Visible = false;
-                MessageBox.Show("ส่งเข้าห้องตรวจเรียบร้อย   คุณคิวที่    " + value);
+                    clinc_nurse_service s2 = new clinc_nurse_service();
+                    s2.Show();
+                    sent_room clnlog = new sent_room();
+                    clnlog.Close();
+                    Visible = false;
+                    MessageBox.Show("ส่งเข้าห้องตรวจเรียบร้อย   คุณคิวที่    " + value);
+                }
+                else
+                {
+                    MessageBox.Show("คิวห้องตรวจเต็ม");
+                }
+            
             }
             conn.Close();
         }

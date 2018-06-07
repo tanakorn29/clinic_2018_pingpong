@@ -65,6 +65,7 @@
             this.ClientSize = new System.Drawing.Size(818, 143);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "clinic_approve_step2";
             this.Text = "ยืนยันสิทธิ - ระบบบริหารจัดการงานบริการงานแพทย์และอนามัย ";
             this.ResumeLayout(false);
