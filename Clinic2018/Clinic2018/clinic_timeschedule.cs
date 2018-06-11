@@ -16,7 +16,7 @@ namespace Clinic2018
     {
         Timer t = new Timer();
 
-        SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-CGKA91D\SQLEXPRESS; Initial Catalog = Clinic2018; MultipleActiveResultSets = true; User ID = sa; Password = 1234");
+        SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-J5O17QF\SQLEXPRESS; Initial Catalog = Clinic2018; MultipleActiveResultSets = true; User ID = sa; Password = 1234");
         SqlCommand cmd;
         SqlDataAdapter sda;
         DataTable dt;
@@ -349,7 +349,7 @@ namespace Clinic2018
                 else
                 {
                     // MessageBox.Show("ยังไม่หมดเวลา");
-                    query = ("Update schedule_work_doctor set swd_note = '',swd_status_room = 0 ,emp_doc_id = 0 ,swd_status = 'เปิด'");
+                    query = ("Update schedule_work_doctor set swd_note = '',swd_status = 'เปิด'");
                     cmd = new SqlCommand(query, conn);
                     sda = new SqlDataAdapter(cmd);
                     dt = new DataTable();
