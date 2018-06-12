@@ -194,7 +194,7 @@ namespace Clinic2018
 
             foreach (int value in collection)
             {
-                if (value <= 5)
+                if (value <= 9)
                 {
                     query = ("Update queue_diag_room Set qdr_record = '" + value + "' where opd_id = '" + lblopdid.Text + "'");
                     //  

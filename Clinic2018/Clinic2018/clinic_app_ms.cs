@@ -317,7 +317,7 @@ namespace Clinic2018
             conn.Close();
         }
 
-        private void btnapp_Click(object sender, EventArgs e)
+    /*    private void btnapp_Click(object sender, EventArgs e)
         {
             conn.Open();
 
@@ -337,7 +337,7 @@ namespace Clinic2018
 
             conn.Close();
         }
-
+*/
         private void lb6_Click(object sender, EventArgs e)
         {
 
@@ -347,12 +347,12 @@ namespace Clinic2018
         {
             selectedRow = e.RowIndex;
             DataGridViewRow row = dataGridView2.Rows[selectedRow];
-            lblidapp.Text = row.Cells[0].Value.ToString();
+       /*     lblidapp.Text = row.Cells[0].Value.ToString();
             lbldocname.Text = row.Cells[5].Value.ToString();
          
             lbldate.Text = row.Cells[1].Value.ToString();
             lbltime.Text = row.Cells[2].Value.ToString();
-            lblname.Text = row.Cells[4].Value.ToString();
+            lblname.Text = row.Cells[4].Value.ToString();*/
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -472,6 +472,12 @@ namespace Clinic2018
 
 
             conn.Close();
+        }
+
+        private void manuappToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clinic_app_service cliapp = new clinic_app_service();
+            cliapp.Show();
         }
     }
 }

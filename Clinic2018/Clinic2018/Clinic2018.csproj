@@ -137,6 +137,12 @@
     <Compile Include="clinic_app_ms.Designer.cs">
       <DependentUpon>clinic_app_ms.cs</DependentUpon>
     </Compile>
+    <Compile Include="clinic_app_service.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clinic_app_service.Designer.cs">
+      <DependentUpon>clinic_app_service.cs</DependentUpon>
+    </Compile>
     <Compile Include="clinic_barcode.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -445,6 +451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="clinic_app_ms.resx">
       <DependentUpon>clinic_app_ms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="clinic_app_service.resx">
+      <DependentUpon>clinic_app_service.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="clinic_barcode.resx">
       <DependentUpon>clinic_barcode.cs</DependentUpon>

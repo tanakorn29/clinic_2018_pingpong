@@ -60,6 +60,24 @@ namespace Clinic2018
 
             }
 
+            query = ("select medi_id,medi_name,medi_qty_use,medi_unit from medical");
+            cmd = new SqlCommand(query, conn);
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                int n = dataGridView2.Rows.Add();
+
+
+
+                dataGridView2.Rows[n].Cells[0].Value = item["medi_id"].ToString();
+                dataGridView2.Rows[n].Cells[1].Value = item["medi_name"].ToString();
+                dataGridView2.Rows[n].Cells[2].Value = item["medi_qty_use"].ToString();
+                dataGridView2.Rows[n].Cells[3].Value = item["medi_unit"].ToString();
+
+            }
 
             conn.Close();
         }

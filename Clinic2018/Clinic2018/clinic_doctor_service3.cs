@@ -146,6 +146,26 @@ namespace Clinic2018
 
 
             }
+
+            query = ("select treatr_id,treatr_symptom,treatr_diagnose ,opd.opd_name,treatment_record.emp_doc_id  from treatment_record inner join opd on opd.opd_id = treatment_record.opd_id where treatr_status =  0 AND opd.opd_id = '" + lblopdid.Text + "'");
+            cmd = new SqlCommand(query, conn);
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+
+            foreach (DataRow item in dt.Rows)
+            {
+                int n = dataGridView5.Rows.Add();
+
+
+
+                dataGridView5.Rows[n].Cells[0].Value = item["treatr_id"].ToString();
+                dataGridView5.Rows[n].Cells[1].Value = item["treatr_symptom"].ToString();
+                dataGridView5.Rows[n].Cells[2].Value = item["treatr_diagnose"].ToString();
+                dataGridView5.Rows[n].Cells[3].Value = item["opd_name"].ToString();
+                dataGridView5.Rows[n].Cells[4].Value = item["emp_doc_id"].ToString();
+            }
+
             conn.Close();
         }
 

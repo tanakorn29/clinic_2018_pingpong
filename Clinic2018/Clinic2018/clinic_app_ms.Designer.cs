@@ -68,18 +68,6 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.lblidapp = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.lblname = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lbltime = new System.Windows.Forms.Label();
-            this.lbldate = new System.Windows.Forms.Label();
-            this.btnapp = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lbldocname = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lbltime1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -90,15 +78,17 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.สถานะสิทธิ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.manuappToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -106,7 +96,7 @@
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 55);
+            this.groupBox1.Location = new System.Drawing.Point(18, 55);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(441, 211);
             this.groupBox1.TabIndex = 0;
@@ -366,14 +356,14 @@
             this.groupBox4.Controls.Add(this.dataGridView2);
             this.groupBox4.Location = new System.Drawing.Point(18, 498);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(441, 233);
+            this.groupBox4.Size = new System.Drawing.Size(1054, 233);
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "ใบนัดหมาย";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(151, 25);
+            this.textBox3.Location = new System.Drawing.Point(479, 30);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(163, 20);
             this.textBox3.TabIndex = 2;
@@ -383,7 +373,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label2.Location = new System.Drawing.Point(89, 29);
+            this.label2.Location = new System.Drawing.Point(417, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 16);
             this.label2.TabIndex = 1;
@@ -402,7 +392,7 @@
             this.Column8});
             this.dataGridView2.Location = new System.Drawing.Point(16, 68);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(379, 134);
+            this.dataGridView2.Size = new System.Drawing.Size(1005, 134);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -441,131 +431,11 @@
             this.Column8.HeaderText = "วัน";
             this.Column8.Name = "Column8";
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.lblidapp);
-            this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.lblname);
-            this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Controls.Add(this.lbltime);
-            this.groupBox5.Controls.Add(this.lbldate);
-            this.groupBox5.Controls.Add(this.btnapp);
-            this.groupBox5.Controls.Add(this.label3);
-            this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Controls.Add(this.lbldocname);
-            this.groupBox5.Controls.Add(this.label6);
-            this.groupBox5.Location = new System.Drawing.Point(590, 429);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(449, 226);
-            this.groupBox5.TabIndex = 14;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "ข้อมูลใบนัดหมาย";
-            // 
-            // lblidapp
-            // 
-            this.lblidapp.AutoSize = true;
-            this.lblidapp.Location = new System.Drawing.Point(141, 29);
-            this.lblidapp.Name = "lblidapp";
-            this.lblidapp.Size = new System.Drawing.Size(10, 13);
-            this.lblidapp.TabIndex = 10;
-            this.lblidapp.Text = "-";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(38, 29);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(97, 13);
-            this.label13.TabIndex = 9;
-            this.label13.Text = "รหัสอ้างอิงนัดหมาย:";
-            // 
-            // lblname
-            // 
-            this.lblname.AutoSize = true;
-            this.lblname.Location = new System.Drawing.Point(141, 130);
-            this.lblname.Name = "lblname";
-            this.lblname.Size = new System.Drawing.Size(10, 13);
-            this.lblname.TabIndex = 8;
-            this.lblname.Text = "-";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(82, 130);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 13);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "ชื่อคนไข้ :";
-            // 
-            // lbltime
-            // 
-            this.lbltime.AutoSize = true;
-            this.lbltime.Location = new System.Drawing.Point(141, 102);
-            this.lbltime.Name = "lbltime";
-            this.lbltime.Size = new System.Drawing.Size(10, 13);
-            this.lbltime.TabIndex = 6;
-            this.lbltime.Text = "-";
-            // 
-            // lbldate
-            // 
-            this.lbldate.AutoSize = true;
-            this.lbldate.Location = new System.Drawing.Point(141, 78);
-            this.lbldate.Name = "lbldate";
-            this.lbldate.Size = new System.Drawing.Size(10, 13);
-            this.lbldate.TabIndex = 5;
-            this.lbldate.Text = "-";
-            // 
-            // btnapp
-            // 
-            this.btnapp.Location = new System.Drawing.Point(178, 171);
-            this.btnapp.Name = "btnapp";
-            this.btnapp.Size = new System.Drawing.Size(100, 23);
-            this.btnapp.TabIndex = 4;
-            this.btnapp.Text = "บันทึก";
-            this.btnapp.UseVisualStyleBackColor = true;
-            this.btnapp.Click += new System.EventHandler(this.btnapp_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(100, 102);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "เวลา :";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(101, 78);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "วันที่ :";
-            // 
-            // lbldocname
-            // 
-            this.lbldocname.AutoSize = true;
-            this.lbldocname.Location = new System.Drawing.Point(141, 53);
-            this.lbldocname.Name = "lbldocname";
-            this.lbldocname.Size = new System.Drawing.Size(10, 13);
-            this.lbldocname.TabIndex = 0;
-            this.lbldocname.Text = "-";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(70, 53);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "แพทย์ผู้นัด :";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label5.Location = new System.Drawing.Point(12, 9);
+            this.label5.Location = new System.Drawing.Point(12, 21);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(200, 31);
             this.label5.TabIndex = 15;
@@ -645,6 +515,23 @@
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.manuappToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1107, 24);
+            this.menuStrip1.TabIndex = 18;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // manuappToolStripMenuItem
+            // 
+            this.manuappToolStripMenuItem.Name = "manuappToolStripMenuItem";
+            this.manuappToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.manuappToolStripMenuItem.Text = "นัดหมายการรักษา";
+            this.manuappToolStripMenuItem.Click += new System.EventHandler(this.manuappToolStripMenuItem_Click);
+            // 
             // clinic_app_ms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -653,11 +540,12 @@
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.lbltime1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "clinic_app_ms";
             this.Text = "การนัดหมาย";
             this.Load += new System.EventHandler(this.clinic_app_ms_Load);
@@ -671,10 +559,10 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -705,16 +593,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button btnapp;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lbldocname;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblname;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lbltime;
-        private System.Windows.Forms.Label lbldate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -724,8 +602,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtremark;
-        private System.Windows.Forms.Label lblidapp;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
@@ -743,5 +619,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn สถานะสิทธิ;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem manuappToolStripMenuItem;
     }
 }
