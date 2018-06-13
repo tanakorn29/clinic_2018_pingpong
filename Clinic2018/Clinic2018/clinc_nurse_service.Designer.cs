@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.lbltimezone = new System.Windows.Forms.Label();
             this.lblday = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -102,7 +103,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.lbltimezone = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -144,6 +144,16 @@
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "ตารางปฏิบัติงาน";
+            // 
+            // lbltimezone
+            // 
+            this.lbltimezone.AutoSize = true;
+            this.lbltimezone.Location = new System.Drawing.Point(625, 20);
+            this.lbltimezone.Name = "lbltimezone";
+            this.lbltimezone.Size = new System.Drawing.Size(10, 13);
+            this.lbltimezone.TabIndex = 4;
+            this.lbltimezone.Text = "-";
+            this.lbltimezone.TextChanged += new System.EventHandler(this.lbltimezone_TextChanged);
             // 
             // lblday
             // 
@@ -720,16 +730,6 @@
             this.dataGridViewTextBoxColumn1.DataPropertyName = "qvr_time";
             this.dataGridViewTextBoxColumn1.HeaderText = "qvr_time";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // lbltimezone
-            // 
-            this.lbltimezone.AutoSize = true;
-            this.lbltimezone.Location = new System.Drawing.Point(625, 20);
-            this.lbltimezone.Name = "lbltimezone";
-            this.lbltimezone.Size = new System.Drawing.Size(10, 13);
-            this.lbltimezone.TabIndex = 4;
-            this.lbltimezone.Text = "-";
-            this.lbltimezone.TextChanged += new System.EventHandler(this.lbltimezone_TextChanged);
             // 
             // clinc_nurse_service
             // 

@@ -96,6 +96,99 @@ namespace Clinic2018
         private void button1_Click(object sender, EventArgs e)
         {
             conn.Open();
+
+            string query = ("select count(*) from treatment_record inner join appointment on appointment.opd_id = treatment_record.opd_id where treatr_id = '"+textBox4.Text+"' AND status_approve = 1");
+            cmd = new SqlCommand(query, conn);
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+
+            int app_count = (int)cmd.ExecuteScalar();
+            if(app_count == 1)
+            {
+                MessageBox.Show("มีการนัดหมาย");
+            }else
+            {
+                
+
+         query = ("select medi_qty from medical where medi_name = '" + textBox2.Text + "'");
+         cmd = new SqlCommand(query, conn);
+         sda = new SqlDataAdapter(cmd);
+         dt = new DataTable();
+         sda.Fill(dt);
+         sdr = cmd.ExecuteReader();
+
+         if (sdr.Read())
+         {
+             int nummed = Convert.ToInt32(sdr["medi_qty"].ToString());
+             int cut_stock = nummed - Convert.ToInt32(textBox3.Text);
+             if (nummed < 5)
+             {
+                 MessageBox.Show("ยาใกล้หมดคลังแล้ว");
+                 query = ("Update medical set medi_qty = '" + cut_stock + "' where medi_name = '" + textBox2.Text + "'");
+                 cmd = new SqlCommand(query, conn);
+                 sda = new SqlDataAdapter(cmd);
+                 dt = new DataTable();
+                 sda.Fill(dt);
+
+                 query = ("UPDATE medicine_use SET medi_use_status = 0 where treatr_id = '" + textBox4.Text + "' AND medi_use_id = '" + textBox1.Text + "'");
+                 cmd = new SqlCommand(query, conn);
+                 sda = new SqlDataAdapter(cmd);
+                 dt = new DataTable();
+                 sda.Fill(dt);
+
+                 clinic_pharmacist_service m3 = new clinic_pharmacist_service();
+                 m3.Show();
+                 clinic_pharmacist_service clnlog = new clinic_pharmacist_service();
+                 clnlog.Close();
+                 Visible = false;
+
+
+                 MessageBox.Show("จ่ายยาเรียบร้อย");
+
+             }
+             else if (nummed < 0)
+             {
+                 MessageBox.Show("ยาหมดคลังแล้ว");
+
+             }
+             else if (nummed > 5)
+             {
+                 query = ("Update medical set medi_qty = '" + cut_stock + "' where medi_name = '" + textBox2.Text + "'");
+                 cmd = new SqlCommand(query, conn);
+                 sda = new SqlDataAdapter(cmd);
+                 dt = new DataTable();
+                 sda.Fill(dt);
+
+                 query = ("UPDATE medicine_use SET medi_use_status = 0 where treatr_id = '" + textBox4.Text + "' AND medi_use_id = '" + textBox1.Text + "'");
+                 cmd = new SqlCommand(query, conn);
+                 sda = new SqlDataAdapter(cmd);
+                 dt = new DataTable();
+                 sda.Fill(dt);
+
+                 clinic_pharmacist_service m3 = new clinic_pharmacist_service();
+                 m3.Show();
+                 clinic_pharmacist_service clnlog = new clinic_pharmacist_service();
+                 clnlog.Close();
+                 Visible = false;
+
+
+                 MessageBox.Show("จ่ายยาเรียบร้อย");
+
+
+             }
+
+
+
+
+
+
+         }
+         
+            }
+
+            /*
+
             string query = ("select medi_qty from medical where medi_name = '" + textBox2.Text + "'");
             cmd = new SqlCommand(query, conn);
             sda = new SqlDataAdapter(cmd);
@@ -169,6 +262,9 @@ namespace Clinic2018
 
 
             }
+            */
+
+
 
             conn.Close();
         }

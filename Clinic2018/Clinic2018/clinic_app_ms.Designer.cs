@@ -50,7 +50,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.lbliddoc = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.bt3 = new System.Windows.Forms.Button();
             this.dtp1 = new System.Windows.Forms.DateTimePicker();
             this.lb9 = new System.Windows.Forms.Label();
@@ -80,6 +79,7 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.manuappToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -233,11 +233,11 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Controls.Add(this.txtremark);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.lbliddoc);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.textBox2);
             this.groupBox3.Controls.Add(this.bt3);
             this.groupBox3.Controls.Add(this.dtp1);
             this.groupBox3.Controls.Add(this.lb9);
@@ -286,13 +286,6 @@
             this.label11.TabIndex = 14;
             this.label11.Text = "รหัสแพทย์ :";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(157, 89);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(103, 20);
-            this.textBox2.TabIndex = 13;
-            // 
             // bt3
             // 
             this.bt3.Location = new System.Drawing.Point(178, 182);
@@ -308,7 +301,7 @@
             this.dtp1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp1.Location = new System.Drawing.Point(157, 61);
             this.dtp1.Name = "dtp1";
-            this.dtp1.Size = new System.Drawing.Size(103, 20);
+            this.dtp1.Size = new System.Drawing.Size(195, 20);
             this.dtp1.TabIndex = 2;
             // 
             // lb9
@@ -532,6 +525,22 @@
             this.manuappToolStripMenuItem.Text = "นัดหมายการรักษา";
             this.manuappToolStripMenuItem.Click += new System.EventHandler(this.manuappToolStripMenuItem_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "08.30",
+            "09.30",
+            "10.30",
+            "11.10",
+            "13.30",
+            "14.30",
+            "15.10"});
+            this.comboBox1.Location = new System.Drawing.Point(157, 86);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 18;
+            // 
             // clinic_app_ms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -588,7 +597,6 @@
         private System.Windows.Forms.Label lb6;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label2;
@@ -621,5 +629,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem manuappToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

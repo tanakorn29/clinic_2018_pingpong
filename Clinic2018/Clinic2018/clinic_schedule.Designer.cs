@@ -38,6 +38,8 @@
             this.สถานะสิทธิ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
             this.txtswd = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -68,6 +70,8 @@
             this.txtname1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -155,6 +159,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtswd);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.comboBox1);
@@ -167,10 +173,27 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.groupBox1.Location = new System.Drawing.Point(120, 87);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(394, 219);
+            this.groupBox1.Size = new System.Drawing.Size(394, 258);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "จัดการแพทย์ทำงานแทน";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(153, 136);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker1.TabIndex = 14;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label9.Location = new System.Drawing.Point(32, 136);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(115, 16);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "วันที่ปฏิบัติงานชั่วคราว:";
             // 
             // txtswd
             // 
@@ -202,7 +225,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label6.Location = new System.Drawing.Point(116, 138);
+            this.label6.Location = new System.Drawing.Point(116, 172);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 16);
             this.label6.TabIndex = 9;
@@ -211,7 +234,7 @@
             // txttime
             // 
             this.txttime.Enabled = false;
-            this.txttime.Location = new System.Drawing.Point(153, 135);
+            this.txttime.Location = new System.Drawing.Point(153, 169);
             this.txttime.Name = "txttime";
             this.txttime.Size = new System.Drawing.Size(168, 22);
             this.txttime.TabIndex = 8;
@@ -226,7 +249,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(153, 178);
+            this.button2.Location = new System.Drawing.Point(153, 215);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 23);
             this.button2.TabIndex = 3;
@@ -352,6 +375,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.dateTimePicker2);
+            this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Controls.Add(this.txtswdwork1);
             this.groupBox4.Controls.Add(this.label8);
@@ -362,16 +387,16 @@
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.groupBox4.Location = new System.Drawing.Point(120, 316);
+            this.groupBox4.Location = new System.Drawing.Point(120, 387);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(394, 209);
+            this.groupBox4.Size = new System.Drawing.Size(394, 251);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "อนุมัติการเลื่อนปฏิบัติงาน";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(153, 180);
+            this.button1.Location = new System.Drawing.Point(153, 209);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(141, 23);
             this.button1.TabIndex = 15;
@@ -401,7 +426,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label1.Location = new System.Drawing.Point(116, 133);
+            this.label1.Location = new System.Drawing.Point(116, 163);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 16);
             this.label1.TabIndex = 9;
@@ -410,7 +435,7 @@
             // txttime1
             // 
             this.txttime1.Enabled = false;
-            this.txttime1.Location = new System.Drawing.Point(153, 130);
+            this.txttime1.Location = new System.Drawing.Point(153, 160);
             this.txttime1.Name = "txttime1";
             this.txttime1.Size = new System.Drawing.Size(168, 22);
             this.txttime1.TabIndex = 8;
@@ -451,11 +476,28 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "ชื่อแพทย์ :";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label10.Location = new System.Drawing.Point(32, 122);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(115, 16);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "วันที่ปฏิบัติงานชั่วคราว:";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(153, 121);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker2.TabIndex = 16;
+            // 
             // clinic_schedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1268, 537);
+            this.ClientSize = new System.Drawing.Size(1268, 658);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -464,6 +506,7 @@
             this.Controls.Add(this.label2);
             this.Name = "clinic_schedule";
             this.Text = "จัดการข้อมูลการเลื่อนปฏิบัติงาน";
+            this.Load += new System.EventHandler(this.clinic_schedule_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -519,5 +562,9 @@
         private System.Windows.Forms.TextBox txtswdwork1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label10;
     }
 }

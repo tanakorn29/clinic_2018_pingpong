@@ -24,7 +24,7 @@ namespace Clinic2018
         public clinic_app_ms()
         {
             InitializeComponent();
-            textBox2.Text = "00.00";
+          
             conn.Open();
             string query = ("select appointment.app_id ,opd.opd_idcard,opd.opd_name,employee_doctor.emp_doc_id,employee_doctor.emp_doc_name from appointment inner join employee_doctor on employee_doctor.emp_doc_id = appointment.emp_doc_id inner join opd on opd.opd_id = appointment.opd_id  where status_approve = 1");
             cmd = new SqlCommand(query, conn);
@@ -120,9 +120,12 @@ namespace Clinic2018
         {
             //   MessageBox.Show(lbltime.Text);
             conn.Open();
-            DateTime date = Convert.ToDateTime(dtp1.Text);
-            string day = String.Format("{0:dddd}", date);
-            double time = Convert.ToDouble(textBox2.Text);
+            CultureInfo ThaiCulture = new CultureInfo("th-TH");
+            DateTime date_app = Convert.ToDateTime(dtp1.Text);
+
+            string date = date_app.ToString("yyyy-MM-dd", ThaiCulture);
+            string day = date_app.ToString("dddd", ThaiCulture);
+            double time = Convert.ToDouble(comboBox1.SelectedItem.ToString());
 
             if (time <= 12.00)
             {
@@ -147,7 +150,7 @@ namespace Clinic2018
                     {
                         int swd_id = Convert.ToInt32(sdr["swd_id"].ToString());
                         string timezone = sdr["swd_timezone"].ToString();
-                         query = ("select count(*) from appointment where app_time = '"+textBox2.Text+ "' AND day = '"+day+ "' AND swd_id = '"+swd_id+"'");
+                         query = ("select count(*) from appointment where app_time = '"+ comboBox1.SelectedItem.ToString() + "' AND day = '"+day+ "' AND swd_id = '"+swd_id+"'");
                         cmd = new SqlCommand(query, conn);
                         sda = new SqlDataAdapter(cmd);
                         dt = new DataTable();
@@ -157,7 +160,7 @@ namespace Clinic2018
                         {
                       //    MessageBox.Show("   " + swd_id + "    " + timezone + "   " + count_app + "    " + lbliddoc.Text);
                      
-                            query = ("Update appointment SET day = '" + day + "',app_date = '" + dtp1.Text + "' , app_time = '" + textBox2.Text + "',app_remark = '" + txtremark.Text + "',status_approve = 2,status_app = 1 , swd_id = '" + swd_id + "' where app_id = '" + lb11.Text + "' ");
+                            query = ("Update appointment SET day = '" + day + "',app_date = '" + date + "' , app_time = '" + comboBox1.SelectedItem.ToString() + "',app_remark = '" + txtremark.Text + "',status_approve = 2,status_app = 1 , swd_id = '" + swd_id + "' where app_id = '" + lb11.Text + "' ");
                             cmd = new SqlCommand(query, conn);
                             sda = new SqlDataAdapter(cmd);
                             dt = new DataTable();
@@ -212,7 +215,7 @@ namespace Clinic2018
                     {
                         int swd_id = Convert.ToInt32(sdr["swd_id"].ToString());
                         string timezone = sdr["swd_timezone"].ToString();
-                        query = ("select count(*) from appointment where app_time = '" + textBox2.Text + "' AND day = '" + day + "' AND swd_id = '" + swd_id + "'");
+                        query = ("select count(*) from appointment where app_time = '" + comboBox1.SelectedItem.ToString() + "' AND day = '" + day + "' AND swd_id = '" + swd_id + "'");
                         cmd = new SqlCommand(query, conn);
                         sda = new SqlDataAdapter(cmd);
                         dt = new DataTable();
@@ -222,7 +225,7 @@ namespace Clinic2018
                         {
                             //    MessageBox.Show("   " + swd_id + "    " + timezone + "   " + count_app + "    " + lbliddoc.Text);
 
-                            query = ("Update appointment SET day = '" + day + "',app_date = '" + dtp1.Text + "' , app_time = '" + textBox2.Text + "',app_remark = '" + txtremark.Text + "',status_approve = 2,status_app = 1 , swd_id = '" + swd_id + "' where app_id = '" + lb11.Text + "' ");
+                            query = ("Update appointment SET day = '" + day + "',app_date = '" + dtp1.Text + "' , app_time = '" + comboBox1.SelectedItem.ToString() + "',app_remark = '" + txtremark.Text + "',status_approve = 2,status_app = 1 , swd_id = '" + swd_id + "' where app_id = '" + lb11.Text + "' ");
                             cmd = new SqlCommand(query, conn);
                             sda = new SqlDataAdapter(cmd);
                             dt = new DataTable();

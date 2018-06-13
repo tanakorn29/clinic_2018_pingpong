@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -100,8 +101,12 @@ namespace Clinic2018
             sdr = cmd.ExecuteReader();
             if (sdr.Read())
             {
+                CultureInfo ThaiCulture = new CultureInfo("th-TH");
                 int doc_id = Convert.ToInt32(sdr["emp_doc_id"].ToString());
-                query = ("Update schedule_work_doctor set swd_note = 'รอการอนุมัติทำงานแทน',swd_status_room = 4,emp_doc_id = '" + doc_id + "'where swd_id = '" + txtswd.Text + "'");
+                DateTime date_swd = Convert.ToDateTime(dateTimePicker1.Text);
+                string date = date_swd.ToString("yyyy-MM-dd", ThaiCulture);
+
+                query = ("Update schedule_work_doctor set swd_note = 'รอการอนุมัติทำงานแทน',swd_work_place = '"+date+ "',swd_status_room = 4, swd_emp_work_place = '" + comboBox1.SelectedItem.ToString() + "',emp_doc_id ='"+ doc_id + "' where swd_id = '" + txtswd.Text + "'");
                 cmd = new SqlCommand(query, conn);
                 sda = new SqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -161,15 +166,18 @@ namespace Clinic2018
             sdr = cmd.ExecuteReader();
             if (sdr.Read())
             {
+                CultureInfo ThaiCulture = new CultureInfo("th-TH");
                 int doc_id = Convert.ToInt32(sdr["emp_doc_id"].ToString());
                 // MessageBox.Show("" + doc_id);
+                DateTime date_swd = Convert.ToDateTime(dateTimePicker1.Text);
+                string date = date_swd.ToString("yyyy-MM-dd", ThaiCulture);
 
-                query = ("Update schedule_work_doctor set swd_note = '',swd_status_room = 1,emp_doc_id = '" + doc_id + "' where swd_id = '" + txtswdwork1.Text + "'");
+                query = ("Update schedule_work_doctor set swd_note = '',swd_status_room = 1,swd_work_place = '"+ date + "',swd_emp_work_place = '" + txtname1.Text + "',emp_doc_id = '"+ doc_id + "' where swd_id = '" + txtswdwork1.Text + "'");
                 cmd = new SqlCommand(query, conn);
                 sda = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 sda.Fill(dt);
-                query = ("select swd_id from schedule_work_doctor where swd_status_room = 1 AND emp_doc_id = '" + doc_id + "' AND swd_id = '" + txtswdwork1.Text + "'");
+                query = ("select swd_id from schedule_work_doctor where swd_status_room = 1 AND swd_emp_work_place = '" + txtname1.Text + "' AND swd_id = '" + txtswdwork1.Text + "'");
                 cmd = new SqlCommand(query, conn);
 
                 sda = new SqlDataAdapter(cmd);
@@ -179,7 +187,8 @@ namespace Clinic2018
                 if (sdr.Read())
                 {
                     int swd_id = Convert.ToInt32(sdr["swd_id"].ToString());
-                    query = ("update appointment SET status_approve = 3 ,swd_id = '" + swd_id + "'where emp_doc_id = '" + doc_id + "'");
+                    //  query = ("update appointment SET status_approve = 3 ,swd_id = '" + swd_id + "' inner join employee_doctor on employee_doctor.emp_doc_id = appointment.emp_doc_id where employee_doctor.emp_doc_name = '"+ txtname1.Text + "'");
+                   query = ("update appointment SET appointment.status_approve = 3,appointment.swd_id = '" + swd_id + "' from appointment inner join employee_doctor on employee_doctor.emp_doc_id = appointment.emp_doc_id where employee_doctor.emp_doc_name = '" + txtname1.Text + "'");
                     cmd = new SqlCommand(query, conn);
                     sda = new SqlDataAdapter(cmd);
                     dt = new DataTable();
@@ -207,6 +216,15 @@ namespace Clinic2018
 
             conn.Close();
 
+        }
+
+        private void clinic_schedule_Load(object sender, EventArgs e)
+        {
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.CustomFormat = "yyyy-MM-dd";
         }
     }
 }

@@ -287,7 +287,7 @@ namespace Clinic2018
                                     clinic_search clnlog = new clinic_search();
                                     clnlog.Close();
                                     Visible = false;
-                                    MessageBox.Show("คิวที่    " + value);
+                                    MessageBox.Show("ส่วนของการนัดหมาย คิวที่    " + value + " ");
                                 }
 
 

@@ -31,17 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ลำดับคิว = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.เวลา = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ชื่อสกุล = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.รหัสคนไข้ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbltime1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblopdid = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblswdid = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnsent = new System.Windows.Forms.Button();
             this.lblidapp = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -54,26 +49,33 @@
             this.lbldocname = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.สถานะสิทธิ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.lblday = new System.Windows.Forms.Label();
             this.lbltimezone = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblswdid = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblopdid = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ลำดับคิว = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.เวลา = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ชื่อสกุล = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.รหัสคนไข้ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -95,78 +97,6 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ลำดับการให้บริการ";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ลำดับคิว,
-            this.เวลา,
-            this.ชื่อสกุล,
-            this.Column1,
-            this.รหัสคนไข้,
-            this.Column4,
-            this.Column2,
-            this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(13, 28);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1114, 155);
-            this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // ลำดับคิว
-            // 
-            this.ลำดับคิว.HeaderText = "ลำดับคิว";
-            this.ลำดับคิว.Name = "ลำดับคิว";
-            this.ลำดับคิว.ReadOnly = true;
-            // 
-            // เวลา
-            // 
-            this.เวลา.HeaderText = "เวลา";
-            this.เวลา.Name = "เวลา";
-            this.เวลา.ReadOnly = true;
-            // 
-            // ชื่อสกุล
-            // 
-            this.ชื่อสกุล.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ชื่อสกุล.HeaderText = "ชื่อสกุล";
-            this.ชื่อสกุล.Name = "ชื่อสกุล";
-            this.ชื่อสกุล.ReadOnly = true;
-            this.ชื่อสกุล.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "รหัสประจำตัวประชาชน";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // รหัสคนไข้
-            // 
-            this.รหัสคนไข้.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.รหัสคนไข้.HeaderText = "รหัสคนไข้";
-            this.รหัสคนไข้.Name = "รหัสคนไข้";
-            this.รหัสคนไข้.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "ที่อยู่";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "วันเดือนปีเกิด";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "เบอร์โทร";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             // 
             // lbltime1
             // 
@@ -202,6 +132,42 @@
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "ส่งเข้าห้องตรวจ";
+            // 
+            // lblopdid
+            // 
+            this.lblopdid.AutoSize = true;
+            this.lblopdid.Location = new System.Drawing.Point(149, 214);
+            this.lblopdid.Name = "lblopdid";
+            this.lblopdid.Size = new System.Drawing.Size(10, 13);
+            this.lblopdid.TabIndex = 25;
+            this.lblopdid.Text = "-";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(55, 214);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(88, 13);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "รหัสเวชระเบียน :";
+            // 
+            // lblswdid
+            // 
+            this.lblswdid.AutoSize = true;
+            this.lblswdid.Location = new System.Drawing.Point(149, 178);
+            this.lblswdid.Name = "lblswdid";
+            this.lblswdid.Size = new System.Drawing.Size(10, 13);
+            this.lblswdid.TabIndex = 23;
+            this.lblswdid.Text = "-";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(38, 178);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(105, 13);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "รหัสอ้างอิงตารางงาน :";
             // 
             // btnsent
             // 
@@ -294,6 +260,7 @@
             this.lbldocname.Size = new System.Drawing.Size(10, 13);
             this.lbldocname.TabIndex = 13;
             this.lbldocname.Text = "-";
+            this.lbldocname.TextChanged += new System.EventHandler(this.lbldocname_TextChanged);
             // 
             // label6
             // 
@@ -307,64 +274,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column5,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.สถานะสิทธิ,
-            this.dataGridViewTextBoxColumn8});
-            this.dataGridView3.Location = new System.Drawing.Point(13, 63);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.Size = new System.Drawing.Size(640, 151);
-            this.dataGridView3.TabIndex = 3;
-            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "รหัสอ้างอิงตารางงาน";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn5.HeaderText = "แพทย์";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.FillWeight = 150F;
-            this.dataGridViewTextBoxColumn6.HeaderText = "วันปฎิบัติงาน";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "เวลาปฎิบัติงาน";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // สถานะสิทธิ
-            // 
-            this.สถานะสิทธิ.HeaderText = "ห้องรักษา";
-            this.สถานะสิทธิ.Name = "สถานะสิทธิ";
-            this.สถานะสิทธิ.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "หมายเหตุ";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
             // label4
             // 
@@ -396,10 +305,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.dataGridView2);
             this.groupBox2.Controls.Add(this.lbltimezone);
             this.groupBox2.Controls.Add(this.lblday);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.dataGridView3);
             this.groupBox2.Location = new System.Drawing.Point(46, 287);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(674, 241);
@@ -407,41 +316,135 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ตารางงานแพทย์";
             // 
-            // label5
+            // dataGridView2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(38, 178);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 13);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "รหัสอ้างอิงตารางงาน :";
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column8,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.Column5,
+            this.Column6,
+            this.Column7});
+            this.dataGridView2.Location = new System.Drawing.Point(13, 83);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(661, 131);
+            this.dataGridView2.TabIndex = 19;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
-            // lblswdid
+            // Column8
             // 
-            this.lblswdid.AutoSize = true;
-            this.lblswdid.Location = new System.Drawing.Point(149, 178);
-            this.lblswdid.Name = "lblswdid";
-            this.lblswdid.Size = new System.Drawing.Size(10, 13);
-            this.lblswdid.TabIndex = 23;
-            this.lblswdid.Text = "-";
+            this.Column8.HeaderText = "หมายเลขอ้างอิงตารางงาน";
+            this.Column8.Name = "Column8";
             // 
-            // label7
+            // dataGridViewTextBoxColumn2
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(55, 214);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 13);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "รหัสเวชระเบียน :";
+            this.dataGridViewTextBoxColumn2.HeaderText = "ชื่อแพทย์";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // lblopdid
+            // dataGridViewTextBoxColumn3
             // 
-            this.lblopdid.AutoSize = true;
-            this.lblopdid.Location = new System.Drawing.Point(149, 214);
-            this.lblopdid.Name = "lblopdid";
-            this.lblopdid.Size = new System.Drawing.Size(10, 13);
-            this.lblopdid.TabIndex = 25;
-            this.lblopdid.Text = "-";
+            this.dataGridViewTextBoxColumn3.HeaderText = "ความเชี่ยวชาญ";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "วันที่มาปฏิบัติงาน";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "เวลาปฏิบัติงาน";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "เวลาเลิกปฏิบัติงาน";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "หมายเหตุ";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "ห้องตรวจ";
+            this.Column7.Name = "Column7";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ลำดับคิว,
+            this.เวลา,
+            this.ชื่อสกุล,
+            this.Column1,
+            this.รหัสคนไข้,
+            this.Column4,
+            this.Column2,
+            this.Column3});
+            this.dataGridView1.Location = new System.Drawing.Point(29, 19);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(1075, 155);
+            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // ลำดับคิว
+            // 
+            this.ลำดับคิว.HeaderText = "ลำดับคิว";
+            this.ลำดับคิว.Name = "ลำดับคิว";
+            this.ลำดับคิว.ReadOnly = true;
+            // 
+            // เวลา
+            // 
+            this.เวลา.HeaderText = "เวลา";
+            this.เวลา.Name = "เวลา";
+            this.เวลา.ReadOnly = true;
+            // 
+            // ชื่อสกุล
+            // 
+            this.ชื่อสกุล.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ชื่อสกุล.HeaderText = "ชื่อสกุล";
+            this.ชื่อสกุล.Name = "ชื่อสกุล";
+            this.ชื่อสกุล.ReadOnly = true;
+            this.ชื่อสกุล.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "รหัสประจำตัวประชาชน";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // รหัสคนไข้
+            // 
+            this.รหัสคนไข้.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.รหัสคนไข้.HeaderText = "รหัสคนไข้";
+            this.รหัสคนไข้.Name = "รหัสคนไข้";
+            this.รหัสคนไข้.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "ที่อยู่";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "วันเดือนปีเกิด";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "เบอร์โทร";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // clinic_app_service
             // 
@@ -457,12 +460,12 @@
             this.Text = "การนัดหมายการรักษา";
             this.Load += new System.EventHandler(this.clinic_app_service_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -472,15 +475,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ลำดับคิว;
-        private System.Windows.Forms.DataGridViewTextBoxColumn เวลา;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ชื่อสกุล;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn รหัสคนไข้;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Label lbltime1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnsent;
@@ -495,20 +489,31 @@
         private System.Windows.Forms.Label lbldocname;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblday;
         private System.Windows.Forms.Label lbltimezone;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn สถานะสิทธิ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.Label lblopdid;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblswdid;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ลำดับคิว;
+        private System.Windows.Forms.DataGridViewTextBoxColumn เวลา;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ชื่อสกุล;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn รหัสคนไข้;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }
